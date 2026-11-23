@@ -1,0 +1,5 @@
+interface:
+  display_name: "Work Loop"
+  short_description: "Take an INTENT.md to evidence-backed done"
+policy:
+  allow_implicit_invocation: false

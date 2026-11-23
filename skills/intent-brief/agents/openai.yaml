@@ -1,0 +1,5 @@
+interface:
+  display_name: "Intent Brief"
+  short_description: "Short interview to a one-page INTENT.md"
+policy:
+  allow_implicit_invocation: false
