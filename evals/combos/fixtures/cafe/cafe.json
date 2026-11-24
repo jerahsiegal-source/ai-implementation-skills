@@ -1,0 +1,7 @@
+{
+  "note": "Example data for evals",
+  "daily_revenue": [812,790,845,901,1120,1340,980,805,822,860,915,1180,1395,1010,830,815,872,930,1210,1410,1040,850,841,889,955,1245,1460,1075],
+  "first_day": "2026-10-27",
+  "top_items": [["Flat white",412],["Croissant",355],["Cold brew",298],["Banana bread",211],["Chai latte",187]],
+  "avg_ticket": {"this_week": 11.4, "last_week": 10.9, "target": 12}
+}

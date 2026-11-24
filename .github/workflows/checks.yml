@@ -17,4 +17,4 @@ jobs:
       - name: Chart checker self-test
         run: NODE_PATH=$(npm root -g) node skills/chart/scripts/test-checks.mjs
       - name: Eval files are valid JSON
-        run: for f in skills/*/evals/*.json; do node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || exit 1; done
+        run: for f in skills/*/evals/*.json evals/combos/scenarios.json; do node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || exit 1; done

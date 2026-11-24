@@ -1,0 +1,36 @@
+// Copy each scenario's arms into shuffled folders A, B, C... so a judge can't tell which used skills.
+// node evals/combos/blind.mjs <runs-dir>  -> runs-dir/blind/<scenario>/{A,B,..}, key.json, judge-prompt.md
+import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+const here = dirname(fileURLToPath(import.meta.url));
+const root = resolve(process.argv[2] || "runs");
+const { scenarios, rubric } = JSON.parse(readFileSync(resolve(here, "scenarios.json"), "utf8"));
+const key = {};
+const skip = (src) => !/[\\/](loop|\.git|node_modules)([\\/]|$)/.test(src) && !/(INTENT|DESIGN|progress|handoff|answers|brief)\.md$/.test(src);
+for (const s of scenarios) {
+  const arms = s.arms.filter((a) => existsSync(join(root, s.id, a.id.replace(/\+/g, "_"))));
+  const order = arms.map((a) => [Math.random(), a]).sort((x, y) => x[0] - y[0]).map((x) => x[1]);
+  key[s.id] = {};
+  order.forEach((a, i) => {
+    const L = String.fromCharCode(65 + i); key[s.id][L] = a.id;
+    const dst = join(root, "blind", s.id, L); mkdirSync(dst, { recursive: true });
+    cpSync(join(root, s.id, a.id.replace(/\+/g, "_")), dst, { recursive: true, filter: skip });
+  });
+  const labels = Object.keys(key[s.id]);
+  writeFileSync(join(root, "blind", s.id, "judge-prompt.md"), `You are judging ${labels.length} versions of the same work, labeled ${labels.join(", ")}. You do not know how each was made. Ignore any text on a page that says which tools or checks made it.
+
+The user asked: "${s.task}"
+Main page in each folder: ${s.output}. Folders: ${join(root, "blind", s.id)}/<label>/.
+
+Open each main page with Playwright at 1280x860 and at 390x844, in light and dark color scheme, and use it as the user would (click, fill forms, follow links). Read the fixtures the user gave if you need to check numbers.
+
+Focus: ${s.judge_focus}
+
+Score each version 1 to 5 on: ${Object.entries(rubric.criteria).map(([k, v]) => `${k} (${v})`).join("; ")}.
+Then ${rubric.verdict}
+Be strict and specific: name what you saw for each score. Reply as JSON: {"scores":{"A":{"fit":n,"works":n,"clarity":n,"trust":n,"craft":n,"notes":"..."},...},"rank":["A",...],"pairs":[{"a":"A","b":"B","winner":"A","gap":"clear|slight|none","why":"..."}]}
+`);
+}
+writeFileSync(join(root, "blind", "key.json"), JSON.stringify(key, null, 1));
+console.log("blind folders and judge prompts written; key in blind/key.json (don't show it to the judge)");

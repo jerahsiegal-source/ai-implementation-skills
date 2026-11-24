@@ -1,0 +1,53 @@
+{
+  "about": "Combo tests: the same task run with no skills, with one skill, and with skills stacked. Each arm gets the same task text; skill arms add the slash commands a user would type. See README.md.",
+  "scenarios": [
+    {
+      "id": "cafe-report",
+      "fixtures": "fixtures/cafe",
+      "task": "Here is my cafe's last 4 weeks of sales (cafe.json) and our brand (DESIGN.md). Make me a one-page report I can read on my phone and use to decide what to change next month.",
+      "output": "report.html",
+      "arms": [
+        { "id": "none", "skills": [] },
+        { "id": "chart", "skills": ["chart"], "invoke": "Use /chart." },
+        { "id": "visualize", "skills": ["visualize"], "invoke": "Use /visualize." },
+        { "id": "chart+visualize+design", "skills": ["chart", "visualize", "design"], "invoke": "Use /visualize for the page, /chart for the charts and /design for the look." }
+      ],
+      "judge_focus": "Would the owner know what to change next month after 30 seconds? Are the numbers right and the charts honest?"
+    },
+    {
+      "id": "signup-build",
+      "fixtures": "fixtures/signup-build",
+      "task": "Build the sign-up flow in brief.md as plain HTML pages, starting at index.html. Make sure people can actually get through it.",
+      "output": "index.html",
+      "arms": [
+        { "id": "none", "skills": [] },
+        { "id": "design", "skills": ["design"], "invoke": "Use /design." },
+        { "id": "design+flow-ux", "skills": ["design", "flow-ux"], "invoke": "Use /design to build it, then /flow-ux to test the flow and fix what it finds." }
+      ],
+      "judge_focus": "Can a new user get from step 1 to the done screen on desktop and phone, with clear errors and their data carried through?"
+    },
+    {
+      "id": "client-tracker",
+      "fixtures": "fixtures/client-tracker",
+      "task": "I want something to keep track of where each of my consulting clients is in onboarding. I keep losing track. Make it. (answers.md has what I would say if you asked me questions.)",
+      "output": "index.html",
+      "arms": [
+        { "id": "none", "skills": [] },
+        { "id": "design", "skills": ["design"], "invoke": "Use /design." },
+        { "id": "intent-brief+explore+design+work-loop", "skills": ["intent-brief", "explore", "design", "work-loop"], "invoke": "Use /intent-brief to write the brief, /explore to try directions and pick one, then run /work-loop on the brief, using /design for the build." }
+      ],
+      "judge_focus": "Does it solve the real problem (who is stuck, what is next) at a glance, and does every Done item in answers.md work?"
+    }
+  ],
+  "rubric": {
+    "scale": "1 (poor) to 5 (excellent), judged blind from screenshots and by using the page",
+    "criteria": {
+      "fit": "Does it do what the user actually needs, not just what they typed?",
+      "works": "Does everything work: clicks, forms, saved data, phone width, dark mode?",
+      "clarity": "Can a dyslexic reader get the point in a few seconds? Scannable, short labels, no walls of text.",
+      "trust": "Are numbers right and sourced, charts honest, claims supported?",
+      "craft": "Does it look made for this task, not like a generic AI page?"
+    },
+    "verdict": "Rank the arms best to worst, and say for each pair whether the difference is clear, slight or none."
+  }
+}
