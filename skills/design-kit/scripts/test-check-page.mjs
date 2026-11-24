@@ -24,6 +24,9 @@ const clean = run("clean.html");
 expect(clean.code === 0, "clean page exits 0");
 expect(ids(clean, "warn").length === 0, `clean page has no warnings (${ids(clean, "warn").join(", ") || "none"})`);
 
+const modern = run("modern-color.html");
+if (!extra.length) expect(modern.code === 0 && !ids(modern, "fail").includes("contrast"), "color-mix() and oklch() colors are read correctly (no false contrast FAIL)");
+
 const slop = run("slop.html");
 expect(slop.code === 1, "slop page exits 1");
 const mustFail = ["gradient-hero", "emoji-icons", "placeholder"];

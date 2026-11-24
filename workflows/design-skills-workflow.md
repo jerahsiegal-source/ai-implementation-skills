@@ -70,11 +70,11 @@ We ran the same tasks several ways and had a judge score each result blind, out 
 
 | Task | Run | Score /25 | Tokens | Time |
 |---|---|---|---|---|
-| Client tracker (build) | plain Claude | 20 | 62k | 97 s |
-| | `design` | 23 | 93k | 271 s |
-| | `design` + `work-loop` | **25** | 106k | 353 s |
-| | `explore` + `design` | 19 | 99k | 270 s |
-| | `explore` + `design` + `work-loop` | 22 | 125k | 490 s |
+| Client tracker (build, 2 judges, average) | plain Claude | 19.5 | 62k | 97 s |
+| | `design` | 21 | 93k | 271 s |
+| | `design` + `work-loop` | **24** | 106k | 353 s |
+| | `explore` + `design` | 20 | 99k | 270 s |
+| | `explore` + `design` + `work-loop` | 21 | 125k | 490 s |
 | | `intent-brief` + `explore` + `design` + `work-loop` | 21 | 123k | 443 s |
 | Sign-up (build) | plain Claude | 16 | 55k | 62 s |
 | | `design` | **22** | 101k | 304 s |
@@ -82,14 +82,16 @@ We ran the same tasks several ways and had a judge score each result blind, out 
 | Status from notes (3 judges) | plain Claude | 18 to 20 | 55k | 42 s |
 | | `visualize` | 19 to 20 | 83k | 103 s |
 | | `visualize` + `work-loop` | **23** | 96k | 166 s |
-| Cafe report (numbers) | plain Claude | 21 | 58k | 69 s |
-| | `chart` | 22 | 84k | 132 s |
+| Cafe report (numbers, after fixes) | plain Claude | 21 | 58k | 69 s |
+| | `chart` | 21 | 84k | 132 s |
+| | `visualize` | 23 | 93k | 198 s |
 | | `chart` + `visualize` + `design` | **24** | 115k | 230 s |
 
 **What it means:**
-- **Work Loop paid off every time it was added:** +2 to +3 points, for about 10 to 20% more tokens and 30 to 60% more time. It wins on trust: it checks facts against the source and refuses to guess.
+- **Work Loop paid off every time it was added:** +2 to +3 points (design + loop led with both judges on the tracker), for about 10 to 20% more tokens and 30 to 60% more time. It wins on trust: it checks facts against the source and refuses to guess.
 - **The design skills beat plain Claude on builds** (+6 on the sign-up), at roughly twice the tokens.
-- **Explore hurt when the spec was already clear** (−4 on the tracker). Use it only when the look is open.
+- **Visualize beats plain on numbers:** 23 vs 21 on the cafe report after fixes, 24 when stacked with `chart` and `design`.
+- **Explore didn't help when the spec was already clear** (20 vs 21 for `design` alone on the tracker). Use it only when the look is open.
 - **Flow UX added cost but no points on a build that was already solid.** Use it when a flow feels wrong, or as Work Loop's check on user tasks, not on every build.
 - **For a quick page, plain Claude is close.** After fixes, `visualize` alone edged ahead on the status page (20 vs 18); Work Loop scored 23 with all three judges.
 - Every weakness these tests found has since been fixed in the skills, and most runs above happened before those fixes.

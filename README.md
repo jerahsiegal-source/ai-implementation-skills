@@ -24,10 +24,11 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 | [explore](skills/explore) | Researches standout examples, shortlists concepts with you, then builds and critiques the best directions side by side | _LinkedIn post coming_ |
 | [visualize](skills/visualize) | Turns a big answer (status, research, a system, decisions) into one interactive page: verdict first, detail on click, sources on every claim | _LinkedIn post coming_ |
 | [flow-ux](skills/flow-ux) | Walks through a user flow like a real person, ranks what blocks them with a screenshot for each, and fixes the worst on request | _LinkedIn post coming_ |
+| [chart](skills/chart) | Makes honest, readable charts and dashboards: picks the right chart for the point, uses accessible colors, and checks every chart before handing it back | _LinkedIn post coming_ |
 
 **The two work as a pair:** Intent Brief defines *what* and *why*, and Work Loop gets it to done. They run in Claude Code and Codex.
 
-**The design skills share one kit.** `design`, `explore`, `visualize` and `flow-ux` read from [design-kit](skills/design-kit) (readability floor, copy and anti-slop rules, styles, brand intake, screenshot check), so the rules are written once. Every one of them, and Work Loop, runs the kit's check, critique and fix round before calling visual work done. `chart` (data viz) is coming next.
+**The design skills share one kit.** `design`, `explore`, `visualize` and `flow-ux` read from [design-kit](skills/design-kit) (readability floor, copy and anti-slop rules, styles, brand intake, screenshot check), so the rules are written once. Every one of them, and Work Loop, runs the kit's check, critique and fix round before calling visual work done. `chart` (data viz) uses the kit too and adds its own chart and color checks.
 
 **Not sure which to use, or whether Work Loop is worth it?** See [Using the skills together](workflows/design-skills-workflow.md), with test results.
 
