@@ -14,6 +14,10 @@
   --bg:#12171C;--surface:#1A2128;--sunk:#2A343D;--ink:#E6ECF0;--muted:#A3AFB8;--line:#323D46;
   --accent:#62C3CF;--accent-soft:#18343A;--ok:#5FCB8F;--ok-soft:#173326;--warn:#F2C36B;--warn-soft:#2E2B22;--bad:#EF8A82;--bad-soft:#3C2220;--next:#8A97A2;
   --radius:12px;color-scheme:dark}
+/* Studio follows the viewer's dark mode with Night colors, unless the page pins data-theme="light". */
+@media (prefers-color-scheme:dark){[data-look="studio"]:not([data-theme="light"]){
+  --bg:#12171C;--surface:#1A2128;--sunk:#2A343D;--ink:#E6ECF0;--muted:#A3AFB8;--line:#323D46;
+  --accent:#8FA0FF;--accent-soft:#232A4A;--ok:#5FCB8F;--ok-soft:#173326;--warn:#F2C36B;--warn-soft:#2E2B22;--bad:#EF8A82;--bad-soft:#3C2220;--next:#8A97A2;color-scheme:dark}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--b);transition:background .2s ease-out,color .2s ease-out}
 h1,h2,h3,h4{font-family:var(--d);font-weight:600;margin:0;line-height:1.15;letter-spacing:-.015em;text-wrap:balance}
