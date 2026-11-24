@@ -1,0 +1,5 @@
+interface:
+  display_name: "Explore"
+  short_description: "Research plus five design directions to pick from"
+policy:
+  allow_implicit_invocation: false

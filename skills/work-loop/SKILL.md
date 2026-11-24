@@ -16,6 +16,7 @@ Works the same in Claude Code and Codex. Best started under the tool's native `/
 - **Check like the owner would.** User-facing items are proven by driving the real app or product: start the flow, finish it, open the result, inspect its content. Unit tests alone never pass a user-facing item.
 - **No fake tests.** New tests must fail without the change and pass with it. Never weaken, skip or delete an existing test or check to get green. Never edit item or check text in `done.json`.
 - **Smallest change that meets the intent.** Build on existing patterns; no parallel paths, no drive-by refactors. Out-of-scope findings go to the found-not-fixed list.
+- **Visual items.** The look is decided before the loop (`DESIGN.md` or `/explore`); never choose between styles inside the loop. Build with the `design` skill's rules and prove each visual item with the design kit's quality check (desktop and phone screenshots shown in the conversation).
 - **Branch, small commits.** Work on a branch, never the default branch. One commit per passed item, so any layer can be rolled back alone. Pushing the branch is fine unless the brief says otherwise. Never deploy to production. Never delete data, branches or files others depend on.
 
 ## 1. Setup (once)
@@ -74,7 +75,8 @@ When every item passes, go to review.
    - **Disputes for the owner** (if any).
    - **Cross-model review prompt:** ready to paste into the other tool (Claude Code ↔ Codex). It points to the branch, the brief and this file, and asks for review using the reviewer brief.
    - **Staging test checklist:** the user-facing checks for the owner to repeat by hand.
-4. Print the final report in the conversation: items passing with evidence pointers, anything not done, and the path to `handoff.md`.
+4. If the `visualize` skill is installed, offer to turn `handoff.md` into a visual page.
+5. Print the final report in the conversation: items passing with evidence pointers, anything not done, and the path to `handoff.md`.
 
 ## Stop report (any early stop)
 

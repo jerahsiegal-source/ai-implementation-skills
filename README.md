@@ -20,20 +20,43 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 |---|---|---|
 | [intent-brief](skills/intent-brief) | A short interview that turns what you want into a one-page `INTENT.md` (outcome, why, done-when gates, hard limits) an agent can execute against | _LinkedIn post coming_ |
 | [work-loop](skills/work-loop) | Takes an `INTENT.md` and works, checks, reviews and fixes until every done item passes with real evidence | _LinkedIn post coming_ |
+| [design](skills/design) | Applies one consistent design taste to any UI, page, mockup or visual HTML, while following each project's brand | _LinkedIn post coming_ |
+| [explore](skills/explore) | Researches how others solve a design problem, then mocks up five different directions on one page to pick from | _LinkedIn post coming_ |
 
 **The two work as a pair:** Intent Brief defines *what* and *why*, and Work Loop gets it to done. They run in Claude Code and Codex.
+
+**The design skills share one kit.** `design` and `explore` read from [design-kit](skills/design-kit) (readability floor, styles, brand intake, screenshot check), so the rules are written once. `flow` (UX review), `chart` (data viz) and `visualize` (turn any output into an interactive page) are coming next.
+
+How they fit together on a big design job:
+
+```
+intent-brief  ->  explore (you pick a look)  ->  work-loop builds it with design  ->  visualize the handoff
+```
+
+All of them are called by name only (`/design` in Claude Code, `$design` in Codex). None run on their own.
 
 <!-- Add one row per skill, e.g.
 | [linkedin-post-drafter](skills/linkedin-post-drafter) | Turns rough notes into a LinkedIn post in your voice | [Post](https://www.linkedin.com/posts/...) |
 -->
 
-## How to use a skill
+## Install
 
-**Claude.ai / Claude app:** download the skill folder as a .zip and upload it under Settings, Capabilities, Skills.
+Clone the repo once, then run the install script. It links every skill into both Claude Code (`~/.claude/skills/`) and Codex (`~/.codex/skills/`), so they work in all your projects and a `git pull` updates them everywhere.
 
-**Claude Code:** copy the skill folder into `~/.claude/skills/` (personal) or `.claude/skills/` in your project.
+```bash
+git clone https://github.com/jerahsiegal-source/ai-implementation-skills.git
+cd ai-implementation-skills
+./install.sh            # Mac / Linux
+.\install.ps1           # Windows PowerShell
+```
 
-**Codex:** copy the skill folder into `~/.codex/skills/`.
+The design skills must sit next to `design-kit/`, which the script handles. To copy instead of link, use `./install.sh --copy` or `.\install.ps1 -Copy`.
+
+**Claude.ai / Claude app:** zip a skill folder and upload it under Settings, Capabilities, Skills. For design skills, put a copy of `design-kit/` inside the zip.
+
+### Your personal layer stays private
+
+The install script also creates `~/.ai-skills/personal/taste.md` on your computer. Put your own design taste and approved styles there. Both Claude Code and Codex read it, and it is never part of this repo. Each project's brand lives in that project's own `DESIGN.md`.
 
 Every skill folder has a `SKILL.md` with its instructions and a short README with examples.
 
@@ -41,6 +64,8 @@ Every skill folder has a `SKILL.md` with its instructions and a short README wit
 
 ```
 skills/            one folder per skill (SKILL.md + README + any scripts or templates)
+skills/design-kit/ shared rules and styles the design skills read (not a command)
+install.sh / .ps1  link the skills into Claude Code and Codex
 workflows/         longer how-tos and prompts that are not packaged as skills
 posts/             notes and source material behind my LinkedIn posts and videos
 ```
