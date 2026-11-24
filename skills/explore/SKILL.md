@@ -28,18 +28,18 @@ Generic output comes from skipping this step. Do it properly.
 - For each, write **what makes it great** in craft terms, not adjectives: type pairing and scale, spacing rhythm, color strategy, how it hides and reveals detail, one signature detail.
 - No web access: say so, then work from named real examples you know well and label them "from memory".
 
-## 3. Concepts in words first
+## 3. Concepts as quick, clickable mockups
 
-Before building anything, write **6 to 8 concepts**, each in 3 lines: a name, the big idea, and which references it borrows from. Cover the spread:
+Write **6 to 8 concepts**, each in 3 lines: a name, the big idea, and which references it borrows from. Then make each one a **quick but real web page**, not a static sketch or a picture of a page: full width, the user's real content (or a believable stand-in), and the one interaction that defines it working (tabs switch, rows expand, a drawer opens). Rough polish is fine at this stage; the layout, density and feel must be judgeable by clicking around. Cover the spread:
 - Every concept differs from every other on at least two of: **layout idea**, **density**, **type personality**, **color strategy** (within brand), **interaction model**.
 - Include an **expected** concept (the proven pattern done extremely well), a **bold** one, and a **borrowed** one from outside the category.
 - Reuse an existing style only if it truly fits. Recycled looks are not new concepts.
 
-Show the concepts next to the reference gallery and ask the user to shortlist **2 to 4**. If they say "you pick", choose the strongest four and say why in one line each. Skip this step only when the user says "just build them".
+Put the concepts on one page next to the reference gallery, each with an "Open full size" link, and ask the user to shortlist **2 to 4**. If they say "you pick", choose the strongest four and say why in one line each. Skip this step only when the user says "just build them".
 
 ## 4. Build the shortlist properly
 
-- Build each shortlisted direction as a **full-size, working page** on the user's **real content**, not a thumbnail and not fake data unless none exists.
+- Take each shortlisted mockup to a **finished, full-size, working page** on the user's **real content**, not a thumbnail and not fake data unless none exists.
 - Apply `/design`, the [floor](../design-kit/floor.md), [craft](../design-kit/craft.md) and the user's personal taste.
 - Every direction obeys the brand in `DESIGN.md`. The brand fixes colors; directions vary everything else.
 
