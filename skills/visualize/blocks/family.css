@@ -1,11 +1,11 @@
 /* One family for every /visualize format. Three looks share the same structure, type and components. */
 :root,[data-look="paper"]{
   --bg:#F6F5F1;--surface:#FFFFFF;--sunk:#EFEDE7;--ink:#1C2830;--muted:#5A6770;--line:#E3E0D8;
-  --accent:#1F6B75;--accent-soft:#E2EFF0;--ok:#2E7D4F;--ok-soft:#E3F1E8;--warn:#9A6408;--warn-soft:#F7EDD8;--bad:#B23A3A;--bad-soft:#F8E3E1;--next:#6B7780;
+  --accent:#1F6B75;--accent-soft:#E2EFF0;--ok:#276F45;--ok-soft:#E3F1E8;--warn:#9A6408;--warn-soft:#F7EDD8;--bad:#B23A3A;--bad-soft:#F8E3E1;--next:#6B7780;
   --radius:12px;--d:"Lexend",system-ui,sans-serif;--b:"Atkinson Hyperlegible",system-ui,"Segoe UI",sans-serif;color-scheme:light}
 [data-look="studio"]{
   --bg:#FFFFFF;--surface:#FFFFFF;--sunk:#F1F3F6;--ink:#0F141C;--muted:#535D6C;--line:#D9DEE5;
-  --accent:#2F3FD0;--accent-soft:#ECEEFC;--ok:#1D7F52;--ok-soft:#E3F3EA;--warn:#9A5B00;--warn-soft:#FDF0DC;--bad:#C0362C;--bad-soft:#FBE2DF;--next:#6A7486;
+  --accent:#2F3FD0;--accent-soft:#ECEEFC;--ok:#17704A;--ok-soft:#E3F3EA;--warn:#9A5B00;--warn-soft:#FDF0DC;--bad:#C0362C;--bad-soft:#FBE2DF;--next:#6A7486;
   --radius:4px;--d:"IBM Plex Sans","Atkinson Hyperlegible",system-ui,sans-serif;color-scheme:light}
 [data-look="studio"] h1{font-weight:600;letter-spacing:-.025em}
 [data-look="studio"] .kicker{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:500}
