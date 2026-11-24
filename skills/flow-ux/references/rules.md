@@ -19,6 +19,7 @@ Rules for building flows, forms and navigation well the first time. `/design` re
 - **Mark the exception.** If most fields are required, mark the optional ones, and vice versa.
 - **Right input, right keyboard:** `type="email"`, `tel`, `inputmode="numeric"`, `autocomplete` on every common field.
 - **Smart defaults** and the most common choice preselected when it is safe.
+- **Errors never move the button they're about to press.** Reserve space for messages, or validate on submit, so a blur error can't push Continue out from under the click.
 - **Validate when they leave a field, not on every keystroke.** Errors sit next to the field, say what to change ("Use 8 or more characters"), and don't wipe the input.
 - **Buttons say what happens:** "Create account", not "Submit". The primary button stays enabled and explains what's missing if pressed early.
 - **Group** long forms into short titled sections. Advanced options behind a toggle.

@@ -47,6 +47,7 @@ The floor below sits under all five: accessibility, working features and honest 
 
 - Short, plain, specific. Name things the way users know them, not how the code names them.
 - Buttons say what happens ("Run test", not "Submit").
+- **No personal data in URLs.** Names, emails and anything the user typed never go in a link or query string; neither do passwords or tokens.
 - **No false promises.** Never say something happened or will happen ("Check your inbox", "Ready in 2 minutes", "3 of 3 done") unless the product actually does it. If it is a mockup, label it as one.
 - No filler intros, no marketing fluff on internal tools, no lorem ipsum.
 - **Titles are names, not descriptions.** A page or section title is 1 to 6 words ("Visualize, round three", "Decisions"). The verdict or one-line summary goes below it, set smaller.
