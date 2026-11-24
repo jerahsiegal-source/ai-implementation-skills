@@ -1,0 +1,5 @@
+{"timestamp": "2026-11-20T09:00:00Z", "type": "session_meta", "payload": {"id": "cx1", "cwd": "/work/site"}}
+{"timestamp": "2026-11-20T09:00:01Z", "type": "turn_context", "payload": {"model": "gpt-5.5-codex"}}
+{"timestamp": "2026-11-20T09:00:02Z", "type": "event_msg", "payload": {"type": "user_message", "message": "$explore three directions for the landing page"}}
+{"timestamp": "2026-11-20T09:10:00Z", "type": "event_msg", "payload": {"type": "user_message", "message": "these are too similar, try again"}}
+{"timestamp": "2026-11-20T09:20:00Z", "type": "event_msg", "payload": {"type": "user_message", "message": "still too similar"}}

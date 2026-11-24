@@ -1,0 +1,5 @@
+interface:
+  display_name: "Skill Review"
+  short_description: "Keep, fix or cut skills from real use and lab tests"
+policy:
+  allow_implicit_invocation: false

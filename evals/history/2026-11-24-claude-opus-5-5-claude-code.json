@@ -1,0 +1,348 @@
+{
+ "date": "2026-11-24",
+ "model": "claude-opus-5-5",
+ "tool": "claude-code",
+ "note": "Round 2 of the end-to-end tests. Latest run per task: cafe-report and status-update from round 3, signup-build from round 2 (after fixes), client-tracker from round 1. Checker counts only for client-tracker; the re-runs were scored on their results page. Second judge shuffle only for client-tracker.",
+ "bothOrders": true,
+ "scenarios": [
+  {
+   "id": "client-tracker",
+   "arms": [
+    {
+     "arm": "none",
+     "skills": [],
+     "pages": 1,
+     "fail": 0,
+     "warn": 0,
+     "tokens": 61656,
+     "seconds": 97,
+     "judge": 4,
+     "judge2": 3.8,
+     "rank": 5,
+     "vsNone": null,
+     "judgeNotes": "Every flow works. Extras: In progress/Stuck/Done/All filters, notes, editable per-step dates, Undo step, JSON export/import. The summary line '4 stuck for more than 7 days · 5 in onboarding' is plain text, not a big glanceable number. Each card is tall (name, button, Undo, Next line, 5-step rail, ed"
+    },
+    {
+     "arm": "design",
+     "skills": [
+      "design"
+     ],
+     "pages": 1,
+     "fail": 0,
+     "warn": 0,
+     "tokens": 93466,
+     "seconds": 271,
+     "judge": 4.6,
+     "judge2": 3.8,
+     "rank": 2,
+     "vsNone": {
+      "result": "win",
+      "gap": "clear",
+      "holds": true,
+      "second": "win"
+     },
+     "judgeNotes": "Strongest at-a-glance answer: a huge '4 clients stuck' next to a list of each stuck client with the bold action ('Hold the kickoff call, waiting 8 days since Nov 2') and a Mark button. A count-per-step strip shows '! 2 stuck' under each step. Optional 'What you owe them next' note, an Edit dialog fo"
+    },
+    {
+     "arm": "design+work-loop",
+     "skills": [
+      "design",
+      "work-loop"
+     ],
+     "pages": 2,
+     "fail": 0,
+     "warn": 0,
+     "tokens": 106430,
+     "seconds": 353,
+     "judge": 5,
+     "judge2": 4.6,
+     "rank": 1,
+     "vsNone": {
+      "result": "win",
+      "gap": "clear",
+      "holds": true,
+      "second": "win"
+     },
+     "judgeNotes": "Clearest morning view: '4 clients stuck · 1 on track · 1 onboarded', then a 'Needs you' section of tinted rows. Each row shows a red 'Stuck' tag, 'Next: Book the kickoff call', 'Waiting on Kickoff call · step 2 of 5', a large '8d on this step' and a solid 'Mark kickoff held' button. Moving clients s"
+    },
+    {
+     "arm": "explore+design",
+     "skills": [
+      "explore",
+      "design"
+     ],
+     "pages": 8,
+     "fail": 2,
+     "warn": 5,
+     "tokens": 98558,
+     "seconds": 270,
+     "judge": 3.8,
+     "judge2": 4.2,
+     "rank": 6,
+     "vsNone": {
+      "result": "loss",
+      "gap": "slight",
+      "holds": false,
+      "second": "win"
+     },
+     "judgeNotes": "Nicest visual: a stepper with Contract/Kickoff/Access/Data/Deliverable headers, a big red day count, '! Stuck after kickoff call' and 'You owe: ...' lines. But the main list has no visible button to move a client forward. You have to know to click the client's name, which looks like plain text, to o"
+    },
+    {
+     "arm": "explore+design+work-loop",
+     "skills": [
+      "explore",
+      "design",
+      "work-loop"
+     ],
+     "pages": 11,
+     "fail": 2,
+     "warn": 5,
+     "tokens": 124705,
+     "seconds": 490,
+     "judge": 4.4,
+     "judge2": 4,
+     "rank": 3,
+     "vsNone": {
+      "result": "win",
+      "gap": "slight",
+      "holds": true,
+      "second": "win"
+     },
+     "judgeNotes": "Compact rows: big day count, '! Stuck', 'Step 2 of 5: Book the kickoff call', and a 'ball with you/client' cue that answers 'what do I owe' directly. Headline numbers 4/5/1 and a line saying 'Alder Dental has waited longest: book the kickoff call.' Add form lets you pick the current step and start d"
+    },
+    {
+     "arm": "intent-brief+explore+design+work-loop",
+     "skills": [
+      "intent-brief",
+      "explore",
+      "design",
+      "work-loop"
+     ],
+     "pages": 12,
+     "fail": 2,
+     "warn": 5,
+     "tokens": 123335,
+     "seconds": 443,
+     "judge": 4.2,
+     "judge2": 4.2,
+     "rank": 4,
+     "vsNone": {
+      "result": "win",
+      "gap": "slight",
+      "holds": true,
+      "second": "win"
+     },
+     "judgeNotes": "Big '4 clients stuck over 7 days', with 'You owe them: Get system access set up' on every row, stuck rows on top, a 'Stuck only' filter, and editable dates with Undo under Edit. Every Done item works. Its model assumes onboarding starts once the contract is signed: the add form asks 'Contract signed"
+    }
+   ]
+  },
+  {
+   "id": "cafe-report",
+   "arms": [
+    {
+     "arm": "none",
+     "skills": [],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 57669,
+     "seconds": 69,
+     "judge": 4.2,
+     "judge2": null,
+     "rank": 4,
+     "vsNone": null,
+     "judgeNotes": "Every number checks against cafe.json: 28,197 total, weeks 6,788/6,987/7,107/7,315, +7.8% week 4 vs week 1, Sunday is 1.7x Wednesday, weekend share 37%, +$385/wk from the ticket, +$165/wk from a 10% Tue+Wed lift. Days are labelled correctly from a Tuesday start. It gives 3 clear actions plus a lede "
+    },
+    {
+     "arm": "visualize",
+     "skills": [
+      "visualize"
+     ],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 96779,
+     "seconds": 173,
+     "judge": 4.6,
+     "judge2": null,
+     "rank": 2,
+     "vsNone": {
+      "result": "win",
+      "gap": "clear",
+      "holds": null,
+      "second": null
+     },
+     "judgeNotes": "It has 3 ranked actions (First/Then/Keep), each with an estimated gain: +385, +92 (Tue/Wed raised to Thursday's level, correct) and 37%. Each one is a button that opens a drawer with the math and with 'Inferred' and 'Idea, not in the data' tags. Escape closes the drawer and focus comes back. The det"
+    },
+    {
+     "arm": "chart+visualize+design",
+     "skills": [
+      "chart",
+      "visualize",
+      "design"
+     ],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 115857,
+     "seconds": 223,
+     "judge": 4.8,
+     "judge2": null,
+     "rank": 1,
+     "vsNone": {
+      "result": "win",
+      "gap": "clear",
+      "holds": null,
+      "second": null
+     },
+     "judgeNotes": "It is the fastest 30-second read. The verdict line comes first, then 2 action cards (Lift ticket +385/wk, marked Recommended; Fill Tue/Wed +92/wk), each with 'Show the math'. The drawers show correct arithmetic: 642 orders x 0.6 = 385, about 1,540 over 4 weeks. The phone view is short (1,559px). Ext"
+    },
+    {
+     "arm": "chart",
+     "skills": [
+      "chart"
+     ],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 84408,
+     "seconds": 134,
+     "judge": 4.2,
+     "judge2": null,
+     "rank": 3,
+     "vsNone": {
+      "result": "win",
+      "gap": "slight",
+      "holds": null,
+      "second": null
+     },
+     "judgeNotes": "It has 3 actions with gains (+385, +92, 37%) and one insight none of the others have: Sat+Sun bring 2,590 a week and 245 of the 527 weekly growth. That checks: Sat +125 and Sun +120. All numbers are verified. Opening 'Show data' under the weekday chart on a 390 phone makes the page scroll sideways ("
+    }
+   ]
+  },
+  {
+   "id": "status-update",
+   "arms": [
+    {
+     "arm": "none",
+     "skills": [],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 55386,
+     "seconds": 42,
+     "judge": 3.6,
+     "judge2": null,
+     "rank": 3,
+     "vsNone": null,
+     "judgeNotes": "Most compact: at 1280x860 the whole page fits in one screen (scrollHeight 860), with headline, 3 stat tiles, Needs you (Decision + Blocked), Done, and In progress and risks. Fine at 390 (no overflow) and in dark mode (tokens swap, bg #161615). No interactivity, but none is needed and nothing is brok"
+    },
+    {
+     "arm": "visualize+work-loop",
+     "skills": [
+      "visualize",
+      "work-loop"
+     ],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 95627,
+     "seconds": 166,
+     "judge": 4.6,
+     "judge2": null,
+     "rank": 1,
+     "vsNone": {
+      "result": "win",
+      "gap": "clear",
+      "holds": null,
+      "second": null
+     },
+     "judgeNotes": "The top gives an 'At risk' pill, a one-line verdict ('Login and CSV export shipped. Billing is 3 of 5 and waits on you twice.') and then a tinted 'Needs you, 2 items' panel. The panel holds the blocker ('Send a Stripe test key', Blocked) and the annual-plans decision with two radio options and a 'Co"
+    },
+    {
+     "arm": "visualize",
+     "skills": [
+      "visualize"
+     ],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 80925,
+     "seconds": 77,
+     "judge": 4,
+     "judge2": null,
+     "rank": 2,
+     "vsNone": {
+      "result": "win",
+      "gap": "slight",
+      "holds": null,
+      "second": null
+     },
+     "judgeNotes": "Similar structure to B: an 'At risk' pill labelled 'Inferred from 1 blocker and 3 failing tests. No date in source', which is honest. Then a verdict, 'Needs you · 2', a 4-tile stat row (2 / 41/44 / 3/5 / 1 blocker), and a list of 5 work rows with status words and icons. All numbers match progress.md"
+    }
+   ]
+  },
+  {
+   "id": "signup-build",
+   "arms": [
+    {
+     "arm": "design",
+     "skills": [
+      "design"
+     ],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 97857,
+     "seconds": 418,
+     "judge": 4.8,
+     "judge2": null,
+     "rank": 1,
+     "vsNone": {
+      "result": "win",
+      "gap": "clear",
+      "holds": null,
+      "second": null
+     },
+     "judgeNotes": "Full path index->business->bank->done works at 1280x860 and 390x844, light and dark (real dark theme, no horizontal scroll, no page errors). Empty submit shows a '3 things to fix' summary with links plus inline errors, and focus goes to the first field. Errors are specific ('Add 3 more characters. P"
+    },
+    {
+     "arm": "none",
+     "skills": [],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 55068,
+     "seconds": 62,
+     "judge": 3,
+     "judge2": null,
+     "rank": 3,
+     "vsNone": null,
+     "judgeNotes": "Bare-minimum build that still works: all three steps validate, show inline errors ('Enter a valid email, like you@cafe.com.'), focus the first invalid field, store data in sessionStorage, and reach a done page listing all 7 values on desktop and phone. It never stores the password (shows 'Set (hidde"
+    },
+    {
+     "arm": "design+flow-ux",
+     "skills": [
+      "design",
+      "flow-ux"
+     ],
+     "pages": null,
+     "fail": null,
+     "warn": null,
+     "tokens": 123505,
+     "seconds": 446,
+     "judge": 3.4,
+     "judge2": null,
+     "rank": 2,
+     "vsNone": {
+      "result": "win",
+      "gap": "slight",
+      "holds": null,
+      "second": null
+     },
+     "judgeNotes": "Polished: a stepper with checks, a live 'Your setup' ledger sidebar (stacked below the form on phone), drafts saved as you type, so Back keeps business answers. Real dark theme, no overflow, and the done page has Edit per card. Skip gives a 'One thing left: connect a bank' next step, and a direct vi"
+    }
+   ]
+  }
+ ]
+}

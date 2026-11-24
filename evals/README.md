@@ -23,3 +23,34 @@ Run the tests again when a new model comes out, in both Claude Code and Codex. A
 ## Checks on every push
 
 `.github/workflows/checks.yml` runs the page checker's self-test on every push and pull request.
+
+## Keeping the skills healthy over time
+
+The goal is the right output the first time, more often than not. Two signals track it, and [`/skill-review`](../skills/skill-review) puts both on one page, **Skill Health**:
+
+| Metric | Signal | Source |
+|---|---|---|
+| **Right first try** (the main one) | Real use | Session history + `/rate`, private |
+| Fix rounds per use | Real use | Same |
+| Uses per skill | Real use | Same |
+| Blind wins vs plain Claude, both orders | Lab | `evals/combos` → `evals/history/` |
+| Checker pass (0 FAIL) and expectations met | Lab | Checkers and `evals.json` |
+| Tokens and time vs plain Claude | Lab | `costs.json` |
+
+### When to run what
+
+| When | Run |
+|---|---|
+| After a skill is edited | That skill's evals, with and without the change |
+| A new model comes out | Full lab run in Claude Code and Codex, then `record.mjs` |
+| Monthly | `/skill-review` (about 15 minutes) |
+| Every 3 months | Full lab run, and prune skills marked Cut |
+
+### How a skill gets fixed or cut
+
+1. A miss in real use (a `/rate n`, or follow-ups asking for changes) shows up on Skill Health.
+2. Under 50% right first try over the last 10 uses → **Fix**: the miss becomes a new test case in `evals.json`, the skill changes, and the change ships only if the lab says it's better.
+3. No blind win over plain Claude on two runs in a row → **Cut**: the model has caught up.
+4. Unused for 60 days → **Cut**, after asking. Over 2x the tokens without a clear win → **Trim**.
+
+Thresholds live in [`skills/skill-review/rules.json`](../skills/skill-review/rules.json).
