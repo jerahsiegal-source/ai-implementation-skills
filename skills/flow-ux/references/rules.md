@@ -9,7 +9,9 @@ Rules for building flows, forms and navigation well the first time. `/design` re
 - **Show where they are** in flows of 3 or more steps: "Step 2 of 4" with names, not dots alone.
 - **Never lose work.** Keep input through errors, back, refresh and sign-in. Save drafts on long forms.
 - **Always a way out:** back, cancel or undo on every step. Confirm only actions that can't be undone, and say what will be lost.
-- **End on a clear result:** what happened, what's next, and the one button to do it.
+- **End on a clear result:** what happened, what's next, and the one button to do it. Only claim what really happened.
+- **Edit returns you.** Editing a step from a summary brings you back to the summary.
+- **Never store secrets in the browser** (passwords, tokens, card numbers) or put them in URLs.
 
 ## Forms
 

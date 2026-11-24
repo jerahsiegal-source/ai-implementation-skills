@@ -31,6 +31,8 @@ If `INTENT.md` exists, take these from it: its **Who uses it** section lists the
 - **Record every step:** a screenshot of each screen (save to `./flow-ux/<task>/`), the action taken, and what the person has to read, decide or type.
 - **Walk it three ways:** the happy path; a mistake path (wrong input, back button, refresh, empty fields, slow or failed request); and keyboard only. Then repeat the happy path at phone width (about 390px).
 - **Check it really works, not just looks done.** On every submit, confirm the data goes somewhere: watch the network request (or read the form's field names and action) and confirm the next screen reflects what was entered. A success screen after a request that sent nothing is a severity 4.
+- **Check what the screens promise.** Every "sent", "saved", "done" or time estimate must be true: the email is really sent, the count matches the steps really completed. A false promise is a severity 3 or 4.
+- **Check secrets and edits.** Passwords, tokens and card numbers are never stored in plain text in the browser (localStorage, sessionStorage, URLs) or shown back. "Edit" from a summary returns to that step and then back to the summary, not through the whole flow again.
 - **Check the basics a person never sees but always feels:** a viewport meta tag (phone zoom), page title, and that back and refresh behave.
 - **Count the cost:** steps, decisions, fields, and anything the person must remember from one screen to the next.
 - **Run the checker on each distinct screen** that is an HTML page or URL:
