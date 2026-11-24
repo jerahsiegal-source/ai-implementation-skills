@@ -43,7 +43,7 @@ Formats are building blocks, not templates. Pick by the question the page must a
 - **Short copy.** Titles are names of 1 to 6 words. Captions are one line or none. No sentences explaining the page. Follow the floor's copy rules.
 - **Status** is always icon plus word (Done, In progress, Next, At risk), never color alone.
 - **Detail:** hide it behind a click (expand, tab, drawer), never drop it. Every claim gets a source tag.
-- **Charts:** pick the chart by the relationship shown (change over time, ranking, part of whole, flow). Label directly; honest scales.
+- **Charts:** pick the chart by the relationship shown (change over time, ranking, part of whole, flow). Label directly; honest scales. Follow `../chart/SKILL.md` when it is installed.
 
 ## 4. Check it
 
