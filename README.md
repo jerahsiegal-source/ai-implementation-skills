@@ -21,7 +21,7 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 | [intent-brief](skills/intent-brief) | A short interview that turns what you want into a one-page `INTENT.md` (outcome, why, done-when gates, hard limits) an agent can execute against | _LinkedIn post coming_ |
 | [work-loop](skills/work-loop) | Takes an `INTENT.md` and works, checks, reviews and fixes until every done item passes with real evidence | _LinkedIn post coming_ |
 | [design](skills/design) | Applies one consistent design taste to any UI, page, mockup or visual HTML, while following each project's brand | _LinkedIn post coming_ |
-| [explore](skills/explore) | Researches how others solve a design problem, then mocks up five different directions on one page to pick from | _LinkedIn post coming_ |
+| [explore](skills/explore) | Researches standout examples, shortlists concepts with you, then builds and critiques the best directions side by side | _LinkedIn post coming_ |
 
 **The two work as a pair:** Intent Brief defines *what* and *why*, and Work Loop gets it to done. They run in Claude Code and Codex.
 

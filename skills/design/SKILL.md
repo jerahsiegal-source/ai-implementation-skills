@@ -15,7 +15,7 @@ Read these, in rule order. Higher wins when they disagree.
 1. **The user's message.**
 2. **The project:** `DESIGN.md` at the project root (or `.design/DESIGN.md`). If the user supplied a brand guide and there is no `DESIGN.md`, follow [brand intake](../design-kit/brand-intake.md) to write one, and say so in one line.
 3. **Personal taste:** `~/.ai-skills/personal/taste.md` and `~/.ai-skills/personal/styles/`. If they don't exist, use the kit defaults and, at the end, offer once to set them up.
-4. **The kit:** always read [the floor](../design-kit/floor.md). Read [styles](../design-kit/styles/README.md) only when choosing a look.
+4. **The kit:** always read [the floor](../design-kit/floor.md) and [craft](../design-kit/craft.md). Read [styles](../design-kit/styles/README.md) only when choosing a look.
 5. **Existing code:** theme files, tokens, component library, CSS variables. Reuse them. Never start a second design system next to an existing one.
 
 If `INTENT.md` exists for this work, its Done and Never items outrank everything except the user's message.

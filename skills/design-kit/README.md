@@ -7,6 +7,7 @@ It has no `SKILL.md` on purpose, so Claude Code and Codex do not list it as a co
 | File | What it holds | Read when |
 |---|---|---|
 | [floor.md](floor.md) | Readability, accessibility, honest data, anti-slop, copy rules, rule order | Every time |
+| [craft.md](craft.md) | Concrete type, space, color, data and polish moves | Building anything visual |
 | [quality-check.md](quality-check.md) | The screenshot checklist before handing work back | Before handing back |
 | [brand-intake.md](brand-intake.md) | How to turn any brand guide into a project `DESIGN.md` | A brand guide is supplied |
 | [styles/](styles) | Named looks with tokens and "best for" | Choosing a look |

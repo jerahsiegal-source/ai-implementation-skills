@@ -1,22 +1,21 @@
 # Explore
 
-Five genuinely different design directions on one page, so you can pick one or mix the best parts. It can research how other products solve the same problem first.
+Real research, a handful of genuinely different design concepts, and the best ones built and critiqued side by side. You pick one or mix the best parts.
 
 Type `/explore` (Claude Code) or `$explore` (Codex):
 
 ```
-/explore How should our test results page look? Research a few products first.
-/explore Five directions for a weekly status report format.
+/explore How should our test results page look?
+/explore A better format for my weekly status reports.
 ```
 
-## What you get
+## How it works
 
-- A comparison page at `./explore/<topic>.html` with five working mockups using the same real content
-- One expected direction, one bold one, and one borrowed from outside your category
-- A "steal list" of standout features you can mix
-- A short research table with links
-
-When you pick, the choice is saved to the project's `DESIGN.md` (or to your personal styles if you say "save this style"), and `/design` or the work loop builds it.
+1. **Research:** 10 to 12 standout real examples, with screenshots and notes on what makes each one great
+2. **Concepts in words:** 6 to 8 short concepts. You shortlist 2 to 4 before anything gets built
+3. **Build:** the shortlist as full working pages on your real content
+4. **Critique:** a fresh reviewer scores each one and the fixes get made, with before and after shots
+5. **Pick:** one comparison page with a steal list for mixing features. Your choice is saved to the project's `DESIGN.md`, and what you liked or rejected goes to your private taste file
 
 Built on [`/design`](../design) and the shared [design kit](../design-kit). Install with the repo's install script.
 

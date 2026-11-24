@@ -16,6 +16,8 @@ Run this before handing any visual work back. Inside a work loop, the screenshot
 - [ ] **Floor:** readable text, contrast, icon plus word for status, focus states ([floor.md](floor.md)).
 - [ ] **Fits the surface:** density and layout match the surface notes (busy dashboard is fine, busy landing page is not).
 - [ ] **Brand and style:** colors, type and tokens come from `DESIGN.md` or the chosen style, not random values.
+- [ ] **Craft:** type scale, spacing scale, alignment and one accent hold up ([craft.md](craft.md)), and the polish pass is done.
+- [ ] **Would ship:** a strong studio would put its name on this. If not, name the weakest part and fix it.
 - [ ] **No slop:** nothing from the anti-slop list unless asked.
 - [ ] **Real content:** no placeholder text, no broken images, no empty charts.
 - [ ] **Nothing broken:** no overlaps, clipped text, sideways scroll on phone, or console errors.
