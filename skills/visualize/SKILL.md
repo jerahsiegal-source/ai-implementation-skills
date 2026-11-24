@@ -40,14 +40,14 @@ Formats are building blocks, not templates. Pick by the question the page must a
 - **Look:** Studio by default (`<html data-look="studio">`). It switches to dark colors when the viewer's device is in dark mode; keep that. Paper and Night are ready in `family.css`. A project's `DESIGN.md` brand overrides the tokens (`--accent`, `--ok`, fonts); keep the structure.
 - **Drop the prototype bar.** Example pages carry `data-proto` to show a format and look switcher; real output does not.
 - **Every page has, in order:** health word and date, a short title, the verdict as one line under it, **what to do** (below), then the blocks as evidence.
-- **What to do comes first.** If the page asks the user to decide or act, the actions or decision options themselves sit right under the verdict, not a banner pointing further down. Each one shows its size worked out from the data ("+$385 a week", "saves 2 hours a sprint") and a recommended pick. Charts, tables and detail come after, as the evidence for them.
+- **What to do comes first.** If the page asks the user to decide or act, the actions or decision options themselves sit right under the verdict, not a banner pointing further down. Each one shows its size worked out from the data ("+$385 a week", "saves 2 hours a sprint"). Recommend a pick only when the source supports it, and say why from the data; otherwise write "No recommendation" and why. Charts, tables and detail come after, as the evidence for them.
 - **Phone first screen:** at about 390px the verdict and the actions fit on the first screen. Keep the whole page short on phone: collapse long charts and tables behind a tap rather than stacking them.
 - **Short copy.** Titles are names of 1 to 6 words. Captions are one line or none. No sentences explaining the page. Follow the floor's copy rules.
 - **Status** is always icon plus word (Done, In progress, Next, At risk), never color alone.
 - **Detail:** hide it behind a click (expand, tab, drawer), never drop it. Every claim is traceable to a source, but keep tags light: one per section or card, or a small footnote link, not a pill on every line.
 - **Actions and decisions are different.** An action is something to do; a decision is a real choice that is open in the source. Never turn a blocker or a task into a choice the source doesn't contain.
 - **Facts vs guesses.** Every date, number and status comes from the source, with a pointer (file and line, link, or command). Anything you inferred is labelled as inferred ("about", "inferred from…"), never shown as fact.
-- **Fact check before you finish:** list every fact on the page with its source pointer and confirm each one against the source. Show the count ("16 facts checked, 0 problems").
+- **Fact check before you finish:** list every fact on the page (numbers, dates, status words and recommendations) with its source pointer and confirm each one against the source. Show the count ("16 facts checked, 0 problems").
 - **Numbers:** recompute every number you quote in text from the data before publishing. Don't round two different values into "about the same".
 - **Charts:** pick the chart by the relationship shown (change over time, ranking, part of whole, flow). Label directly; honest scales. Follow `../chart/SKILL.md` when it is installed.
 
