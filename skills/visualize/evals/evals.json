@@ -1,0 +1,30 @@
+{
+  "skill_name": "visualize",
+  "notes": "Baseline: ask plain Claude for 'a visual HTML summary' of the same material.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/visualize Summarize the status of this project for me as a page: what's done, what's blocked, what I need to decide.",
+      "expected_output": "One page whose first screen answers 'where are we and what do I owe', with detail behind clicks.",
+      "files": ["fixtures/progress.md"],
+      "expectations": [
+        "The first screen (1280x860) shows overall status and any decision the user owes",
+        "Titles are names of a few words, not sentences; no caption restates its heading",
+        "check-page.mjs exits 0 with no WARN for long-titles, caption-restates, em-dashes or fake-numbering",
+        "Every number on the page comes from progress.md",
+        "Works on phone: no sideways scroll in the phone screenshot"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/visualize Turn this comparison table into something I can scan.",
+      "expected_output": "A comparison view where the recommended option and the deciding differences are visible at a glance.",
+      "files": ["fixtures/comparison.md"],
+      "expectations": [
+        "The recommendation is visible without scrolling",
+        "Differences are shown visually (chips, bars or marks), not only as text",
+        "check-page.mjs exits 0"
+      ]
+    }
+  ]
+}

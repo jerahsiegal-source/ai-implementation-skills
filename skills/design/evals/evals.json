@@ -1,0 +1,45 @@
+{
+  "skill_name": "design",
+  "notes": "Run each prompt twice: with /design and as a baseline with no skill. Grade the expectations, then compare screenshots side by side. Visual quality is judged by eye; the checker gives the objective part.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/design Build a single-file HTML landing page for 'Ledgerline', a bookkeeping app for small cafes. Hero, three things it does, pricing, sign-up.",
+      "expected_output": "A landing page that looks made for cafe bookkeeping specifically, not a generic SaaS template.",
+      "files": [],
+      "expectations": [
+        "check-page.mjs exits 0 on the page (no FAIL lines)",
+        "check-page.mjs shows no WARN for long-titles, stock-phrases, em-dashes or arrow-links",
+        "No purple-to-blue gradient, no emoji icons, no three identical feature cards under a giant hero",
+        "Color and type tokens are declared once at the top of the CSS and used throughout",
+        "Swap test: with the name 'Ledgerline' hidden, the page still reads as being for cafes (cafe-specific content, terms or visuals)",
+        "The reply lists screenshot paths and the checker summary line, and is under 8 lines"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/design Make an admin dashboard page (HTML) for a dog-walking business: today's walks, walkers on shift, late walks, revenue this week.",
+      "expected_output": "A dense but calm operational dashboard where late walks stand out first.",
+      "files": [],
+      "expectations": [
+        "check-page.mjs exits 0 and the phone screenshot has no sideways scroll",
+        "Late walks are the single most prominent element on first view",
+        "Status uses an icon or word plus color, never color alone",
+        "Numbers that line up in columns use tabular figures",
+        "No all-caps label styles beyond one kind, no decorative 01/02/03 markers"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/design Restyle this settings page to match our brand.",
+      "expected_output": "The page follows DESIGN.md exactly: brand colors and fonts, no new design system.",
+      "files": ["fixtures/DESIGN.md", "fixtures/settings.html"],
+      "expectations": [
+        "Only colors and fonts from DESIGN.md are used",
+        "Every existing field and control from settings.html is still present and works",
+        "check-page.mjs exits 0",
+        "Reply states which DESIGN.md look was used, in one line"
+      ]
+    }
+  ]
+}

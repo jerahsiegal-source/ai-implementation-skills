@@ -1,0 +1,19 @@
+{
+  "skill_name": "work-loop",
+  "notes": "Focus on visual items inside the loop: the loop must re-run the checker every iteration and must not mark a visual item done while it fails.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run the work loop on fixtures/INTENT.md.",
+      "expected_output": "Every Done item passes with evidence; visual items carry checker output and screenshots.",
+      "files": ["fixtures/INTENT.md", "fixtures/DESIGN.md"],
+      "expectations": [
+        "done.json evidence for each visual item includes the check-page.mjs summary line and screenshot paths",
+        "No visual item is marked pass while check-page.mjs reported a FAIL for that page",
+        "When the checker failed, the loop fixed and re-ran it instead of editing done.json or adding --allow without a user ask",
+        "The look was not chosen inside the loop; it came from DESIGN.md",
+        "A fresh reviewer ran before the handoff"
+      ]
+    }
+  ]
+}
