@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" data-proto><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pulse Board</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="family.css">
+<style>
+/* Pulse Board: one row per workstream. Pie = progress, strip = recent activity, word = state. */
+.page{display:flex;flex-direction:column;gap:24px}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
+
+.tiles{display:flex;gap:28px;flex-wrap:wrap}
+.tile{display:flex;flex-direction:column}
+.tile .num{font-size:34px;line-height:1}
+.tile small{font-size:14px;color:var(--muted)}
+.board{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.head,.row>button{display:grid;grid-template-columns:44px minmax(150px,1.3fr) 128px minmax(170px,1.4fr) minmax(140px,1.2fr) 20px;gap:16px;align-items:center;padding:0 18px}
+.head{font-size:13px;color:var(--muted);height:42px;border-bottom:1px solid var(--line)}
+.axis{display:grid;grid-template-columns:1fr 3fr 3fr;font-variant-numeric:tabular-nums}.axis span:nth-child(2){text-align:center}.axis span:last-child{text-align:right}
+.row{border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row>button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:44px minmax(150px,1.3fr) 128px minmax(170px,1.4fr) minmax(140px,1.2fr) 20px;gap:16px;align-items:center;padding:12px 18px;width:100%;cursor:pointer}
+.row>button:hover{background:var(--sunk)}
+.row>button:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.nm{font-weight:700}
+.strip{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;height:22px}
+.strip i{border-radius:3px;background:var(--sunk)}
+.strip i.on{background:var(--accent)}
+.nt{font-size:15px;color:var(--muted)}
+.chev{color:var(--muted);transition:transform .2s ease-out}
+.row.open .chev{transform:rotate(90deg)}
+.more{display:none;padding:0 18px 16px 78px;font-size:16px;gap:8px;flex-direction:column;max-width:760px}
+.row.open .more{display:flex}
+@media (max-width:820px){
+ .head{display:none}
+ .row>button{grid-template-columns:44px 1fr auto;row-gap:6px}
+ .row>button .strip{grid-column:2/4}
+ .row>button .nt{grid-column:2/4}
+ .row>button .chev{display:none}
+ .more{padding-left:18px}
+}
+.lower{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:820px){.lower{grid-template-columns:1fr}}
+.quiet{padding:16px 4px;display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.risk{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:16px}
+.risk .ic{color:var(--warn);margin-top:4px}
+.tl{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.tl div{display:grid;grid-template-columns:70px 1fr;gap:10px}
+.tl time{color:var(--muted);font-variant-numeric:tabular-nums}
+</style></head><body>
+<div class="wrapper"><div class="page" id="pg"></div></div>
+<script src="data.js"></script><script src="ui.js"></script><script src="family.js"></script>
+<script>
+function pie(p){if(p===100)return `<svg width="36" height="36" viewBox="0 0 36 36" role="img" aria-label="Done"><circle cx="18" cy="18" r="16" fill="var(--ok)"/><path d="M11 18.5l4.5 4.5L25 13.5" fill="none" stroke="var(--surface)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+ if(p===0)return `<svg width="36" height="36" viewBox="0 0 36 36" role="img" aria-label="Not started"><circle cx="18" cy="18" r="15" fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="3 4"/></svg>`;
+ const r=8,c=2*Math.PI*r;return `<svg width="36" height="36" viewBox="0 0 36 36" role="img" aria-label="${p}% done"><circle cx="18" cy="18" r="16" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="18" cy="18" r="${r}" fill="none" stroke="var(--accent)" stroke-width="16" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 18 18)"/></svg>`}
+const done=P.streams.filter(s=>s.s==="done").length,doing=P.streams.filter(s=>s.s==="doing").length;
+document.getElementById("pg").innerHTML=`
+<div class="top"><div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="pill on">${UI.icon("on")}On track</span><span class="kicker">${P.asOf}</span></div><h1>${P.title}</h1><p class="say">${P.verdict}</p></div>
+ <div class="tiles"><div class="tile"><span class="num">${P.pct}%</span><small>built</small></div><div class="tile"><span class="num st-done">${done}</span><small>done</small></div><div class="tile"><span class="num st-doing">${doing}</span><small>in progress</small></div><div class="tile"><span class="num" style="color:var(--warn)">${P.open.length}</span><small>need you</small></div></div></div>
+<section class="need">${UI.icon("risk",20)}<div><b>Needs you · 2 decisions</b>${P.need}</div><a href="decision-desk.html">Decide →</a></section>
+<section class="board" aria-label="Workstreams"><div class="head"><span></span><span>Workstream</span><span>State</span><span class="axis"><span>8 PM</span><span>9 PM</span><span>10</span></span><span>Note</span><span></span></div>
+${P.streams.map((s,i)=>`<div class="row ${i===4?"open":""}"><button aria-expanded="${i===4}">${pie(s.pct)}<span class="nm">${s.name}</span>${UI.tag(s.s)}<span class="strip" aria-label="Activity in 20-minute blocks">${P.activity[s.id].map(a=>`<i class="${a?"on":""}"></i>`).join("")}</span><span class="nt">${s.note}</span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3.5L10.5 8 6 12.5"/></svg></button>
+<div class="more"><p>${s.detail}</p><span><span class="src">${UI.icon("src",12)}${s.src}</span></span></div></div>`).join("")}</section>
+<div class="lower"><section class="card"><h3>Watch</h3>${P.risks.map(r=>`<div class="risk">${UI.icon("risk",18)}<div><b>${r.t}.</b> ${r.d}</div></div>`).join("")}</section>
+<section class="quiet"><h3>Tonight</h3><div class="tl">${P.timeline.map(t=>`<div><time>${t.t}</time><span>${t.h}</span></div>`).join("")}</div></section></div>`;
+document.querySelectorAll(".row>button").forEach(b=>b.onclick=()=>{const r=b.parentElement;r.classList.toggle("open");b.setAttribute("aria-expanded",r.classList.contains("open"))});
+</script>
+</body></html>

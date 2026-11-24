@@ -48,6 +48,14 @@ The floor below sits under all five: accessibility, working features and honest 
 - Short, plain, specific. Name things the way users know them, not how the code names them.
 - Buttons say what happens ("Run test", not "Submit").
 - No filler intros, no marketing fluff on internal tools, no lorem ipsum.
+- **Titles are names, not descriptions.** A page or section title is 1 to 6 words ("Visualize, round three", "Decisions"). The verdict or one-line summary goes below it, set smaller.
+- **One line or nothing.** Subtitles, captions and card blurbs are one short line. If a caption repeats the title or the obvious, delete it.
+- **Cut AI tells in copy:**
+  - sentences that explain the page itself ("Every page below is…") or restate the heading
+  - colon reveals in titles ("Mission Map: the system as a graph") and "not X, but Y" framing
+  - "X, Y, and Z" triplets, em-dashes, and words like seamless, robust, comprehensive, elevate, unlock
+  - ALL-CAPS eyebrow labels stacked above every title; use sentence case, and only where the label adds facts (a date, a count)
+  - an arrow on every link; keep it for the one main action
 
 ## Anti-slop: avoid these unless asked
 
@@ -61,4 +69,5 @@ These looks scream "an AI made this". Use one only when the user or brand asks f
 - Colored accent bar down the side of every card
 - Three identical feature cards under a giant hero, by default
 - Numbered 01 / 02 / 03 markers on things that are not a sequence
+- Long sentence-style headlines and a caption under every element
 - Decorative blobs, glassmorphism and glow for no reason

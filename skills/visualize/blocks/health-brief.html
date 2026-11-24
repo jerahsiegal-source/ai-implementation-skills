@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" data-proto><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Health Brief</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="family.css">
+<style>
+/* Health Brief: one calm column, a margin for sources, status as health + change. */
+.page{display:grid;grid-template-columns:minmax(0,680px) 1fr;column-gap:56px;row-gap:0}
+.main{display:flex;flex-direction:column;gap:32px;min-width:0}
+.side{position:relative;font-size:14px;color:var(--muted)}
+@media (max-width:900px){.page{grid-template-columns:1fr}.side{display:none}}
+h2{font-size:20px}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:15px;color:var(--muted)}
+.update{display:flex;flex-direction:column;gap:10px;font-size:18px}
+.update p:first-child{font-size:21px;font-family:var(--d);font-weight:400;line-height:1.4}
+.since{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+@media (max-width:560px){.since{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.since div{padding:14px 12px 14px 0;display:flex;flex-direction:column;gap:2px}
+.since b{font-family:var(--d);font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+.since small{font-size:14px;color:var(--muted)}
+.since em{font-style:normal;font-size:13px;color:var(--muted)}
+.since .warn b{color:var(--warn)}
+.bar{display:flex;flex-direction:column;gap:8px}
+.track{display:flex;height:12px;border-radius:99px;overflow:hidden;background:var(--line);gap:2px}
+.track i{display:block}
+.legend{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:14px;color:var(--muted)}
+.lg{display:inline-flex;align-items:center;gap:6px}.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-left:8px}
+.list{display:flex;flex-direction:column}
+.item{border-top:1px solid var(--line)}
+.item:last-child{border-bottom:1px solid var(--line)}
+.item button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:118px 1fr auto;gap:12px;align-items:center;padding:13px 4px}
+@media (max-width:560px){.item button{grid-template-columns:1fr auto}.item .st{grid-column:1/-1}}
+.item button:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.item button:hover .nm{color:var(--accent)}
+.nm{font-weight:700}
+.nt{color:var(--muted);font-size:15px}
+.chev{transition:transform .2s ease-out;color:var(--muted)}
+.item.open .chev{transform:rotate(90deg)}
+.body{display:none;padding:0 4px 16px 134px;font-size:16px;flex-direction:column;gap:6px}
+@media (max-width:560px){.body{padding-left:4px}}
+.item.open .body{display:flex}
+.srcline{font-size:14px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.risks{display:flex;flex-direction:column;gap:10px}
+.risk{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.risk .ic{color:var(--warn);margin-top:4px}
+.note{position:absolute;left:0;right:0;padding-left:14px;border-left:2px solid var(--line);line-height:1.45}
+.note b{color:var(--ink);font-weight:700}
+.foot{font-size:14px;color:var(--muted)}
+</style></head><body>
+<div class="wrapper"><div class="page">
+ <div class="main" id="main"></div>
+ <aside class="side" id="side" aria-label="Sources"></aside>
+</div></div>
+<script src="data.js"></script><script src="ui.js"></script><script src="family.js"></script>
+<script>
+const col={done:"var(--ok)",doing:"var(--accent)",next:"var(--line)"};
+const m=document.getElementById("main");
+m.innerHTML=`
+<header style="display:flex;flex-direction:column;gap:14px">
+  <div class="meta"><span class="pill on">${UI.icon("on")}${P.healthWord[P.health]}</span><span>${P.asOf}</span></div>
+  <h1 id="v">${P.title}</h1><p class="say">${P.verdict}</p>
+</header>
+<section class="update" id="upd">${P.update.map((u,i)=>`<p data-n="${i}">${u}</p>`).join("")}</section>
+<section style="display:flex;flex-direction:column;gap:10px"><h2>Where things stand</h2>
+ <div class="since">${P.since.map(s=>`<div class="${s.tone}"><b>${s.val}</b><small>${s.label}</small><em>${s.delta}</em></div>`).join("")}</div></section>
+<section class="bar" aria-label="Progress ${P.pct} percent"><div class="legend"><span><b style="color:var(--ink)">${P.pct}%</b> built</span><span class="lg"><i style="background:var(--ok)"></i>Done <i style="background:var(--accent)"></i>In progress <i style="background:var(--line)"></i>Next</span></div>
+ <div class="track">${P.streams.map(s=>`<i title="${s.name}" style="flex:1;background:${s.s==="doing"?`linear-gradient(90deg,var(--accent) ${s.pct}%,var(--accent-soft) ${s.pct}%)`:col[s.s]}"></i>`).join("")}</div></section>
+<section class="need">${UI.icon("risk",20)}<div><b>Needs you · 2 decisions</b>${P.need}</div><a href="decision-desk.html">Decide →</a></section>
+<section style="display:flex;flex-direction:column;gap:10px"><h2>The work</h2>
+ <div class="list">${P.streams.map((s,i)=>`<div class="item ${s.s==="doing"?"open":""}" data-src="${i}"><button aria-expanded="${s.s==="doing"}">${UI.tag(s.s)}<span><span class="nm">${s.name}</span> <span class="nt">· ${s.note}</span></span><svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3.5L10.5 8 6 12.5"/></svg></button>
+  <div class="body"><p>${s.detail}</p><span class="srcline">${UI.icon("src",14)}${s.src}</span></div></div>`).join("")}</div></section>
+<section style="display:flex;flex-direction:column;gap:12px"><h2>Watch</h2><div class="risks">${P.risks.map(r=>`<div class="risk">${UI.icon("risk",18)}<div><b>${r.t}.</b> ${r.d}</div></div>`).join("")}</div></section>
+<p class="foot">Built from the thread, the repo's merged PRs and the install log.</p>`;
+document.querySelectorAll(".item button").forEach(b=>b.onclick=()=>{const it=b.parentElement;it.classList.toggle("open");b.setAttribute("aria-expanded",it.classList.contains("open"));place()});
+// margin notes: sources beside the paragraph or row they support
+const side=document.getElementById("side");
+function place(){
+  const top=side.getBoundingClientRect().top+scrollY;
+  const notes=[
+    {el:document.querySelector('#upd p[data-n="0"]'),t:"<b>Install log</b>, 8:47 PM. Junctions in .claude\\skills and .agents\\skills."},
+    {el:document.querySelector('#upd p[data-n="1"]'),t:"<b>PR #3</b>, merged 9:48 PM."},
+    ...[...document.querySelectorAll(".item.open")].map(it=>({el:it,t:`<b>Source</b> · ${P.streams[it.dataset.src].src}`}))
+  ];
+  let last=-99;
+  side.innerHTML=notes.map(n=>{let y=n.el.getBoundingClientRect().top+scrollY-top;y=Math.max(y,last+56);last=y;return `<div class="note" style="top:${y}px">${n.t}</div>`}).join("");
+}
+addEventListener("resize",place);addEventListener("lookchange",place);document.fonts.ready.then(place);place();
+</script>
+</body></html>

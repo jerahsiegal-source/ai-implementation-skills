@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-proto><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Margin Notes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="family.css">
+<style>
+/* Margin Notes: a long read with the verdict first, sources in the margin, and a matrix where options are weighed. */
+.art{display:grid;grid-template-columns:minmax(0,660px) 260px;column-gap:56px;row-gap:22px}
+.art>*{grid-column:1;min-width:0}
+.art .wide{grid-column:1/-1}
+.sn{grid-column:2;grid-row:span 1;font-size:14px;line-height:1.45;color:var(--muted);border-left:2px solid var(--line);padding-left:12px;align-self:start}
+.sn b{color:var(--ink)}
+.sn .src{margin-top:6px}
+@media (max-width:900px){.art{grid-template-columns:1fr}.sn{grid-column:1;background:var(--sunk);border:0;border-radius:8px;padding:10px 12px}.sn.fold{display:none}.sn.fold.show{display:block}}
+.ref{all:unset;cursor:pointer;color:var(--accent);font-weight:700;font-size:13px;vertical-align:super;line-height:0;padding:0 2px}
+.verdict{font-family:var(--d);font-size:clamp(22px,3vw,27px);line-height:1.35;font-weight:400;letter-spacing:-.01em}
+.art p{font-size:18px}
+.art h2{font-size:24px;margin-top:18px}
+.mx{border:1px solid var(--line);border-radius:var(--radius);overflow-x:auto;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
+th,td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--line)}
+th{font-weight:600;font-family:var(--d);font-size:13px;color:var(--muted)}
+th:first-child,td:first-child{text-align:left}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700}
+.y{color:var(--ok)} .p{color:var(--warn)} .n{color:var(--muted)}
+.cellword{display:block;font-size:12px;font-weight:700}
+.key{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.key span{display:inline-flex;gap:5px;align-items:center}
+details{border-top:1px solid var(--line);padding-top:12px}
+summary{cursor:pointer;font-weight:700;color:var(--accent)}
+details p{margin-top:10px}
+.byline{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:15px;color:var(--muted)}
+</style></head><body>
+<div class="wrapper"><div class="page"><article class="art" id="art"></article></div></div>
+<script src="data.js"></script><script src="ui.js"></script><script src="family.js"></script>
+<script>
+const mk=v=>v===2?`<span class="y" aria-label="Strong">${UI.icon("done",20)}</span>`:v===1?`<span class="p">${UI.icon("doing",16)}<span class="cellword">Partly</span></span>`:`<span class="n">${UI.icon("x",16)}<span class="cellword">Weak</span></span>`;
+let n=0;const ref=()=>{n++;return `<button class="ref" data-n="${n}" aria-label="Show note ${n}">${n}</button>`};
+const sn=(t,src,url)=>`<aside class="sn fold" data-n="${n}"><b>${n}.</b> ${t}${src?`<br><a class="src" href="${url}" target="_blank" rel="noopener">${UI.icon("src",12)}${src}</a>`:""}</aside>`;
+document.getElementById("art").innerHTML=`
+<header style="display:flex;flex-direction:column;gap:14px"><span class="kicker">Recommendation</span><h1>Blocks, not a template</h1>
+<div class="byline"><span class="pill on">${UI.icon("on")}Confident</span><span>12 references</span></div></header>
+<p class="verdict">One look, six formats, combined as each job needs.</p>
+<section class="need wide">${UI.icon("risk",20)}<div><b>Needs you</b>${P.need}</div><a href="decision-desk.html">Decide →</a></section>
+<h2>Why</h2>
+<p>Round one offered five fixed looks, and none of them fit everything you do. A status check on one project, a sweep across eight agents and a deep research report want different shapes.${ref()} What they share is how they should feel: answer first, detail on demand, sources one glance away.</p>
+${sn("You rejected all five round-one looks on 23 Nov, 9:25 PM. A was closest.","Thread")}
+<p>The best references are consistent in the same way. Our World in Data uses one visual language across thousands of charts, yet each insight gets the chart its data needs.${ref()}</p>
+${sn("Each insight opens a claim with its own chart type beside it.","Our World in Data","https://ourworldindata.org/co2-and-greenhouse-gas-emissions")}
+<h2>Compared</h2>
+<p>Each format is strong where the others are weak, which is why they combine well.${ref()}</p>
+${sn("Layout borrowed from Ink & Switch's comparison of storage options against seven goals.","Ink & Switch","https://www.inkandswitch.com/local-first/")}
+<div class="wide" style="display:flex;flex-direction:column;gap:10px"><div class="mx"><table><thead><tr><th>Format</th>${P.matrix.goals.map(g=>`<th>${g}</th>`).join("")}</tr></thead><tbody>${P.matrix.rows.map(r=>`<tr><td>${r.n}</td>${r.v.map(v=>`<td>${mk(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+<div class="key"><span class="y">${UI.icon("done",14)} Strong</span><span class="p">${UI.icon("doing",14)} Partly</span><span class="n">${UI.icon("x",14)} Weak</span><span>My judgment from the builds tonight.</span></div></div>
+<h2>Fixed</h2>
+<p>Readability, the three layers, status as icon plus word, a "Needs you" panel and a source on every claim. These hold in every format and every look, so any page reads the same way.${ref()}</p>
+${sn("These come from the design kit's floor, shared by every design skill.","design-kit/floor.md","https://github.com/jerahsiegal-source/ai-implementation-skills/blob/main/skills/design-kit/floor.md")}
+<details><summary>Read more: what stays flexible</summary><p>Color, type and layout come from the chosen look and the job. When a project needs a view none of the six covers, Visualize can invent a block, as long as it uses the same tokens, icons and Needs-you panel.</p></details>
+<h2>Next</h2>
+<p>You pick a look. A fresh reviewer critiques all six formats, I fix what it finds, and then Work Loop builds the skill with these as its building blocks.</p>`;
+document.querySelectorAll(".ref").forEach(b=>b.onclick=()=>{const s=document.querySelector(`.sn[data-n="${b.dataset.n}"]`);s.classList.toggle("show");s.scrollIntoView({block:"nearest",behavior:"smooth"})});
+</script>
+</body></html>

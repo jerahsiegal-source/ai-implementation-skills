@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-proto><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Combined Project</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="family.css">
+<style>
+/* Combined: one shell (verdict, health, decisions) and several formats as views. */
+.wrapper.top-shell{padding-bottom:0}
+.shell{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.views small{display:none}}
+.tiles{display:flex;gap:26px}
+.tiles div{display:flex;flex-direction:column}
+.tiles .num{font-size:32px;line-height:1}
+.tiles small{font-size:14px;color:var(--muted)}
+.decs{display:flex;flex-direction:column;background:var(--warn-soft);border-radius:var(--radius);padding:4px 18px}
+.dq{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.dq:last-child{border-bottom:0}
+@media (max-width:640px){.dq{grid-template-columns:1fr}}
+.dq b{font-size:16px}
+.dq .rec{display:inline-flex;gap:6px;align-items:center;color:var(--warn);font-weight:700;font-size:14px}
+.views{position:sticky;top:44px;z-index:5;background:var(--bg);display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
+.views button{all:unset;cursor:pointer;padding:12px 16px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap}
+.views button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.views button:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.views small{font-weight:400;margin-left:6px;font-size:13px}
+iframe{display:block;width:100%;border:0;min-height:600px}
+</style></head><body>
+<div class="wrapper top-shell"><div class="shell" id="sh"></div></div>
+<iframe id="v" title="View"></iframe>
+<script src="data.js"></script><script src="ui.js"></script><script src="family.js"></script>
+<script>
+const V=[["pulse-board.html","Overview","Pulse Board"],["mission-map.html","How it connects","Mission Map"],["insight-tabs.html","Research","Insight Tabs"],["health-brief.html","Latest update","Health Brief"]];
+document.getElementById("sh").innerHTML=`
+<div class="hero"><div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="pill on">${UI.icon("on")}On track</span><span class="kicker">${P.asOf}</span></div><h1>${P.title}</h1><p class="say">${P.verdict}</p></div>
+<div class="tiles"><div><span class="num">${P.pct}%</span><small>built</small></div><div><span class="num st-done">4</span><small>done</small></div><div><span class="num" style="color:var(--warn)">${P.open.length}</span><small>need you</small></div></div></div>
+<section style="display:flex;flex-direction:column;gap:8px"><span class="kicker" style="color:var(--warn)">Needs you · from Decision Desk</span><div class="decs">${P.open.map(d=>`<a class="dq" href="decision-desk.html" style="text-decoration:none;color:var(--ink)"><b>${d.q}</b><span class="rec">${UI.icon("next",14)}Recommended: ${d.opts[d.rec].n}</span></a>`).join("")}</div></section>
+<div class="views" role="tablist" aria-label="Views">${V.map((v,i)=>`<button role="tab" aria-selected="${i===0}" data-i="${i}">${v[1]}<small>${v[2]}</small></button>`).join("")}</div>`;
+const fr=document.getElementById("v");
+function fit(){try{fr.style.height=fr.contentDocument.documentElement.scrollHeight+"px"}catch(e){}}
+function load(i){document.querySelectorAll(".views button").forEach((b,j)=>b.setAttribute("aria-selected",j===i));
+ fr.src=V[i][0]+"?embed=1&look="+document.documentElement.dataset.look;}
+fr.onload=()=>{fit();try{new ResizeObserver(fit).observe(fr.contentDocument.body);fr.contentDocument.addEventListener("click",()=>setTimeout(fit,50))}catch(e){}};
+document.querySelectorAll(".views button").forEach(b=>b.onclick=()=>load(+b.dataset.i));
+addEventListener("lookchange",()=>{try{fr.contentDocument.documentElement.dataset.look=document.documentElement.dataset.look}catch(e){}});
+load(0);
+</script>
+</body></html>

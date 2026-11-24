@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" data-proto><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mission Map</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="family.css">
+<style>
+/* Mission Map: the system as a graph. Nodes carry state, edges carry dependency, a drawer carries detail. */
+.page{display:flex;flex-direction:column;gap:22px}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;align-items:flex-end}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:14px;color:var(--muted);align-items:center}
+.legend .line{display:inline-block;width:26px;height:0;border-top:2px solid var(--muted);vertical-align:middle;margin-right:6px}
+.legend .line.dash{border-top-style:dashed}
+.canvas{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  background-image:radial-gradient(var(--line) 1px,transparent 1.2px);background-size:22px 22px;overflow:hidden}
+.canvas .inner{position:relative;width:100%;aspect-ratio:1000/580}
+.lanes{position:absolute;inset:0;display:grid;grid-template-columns:23% 30% 25% 22%;pointer-events:none}
+.lanes div{border-right:1px dashed var(--line);padding:12px 14px;font-family:var(--d);font-size:14px;font-weight:600;color:var(--muted)}
+.lanes div:last-child{border-right:0}
+svg.edges{position:absolute;inset:0;width:100%;height:100%;overflow:visible;color:var(--muted)}
+.edges path{fill:none;stroke:var(--muted);stroke-width:2;opacity:.7;marker-end:url(#ah)}
+.edges path.dash{stroke-dasharray:6 5}
+.edges path.hot{stroke:var(--accent);opacity:1;stroke-width:2.5;marker-end:url(#ahHot)}
+.node{position:absolute;transform:translate(-50%,-50%);width:16.5%;min-width:132px;border:2px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:9px 12px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:2px;z-index:1}
+.node b{font-size:16px}
+.node small{font-size:13px;color:var(--muted);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.node.doing{border-color:var(--accent);background:var(--accent-soft)}
+.node.next{border-style:dashed;border-color:var(--muted);background:var(--bg)}
+.node:hover,.node.sel{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.node.doing.sel{box-shadow:0 0 0 4px var(--accent)}
+.mini{display:none}
+@media (max-width:760px){.canvas{display:none}.mini{display:flex;flex-direction:column;gap:8px}}
+.mini button{all:unset;box-sizing:border-box;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 10px}
+.mini small{color:var(--muted);grid-column:1/-1}
+.mini .mrel{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.mini .mrel b{color:var(--ink);font-weight:400}
+.drawer h2{font-size:24px}
+.rel{display:flex;flex-direction:column;gap:4px;font-size:15px}
+.rel span{color:var(--muted)}
+.barl{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
+.bar{height:8px;border-radius:99px;background:var(--sunk);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+</style></head><body>
+<div class="wrapper"><div class="page" id="pg"></div></div>
+<script src="data.js"></script><script src="ui.js"></script><script src="family.js"></script>
+<script>
+const S=Object.fromEntries(P.streams.map(s=>[s.id,s]));
+S.intent={id:"intent",name:"/intent-brief",s:"done",pct:100,note:"What and why, done-when gates",detail:"Turns what you want into a one-page INTENT.md. Now says how to gate visual work: pick the look first, prove it with screenshots.",src:"Repo, PR #1"};
+// x on a 1000 grid, y on a 580 grid. Lanes: Define | Taste | Build | Show. Flow runs left to right.
+const N=[["intent",110,200],["kit",110,410],["explore",355,90],["design",355,290],["flow",355,490],["loop",615,200],["visualize",870,200],["chart",870,410]];
+// [from,to,dashed?,elbowX on the 1000 grid]
+const E=[["intent","explore",0,232],["explore","design"],["flow","design",1],["kit","design",0,232],["intent","loop"],["design","loop",0,500],["kit","loop",0,470],["loop","visualize"],["explore","visualize",0,745],["chart","visualize",1]];
+const rel=id=>({ins:E.filter(e=>e[1]===id).map(e=>S[e[0]].name),outs:E.filter(e=>e[0]===id).map(e=>S[e[1]].name)});
+function drawEdges(){const inner=document.querySelector(".canvas .inner");if(!inner||!inner.offsetWidth)return;
+ const W=inner.offsetWidth,H=inner.offsetHeight,box=id=>{const n=inner.querySelector(`.node[data-id="${id}"]`);return{l:n.offsetLeft-n.offsetWidth/2,r:n.offsetLeft+n.offsetWidth/2,t:n.offsetTop-n.offsetHeight/2,b:n.offsetTop+n.offsetHeight/2,x:n.offsetLeft,y:n.offsetTop}};
+ const R=8,G=7;
+ const path=e=>{const A=box(e[0]),B=box(e[1]);
+  if(Math.abs(A.x-B.x)<4){const down=B.y>A.y;return `M${A.x} ${down?A.b:A.t} L${B.x} ${down?B.t-G:B.b+G}`}
+  const x1=A.r,y1=A.y,x2=B.l-G,y2=B.y;if(Math.abs(y1-y2)<2)return `M${x1} ${y1} L${x2} ${y2}`;
+  const mx=(e[3]||((A.r+B.l)/2*1000/W))*W/1000,sy=y2>y1?1:-1;
+  return `M${x1} ${y1} L${mx-R} ${y1} Q${mx} ${y1} ${mx} ${y1+sy*R} L${mx} ${y2-sy*R} Q${mx} ${y2} ${mx+R} ${y2} L${x2} ${y2}`};
+ const svg=inner.querySelector("svg.edges");svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+ svg.innerHTML=`<defs><marker id="ah" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--muted);stroke:none"/></marker><marker id="ahHot" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--accent);stroke:none"/></marker></defs>`+
+  E.map(e=>`<path data-a="${e[0]}" data-b="${e[1]}" class="${e[2]?"dash":""}${sel&&(e[0]===sel||e[1]===sel)?" hot":""}" d="${path(e)}"/>`).join("")}
+let sel=null;
+document.getElementById("pg").innerHTML=`
+<div class="top"><div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="pill on">${UI.icon("on")}On track</span><span class="kicker">${P.asOf}</span></div><h1>How it connects</h1></div>
+<div class="legend"><span>${UI.tag("done")}</span><span>${UI.tag("doing")}</span><span>${UI.tag("next")}</span><span><i class="line"></i>feeds</span><span><i class="line dash"></i>will feed</span></div></div>
+<section class="need">${UI.icon("risk",20)}<div><b>Needs you · 2 decisions</b>${P.need}</div><a href="decision-desk.html">Decide →</a></section>
+<div class="canvas" aria-label="Map of skills. Click a box for detail."><div class="inner">
+ <div class="lanes" aria-hidden="true"><div>Define</div><div>Taste</div><div>Build</div><div>Show</div></div>
+ <svg class="edges" aria-hidden="true"></svg>
+ ${N.map(([id,x,y])=>{const s=S[id];return `<button class="node ${s.s}" data-id="${id}" style="left:${x/10}%;top:${y/5.8}%">${UI.tag(s.s)}<b>${s.name}</b><small>${s.note}</small></button>`}).join("")}
+</div></div>
+<div class="mini">${N.map(([id])=>{const s=S[id],r=rel(id);return `<button data-id="${id}"><b>${s.name}</b>${UI.tag(s.s)}<small>${s.note}</small>${r.ins.length?`<span class="mrel">Fed by <b>${r.ins.join(", ")}</b></span>`:""}${r.outs.length?`<span class="mrel">Feeds <b>${r.outs.join(", ")}</b></span>`:""}</button>`}).join("")}</div>
+`;
+function open(id){const s=S[id];sel=id;
+ document.querySelectorAll(".node").forEach(n=>n.classList.toggle("sel",n.dataset.id===id));drawEdges();
+ const {ins,outs}=rel(id);
+ FAM.openDrawer(`${UI.tag(s.s)}<h2>${s.name}</h2><div class="barl"><span>Progress</span><b style="color:var(--ink)">${s.pct}% done</b></div><div class="bar" aria-hidden="true"><i style="width:${s.pct}%"></i></div><p>${s.detail}</p>
+ <div class="rel">${ins.length?`<div><span>Fed by:</span> ${ins.join(", ")}</div>`:""}${outs.length?`<div><span>Feeds:</span> ${outs.join(", ")}</div>`:""}</div><span><span class="src">${UI.icon("src",12)}${s.src}</span></span>`)}
+document.querySelectorAll("button[data-id]").forEach(b=>b.onclick=()=>open(b.dataset.id));
+drawEdges();addEventListener("resize",drawEdges);addEventListener("drawerclose",()=>{sel=null;document.querySelectorAll(".node").forEach(n=>n.classList.remove("sel"));drawEdges()});document.fonts&&document.fonts.ready.then(drawEdges);
+</script>
+</body></html>

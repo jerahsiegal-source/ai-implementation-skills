@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-proto><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Decision Desk</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="family.css">
+<style>
+/* Decision Desk: what you owe comes first. Each decision shows options side by side and a recommendation. */
+.page{max-width:1000px;display:flex;flex-direction:column;gap:26px}
+.count{display:flex;align-items:flex-start;gap:16px}
+.count .num{font-size:60px;line-height:1;color:var(--warn);margin-top:-6px}
+.count h1{max-width:22ch}
+.dec{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:16px;border-top:5px solid var(--warn)}
+.dec.done{border-top-color:var(--ok)}
+.dec header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.dec h2{font-size:22px}
+.dec .why{color:var(--muted);font-size:16px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;border:2px solid var(--line);border-radius:calc(var(--radius) - 2px);padding:16px 14px 14px 46px;display:flex;flex-direction:column;gap:6px;position:relative;min-height:100%;transition:border-color .15s ease-out,background .15s ease-out}
+.opt::before{content:"";position:absolute;left:14px;top:17px;width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);box-sizing:border-box}
+.opt.chosen::before{border:6px solid var(--ok)}
+.opt.suggest{border-color:var(--accent)}
+.opt:hover{border-color:var(--accent)}
+.opt:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.opt b{font-size:17px}
+.opt span{font-size:15px;color:var(--muted)}
+.opt .rec{position:absolute;top:-12px;left:40px;background:var(--accent);color:var(--surface);font-size:12px;font-weight:700;padding:1px 8px;border-radius:99px}
+.opt.chosen{border-color:var(--ok);background:var(--ok-soft)}
+.opt.chosen::after{content:"✓ Your choice";position:absolute;top:-11px;right:12px;background:var(--ok);color:var(--surface);font-size:12px;font-weight:700;padding:1px 8px;border-radius:99px}
+.recwhy{display:grid;grid-template-columns:auto 1fr;gap:8px;font-size:15px;color:var(--muted)}
+.recwhy .ic{color:var(--accent);margin-top:3px}
+.ctx{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.ctx{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.card li{display:flex;gap:8px;align-items:center}
+.copy{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:15px;color:var(--muted)}
+.copy button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer;color:var(--ink)}
+</style></head><body>
+<div class="wrapper"><div class="page" id="pg"></div></div>
+<script src="data.js"></script><script src="ui.js"></script><script src="family.js"></script>
+<script>
+const chosen={};P.decisions.forEach((d,i)=>{if(d.pick!=null)chosen[i]=d.pick});
+function draw(){
+ const left=P.decisions.length-Object.keys(chosen).length;
+ document.getElementById("pg").innerHTML=`
+<div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="pill on">${UI.icon("on")}On track</span><span class="kicker">${P.asOf}</span></div>
+<div class="count"><span class="num" aria-hidden="true">${left}</span><h1>${left?`decision${left>1?"s":""} for you`:"All decided"}</h1></div></div>
+${P.decisions.map((d,i)=>`<section class="dec ${chosen[i]!=null?"done":""}" aria-labelledby="q${i}"><header><div style="display:flex;flex-direction:column;gap:6px"><h2 id="q${i}">${d.q}</h2><p class="why">${d.why}</p></div>${chosen[i]!=null?UI.tag("done"):`<span class="st st-risk">${UI.icon("risk",14)}Waiting</span>`}</header>
+<div class="opts" role="radiogroup" aria-labelledby="q${i}">${d.opts.map((o,j)=>`<button class="opt ${chosen[i]===j?"chosen":(chosen[i]==null&&j===d.rec?"suggest":"")}" role="radio" aria-checked="${chosen[i]===j}" data-i="${i}" data-j="${j}">${j===d.rec?`<span class="rec">Recommended</span>`:""}<b>${o.n}</b><span>${o.c}</span></button>`).join("")}</div>
+<div class="recwhy">${UI.icon("next",16)}<div><b style="color:var(--ink)">${d.opts[d.rec].n}:</b> ${d.recWhy}</div></div></section>`).join("")}
+<div class="copy"><button id="cp">Copy my answers</button><span id="cpm"></span></div>
+<div class="ctx"><section class="card"><h3>Moving</h3><ul>${P.streams.filter(s=>s.s!=="next").map(s=>`<li>${UI.tag(s.s)}<span>${s.name}</span></li>`).join("")}</ul><a href="pulse-board.html" style="font-size:15px;font-weight:700">Full board</a></section>
+<section class="card"><h3>Watch</h3><ul>${P.risks.map(r=>`<li style="align-items:flex-start"><span class="st-risk" style="margin-top:3px">${UI.icon("risk",14)}</span><span>${r.t}</span></li>`).join("")}</ul></section></div>`;
+ document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{chosen[b.dataset.i]=+b.dataset.j;draw();document.querySelector(`.opt[data-i="${b.dataset.i}"][data-j="${b.dataset.j}"]`).focus()});
+ document.getElementById("cp").onclick=()=>{const t=P.decisions.map((d,i)=>`${i+1}. ${d.q} → ${chosen[i]!=null?d.opts[chosen[i]].n:"(not decided)"}`).join("\n");
+  const m=document.getElementById("cpm");navigator.clipboard.writeText(t).then(()=>m.textContent="Copied. Paste into the thread.").catch(()=>{m.textContent=t})};
+}
+draw();
+</script>
+</body></html>

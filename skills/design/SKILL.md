@@ -46,6 +46,7 @@ If `DESIGN.md` has a **Pages** note for this page, it overrides the surface defa
 - **Real content.** Use the user's real data and words. Label example data as example data.
 - **Every state.** Empty, loading, error, hover, focus and disabled all look designed.
 - **Phone and desktop.** Both work. For HTML meant for viewing, support light and dark.
+- **Plan before code.** Write the plan first: 4 to 6 named colors, the type pair, the layout idea in one line, and the one bold move. Then ask: would this plan fit any other product in this category? If yes, change the generic part before building. After building, run the swap test in the [quality check](../design-kit/quality-check.md).
 
 ## 5. Add-ons
 

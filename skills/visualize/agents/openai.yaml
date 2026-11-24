@@ -1,0 +1,5 @@
+interface:
+  display_name: "Visualize"
+  short_description: "Turn big output into one interactive page"
+policy:
+  allow_implicit_invocation: false
