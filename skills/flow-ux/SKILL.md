@@ -23,7 +23,7 @@ In three lines:
 - **Task:** what they are trying to finish, in their words ("send my first invoice").
 - **Done:** the screen or result that means they finished.
 
-If `INTENT.md` exists, take these from it. Ask only if the task is truly unclear. A review with no task is a style critique, not a flow review.
+If `INTENT.md` exists, take these from it: its **Who uses it** section lists the people, tasks and done screens to walk, and its Why says what matters most. Ask only if the task is truly unclear. A review with no task is a style critique, not a flow review.
 
 ## 2. Walk it for real
 
@@ -65,13 +65,21 @@ Never report a finding you didn't see happen or can't point to on a screenshot. 
 
 ## 6. Fix mode
 
-1. Fix in severity order, 4s first. Smallest change that solves each one; keep every existing feature.
+1. Fix in severity order, 4s first. Smallest change that solves each one; keep every existing feature. Build each fix with the `design` skill's rules and the project's `DESIGN.md` when they exist, plus [the rules](references/rules.md); otherwise use the rules and [the floor](../design-kit/floor.md) alone.
 2. After each fix, walk the affected steps again and re-run the checker on the changed screens.
 3. When all 4s and 3s are fixed, walk the whole flow once more (happy, mistake, keyboard, phone) and run the [quality check](../design-kit/quality-check.md).
 4. Stop when no 4 or 3 remains and the checker exits 0. If a finding survives two fix attempts, stop on it and report why.
 5. Show before and after screenshots for each fixed finding.
 
 Inside a work loop, each user-facing Done item that involves a flow passes only when this walk-through shows no severity 4 or 3 left, with the screenshots shown.
+
+## With the other skills
+
+Works alone. When the others are installed:
+- **Intent Brief** writes the **Who uses it** section this skill walks, and gates each task as "no blocker or major problem".
+- **Work Loop** uses this walk-through, in fix mode, as the check for every user-task item, and again in review with a fresh reviewer.
+- **Design** builds every fix, and pulls in [the rules](references/rules.md) when it builds flows, forms or navigation.
+- **Visualize** draws the report.
 
 ## Reply
 

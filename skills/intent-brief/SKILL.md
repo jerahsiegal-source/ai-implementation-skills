@@ -55,6 +55,9 @@ Write the brief to `INTENT.md` in the active project's working folder (or the lo
 ## Why
 <the real reason; what it serves; what a good tradeoff looks like>
 
+## Who uses it (only for things people click through)
+- <who> wants to <task in their words>; done when <the screen or result they reach>
+
 ## Done when (all must pass)
 - [ ] <scope item 1> — evidence: <how it is checked>
 - [ ] <scope item 2> — evidence: <...>
@@ -96,6 +99,7 @@ A gate is a check the loop runs to decide whether to keep going. Good gates make
 - **Check outcomes, not effort.** "Report shows a score for every segment" not "scoring code updated".
 - **Include one end-to-end check** that proves the pieces work together, not only separately.
 - **Include a no-regressions check** for changes to existing systems: what already worked still works.
+- **Things people click through** (apps, sign-ups, forms, dashboards): ask who uses it and the 1 to 3 tasks they must finish, and write them under **Who uses it**. Gate each task as a flow: "A first-time <who> can <task> with no blocker or major problem", evidence: the `flow-ux` walk-through with screenshots.
 - **Visual work:** settle the look first (`/explore`, or an existing `DESIGN.md`) and name it in the brief as fixed. Gate design items on the design kit's screenshot quality check, plus owner review of the screenshots where taste decides.
 
 ## Handoff to a loop
