@@ -27,6 +27,7 @@ Many people describe intent through stories, examples and complaints, often by v
 
 - **Examples carry the intent.** When the user explains through a concrete case ("for example, right now I'm fixing scoring…"), pull out the general rule it illustrates and say it back: "So in general: X. The scoring work is one case of that — right?" Keep the example out of the brief unless it is the acceptance test.
 - **Complaints become gates.** Grievances ("it finishes slice 1 of 6", "I have to hand it to review myself") are the sharpest source of Done and Never items. Turn each one into a check that would have caught it.
+- **Listed steps or stages are states.** When the user lists the steps something goes through (lead, proposal, signed, live), the thing must hold an item at every step. Add a Done item like "can add and track a client at any step", and never require data from a later step to create an item at an earlier one.
 - **Lists of distinctions are requirements.** When the user lists tiers or categories ("good vs very good vs great vs niche"), the ability to tell them apart is usually the outcome. Keep the list.
 - **Separate hedges from real uncertainty.** "I think", "I guess", "something along those lines" are often filler around a firm view. Treat the statement as intended unless the user also says they don't know or contradicts it later.
 - **"I don't know" is a fine answer.** Propose a sensible default, say why, and move on. Record it as the default, not a decision. Never stall the interview on it.

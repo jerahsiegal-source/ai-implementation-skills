@@ -12,6 +12,9 @@ Built on top of [`/design`](../design/SKILL.md). Read it first, along with its c
 
 ## 1. Frame (one short message, at most two questions)
 
+Use `/explore` when the look or layout is genuinely open. If the user already has a clear spec and only needs it built, say so in one line and suggest `/design` instead: in tests, exploring a settled spec made the result worse.
+
+
 State back in two or three lines:
 - **What** is being designed (a page, a flow, a report format, a whole look).
 - **For whom** and **the one job** it must do.
@@ -46,6 +49,7 @@ Run the [page checker](../design-kit/scripts/README.md) on every concept mockup 
 ## 5. Critique and revise (once)
 
 - Hand the screenshots, the reference gallery and the concepts to a **fresh reviewer**: a new subagent where the tool supports one, otherwise a separate critique pass that starts from the screenshots alone.
+- The reviewer first checks the user's **main job**: can they do the main task from a visible button where they'd expect it (on every row, for lists), and does nothing change data without a clear action or confirm? A direction that fails this is fixed before anything else, however good it looks.
 - The reviewer scores each direction 1 to 5 on: **would a top studio ship this**, distinct from generic AI output, hierarchy in 5 seconds, craft details (type, spacing, alignment), and fit to the job. It lists the three biggest fixes for each.
 - Fix those, re-render, and keep before and after screenshots. One round only; report anything left over.
 - Run the [quality check](../design-kit/quality-check.md) on the final pages.
