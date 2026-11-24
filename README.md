@@ -35,6 +35,7 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 **The design skills share one kit.** `design`, `explore`, `visualize` and `flow-ux` read from [design-kit](skills/design-kit) (readability floor, copy and anti-slop rules, styles, brand intake, screenshot check), so the rules are written once. Every one of them, and Work Loop, runs the kit's check, critique and fix round before calling visual work done. `chart` (data viz) uses the kit too and adds its own chart and color checks.
 
 **Not sure which to use, or whether Work Loop is worth it?** See [Using the skills together](workflows/design-skills-workflow.md), with test results.
+For an interactive version, with a "what do you need?" chooser and how I use them day to day, see [Which skill when](https://www.automaitioninnovations.com/skills).
 
 How they fit together on a big design job:
 

@@ -2,6 +2,8 @@
 
 Which skills to run for which job, in what order, and when Work Loop is worth what it costs.
 
+Interactive version: [Which skill when](https://www.automaitioninnovations.com/skills) on my site.
+
 ## Pick by the job
 
 | The job | Run | Work Loop? |
