@@ -92,7 +92,7 @@ We ran the same tasks several ways and had a judge score each result blind, out 
 - **Explore hurt when the spec was already clear** (−4 on the tracker). Use it only when the look is open.
 - **Flow UX added cost but no points on a build that was already solid.** Use it when a flow feels wrong, or as Work Loop's check on user tasks, not on every build.
 - **For a quick page, plain Claude is close.** `visualize` alone tied it on the status page; its edge shows with numbers, many sources, or when you add Work Loop.
-- Every weakness the tests found was fixed in the skills before release, so these scores are from before those fixes.
+- Every weakness these tests found has since been fixed in the skills, and most runs above happened before those fixes.
 
 One task each, one or two judges: treat these as a guide, not a benchmark. Re-run them when a new model comes out.
 
