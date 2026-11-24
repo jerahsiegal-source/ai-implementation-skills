@@ -1,12 +1,12 @@
 ---
 name: explore
-description: Research how others solve a design problem, then mock up five genuinely different directions on one comparison page so the user can pick a direction or mix features. Use only when the user types /explore or $explore.
+description: Research standout examples, write 6 to 8 design concepts to shortlist, then build, critique and compare the shortlist so the user can pick a direction or mix features. Use only when the user types /explore or $explore.
 disable-model-invocation: true
 ---
 
 # Explore
 
-Turn "what should this look like?" into five real options side by side. The user picks; this skill does not build production code.
+Turn "what should this look like?" into a few excellent options side by side, grounded in real research. The user picks; this skill does not build production code.
 
 Built on top of [`/design`](../design/SKILL.md). Read it first, along with its context order: user, `DESIGN.md`, personal taste, [the floor](../design-kit/floor.md). Every direction obeys the floor and the project's brand. The brand fixes the colors. Directions vary everything else.
 
@@ -19,43 +19,51 @@ State back in two or three lines:
 
 Ask only if "what" or "for whom" is truly unclear. Otherwise state your reading and go.
 
-## 2. Research (skip if the user says so or there is no web access)
+## 2. Research (do it unless the user opts out)
 
-- Look at 5 to 8 real products or sites that solve the same job well. Include at least two from outside the obvious category.
-- For each, note the one pattern worth borrowing and link it.
-- No web access: say so in one line and work from known patterns, labeled as such.
+Generic output comes from skipping this step. Do it properly.
 
-Keep research to a small table on the comparison page. It feeds the directions; it is not the deliverable.
+- Find **10 to 12 standout real examples** that solve the same job: the best-in-class ones in the category, plus at least three from outside it (editorial, data journalism, games, print, physical products).
+- **Capture each one.** Take a screenshot (Playwright or the tool's browser) and save it to `./explore/<topic>/refs/`. If you can't capture one, link it and say so.
+- For each, write **what makes it great** in craft terms, not adjectives: type pairing and scale, spacing rhythm, color strategy, how it hides and reveals detail, one signature detail.
+- No web access: say so, then work from named real examples you know well and label them "from memory".
 
-## 3. Five directions
+## 3. Concepts in words first
 
-Vary these axes: **layout idea**, **density**, **type personality**, **color strategy** (within brand), **interaction model** (scroll, tabs, drill-down, canvas, cards...).
+Before building anything, write **6 to 8 concepts**, each in 3 lines: a name, the big idea, and which references it borrows from. Cover the spread:
+- Every concept differs from every other on at least two of: **layout idea**, **density**, **type personality**, **color strategy** (within brand), **interaction model**.
+- Include an **expected** concept (the proven pattern done extremely well), a **bold** one, and a **borrowed** one from outside the category.
+- Reuse an existing style only if it truly fits. Recycled looks are not new concepts.
 
-Rules:
-- Every direction differs from every other on at least two axes. Changing only colors does not count as a new direction.
-- Include one **expected** direction (the safe, proven pattern), one **bold** direction (a real risk), and one **borrowed** direction (a pattern from outside the category).
-- Start from approved styles in `~/.ai-skills/personal/styles/` and the kit's [styles](../design-kit/styles/README.md) where they fit, but at least two directions should be new.
-- All five use the same real content, so the user compares design, not content.
-- No direction uses anything from the anti-slop list unless the brand asks for it.
+Show the concepts next to the reference gallery and ask the user to shortlist **2 to 4**. If they say "you pick", choose the strongest four and say why in one line each. Skip this step only when the user says "just build them".
 
-## 4. The comparison page
+## 4. Build the shortlist properly
 
-Build one HTML file at `./explore/<topic>.html` (or the folder the user names). It holds:
+- Build each shortlisted direction as a **full-size, working page** on the user's **real content**, not a thumbnail and not fake data unless none exists.
+- Apply `/design`, the [floor](../design-kit/floor.md), [craft](../design-kit/craft.md) and the user's personal taste.
+- Every direction obeys the brand in `DESIGN.md`. The brand fixes colors; directions vary everything else.
 
-- **Top:** the job in one line, then five thumbnails or tabs (A to E), each with a name, a one-line idea, best at, and risk.
-- **Each direction:** a working mockup of the key screen at real size. Clickable where interaction is the point.
-- **Steal list:** the standout features across all five, as checkable chips (for example "B's status lights", "D's progress ring"), so the user can mix.
-- **Research:** the short table from step 2, with links.
+## 5. Critique and revise (once)
 
-Run the [quality check](../design-kit/quality-check.md) on the page itself.
+- Hand the screenshots, the reference gallery and the concepts to a **fresh reviewer**: a new subagent where the tool supports one, otherwise a separate critique pass that starts from the screenshots alone.
+- The reviewer scores each direction 1 to 5 on: **would a top studio ship this**, distinct from generic AI output, hierarchy in 5 seconds, craft details (type, spacing, alignment), and fit to the job. It lists the three biggest fixes for each.
+- Fix those, re-render, and keep before and after screenshots. One round only; report anything left over.
+- Run the [quality check](../design-kit/quality-check.md) on the final pages.
 
-## 5. Pick and record
+## 6. Compare, pick, record
+
+One HTML file at `./explore/<topic>/index.html` (or where the user says) with:
+- **Top:** the job in one line and the shortlist as large previews, each with best at, risk and its critique score.
+- **Each direction:** the working page, clickable where interaction matters.
+- **Steal list:** standout features across directions as checkable chips, so the user can mix.
+- **Research gallery:** the reference screenshots with their craft notes and links.
 
 Ask one question: "Which direction, or which mix?" Then:
-- **For a project:** write the choice to `DESIGN.md` (**Look**, and **Pages** if it is page-specific), following [brand intake](../design-kit/brand-intake.md) if the file doesn't exist yet.
-- **For your personal style list:** if the user says "save this style", write it to `~/.ai-skills/personal/styles/<name>.md` in the kit's style format.
-- **Next step:** hand off to `/design` to build it, or to the work loop if an `INTENT.md` exists. In that case the chosen direction becomes a fixed input to the brief.
+- **For a project:** write the choice to `DESIGN.md` (**Look**, and **Pages** if it is page-specific), using [brand intake](../design-kit/brand-intake.md) if the file doesn't exist yet.
+- **For your personal styles:** if the user says "save this style", write it to `~/.ai-skills/personal/styles/<name>.md` in the kit's style format.
+- **Remember taste:** add what the user liked and rejected, in a line each, under **What I like** / **What I don't like** in `~/.ai-skills/personal/taste.md`, so the next round starts smarter.
+- **Next step:** hand off to `/design` to build it, or to the work loop when an `INTENT.md` exists, with the chosen direction as a fixed input.
 
 ## Reply
 
-Under 6 lines: the page path, the five direction names with a few words each, which one you'd pick and why (one line), and the question.
+Under 6 lines: the page path, the direction names with a few words each, which one you'd pick and why (one line), and the question.

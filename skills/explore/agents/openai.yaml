@@ -1,5 +1,5 @@
 interface:
   display_name: "Explore"
-  short_description: "Research plus five design directions to pick from"
+  short_description: "Research, concepts, then critiqued design directions"
 policy:
   allow_implicit_invocation: false
