@@ -27,6 +27,7 @@ Many people describe intent through stories, examples and complaints, often by v
 
 - **Examples carry the intent.** When the user explains through a concrete case ("for example, right now I'm fixing scoring…"), pull out the general rule it illustrates and say it back: "So in general: X. The scoring work is one case of that — right?" Keep the example out of the brief unless it is the acceptance test.
 - **Complaints become gates.** Grievances ("it finishes slice 1 of 6", "I have to hand it to review myself") are the sharpest source of Done and Never items. Turn each one into a check that would have caught it.
+- **Listed steps or stages are states.** When the user lists the steps something goes through (lead, proposal, signed, live), the thing must hold an item at every step. Add a Done item like "can add and track a client at any step", and never require data from a later step to create an item at an earlier one.
 - **Lists of distinctions are requirements.** When the user lists tiers or categories ("good vs very good vs great vs niche"), the ability to tell them apart is usually the outcome. Keep the list.
 - **Separate hedges from real uncertainty.** "I think", "I guess", "something along those lines" are often filler around a firm view. Treat the statement as intended unless the user also says they don't know or contradicts it later.
 - **"I don't know" is a fine answer.** Propose a sensible default, say why, and move on. Record it as the default, not a decision. Never stall the interview on it.
@@ -54,6 +55,9 @@ Write the brief to `INTENT.md` in the active project's working folder (or the lo
 
 ## Why
 <the real reason; what it serves; what a good tradeoff looks like>
+
+## Who uses it (only for things people click through)
+- <who> wants to <task in their words>; done when <the screen or result they reach>
 
 ## Done when (all must pass)
 - [ ] <scope item 1> — evidence: <how it is checked>
@@ -96,6 +100,7 @@ A gate is a check the loop runs to decide whether to keep going. Good gates make
 - **Check outcomes, not effort.** "Report shows a score for every segment" not "scoring code updated".
 - **Include one end-to-end check** that proves the pieces work together, not only separately.
 - **Include a no-regressions check** for changes to existing systems: what already worked still works.
+- **Things people click through** (apps, sign-ups, forms, dashboards): ask who uses it and the 1 to 3 tasks they must finish, and write them under **Who uses it**. Gate each task as a flow: "A first-time <who> can <task> with no blocker or major problem", evidence: the `flow-ux` walk-through with screenshots.
 - **Visual work:** settle the look first (`/explore`, or an existing `DESIGN.md`) and name it in the brief as fixed. Gate design items on the design kit's screenshot quality check, plus owner review of the screenshots where taste decides.
 
 ## Handoff to a loop

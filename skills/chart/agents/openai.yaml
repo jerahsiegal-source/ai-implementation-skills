@@ -1,0 +1,5 @@
+interface:
+  display_name: "Chart"
+  short_description: "Honest, readable charts and dashboards"
+policy:
+  allow_implicit_invocation: false

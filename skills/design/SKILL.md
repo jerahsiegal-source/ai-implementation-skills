@@ -55,7 +55,7 @@ These are separate skills the user can type. When the job clearly needs one and 
 | The job has | Read |
 |---|---|
 | Charts, metrics, tables of numbers | `../chart/SKILL.md` |
-| A multi-step flow, forms, navigation, "can users finish this?" | `../flow/SKILL.md` |
+| A multi-step flow, forms, navigation, "can users finish this?" | `../flow-ux/SKILL.md` |
 | A request for options, research or "show me directions" | Suggest `/explore` and stop. Don't run five concepts unasked. |
 
 If an add-on isn't installed, apply the floor and carry on.

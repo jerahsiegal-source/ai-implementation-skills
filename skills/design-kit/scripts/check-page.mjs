@@ -166,7 +166,7 @@ const dots = (visible.match(/\w+ · \w+ · \w+/g) || []).length;
 check("dot-metadata", "warn", dots >= 3, { fail: `${dots} "A · B · C" metadata lines. A stock AI layout habit.` });
 
 // ---------- render checks ----------
-const renderIds = ["screenshots", "phone-overflow", "contrast", "tiny-text", "all-centered", "clipped-text", "console-errors", "img-alt"];
+const renderIds = ["screenshots", "phone-overflow", "contrast", "tiny-text", "all-centered", "clipped-text", "console-errors", "img-alt", "dark-mode"];
 let chromium = null;
 if (!flag("--static")) {
   for (const base of [process.cwd(), resolve(".")]) {
@@ -195,8 +195,13 @@ if (!chromium) {
       const file = join(outDir, `${stem}-${name}-${scheme}.png`);
       await page.screenshot({ path: file, fullPage: true });
       shots.push(file);
+      // Open every "Show data" and other <details>, so hidden tables count for sideways scroll.
+      await page.evaluate(() => document.querySelectorAll("details:not([open])").forEach((d) => d.setAttribute("open", ""))).catch(() => {});
+      await page.waitForTimeout(150);
       metrics[`${name}-${scheme}`] = await page.evaluate(() => {
-        const parse = (c) => { const m = c.match(/[\d.]+/g); return m ? m.map(Number) : [0, 0, 0, 0]; };
+        // Any CSS color (rgb, color(srgb ...), oklch, color-mix results) -> [r, g, b, a] in 0-255, via a canvas pixel.
+        const _cv = document.createElement("canvas"); _cv.width = _cv.height = 1; const _cx = _cv.getContext("2d", { willReadFrequently: true });
+        const parse = (c) => { if (!c || c === "none" || c === "transparent") return [0, 0, 0, 0]; if (/^rgba?\(/.test(c)) { const m = c.match(/[\d.]+/g); return m.map(Number); } _cx.clearRect(0, 0, 1, 1); _cx.fillStyle = "#000"; _cx.fillStyle = c; _cx.fillRect(0, 0, 1, 1); const d = _cx.getImageData(0, 0, 1, 1).data; return [d[0], d[1], d[2], d[3] / 255]; };
         const lum = ([r, g, b]) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
         const bgOf = (el) => { for (let e = el; e; e = e.parentElement) { const st = getComputedStyle(e); if (st.backgroundImage !== "none") return null; const c = parse(st.backgroundColor); if (c.length < 4 || c[3] > 0.5) return c; } return [255, 255, 255]; };
         const els = [...document.body.querySelectorAll("*")].filter((el) => {
@@ -214,7 +219,17 @@ if (!chromium) {
           if (/^(P|LI|H[1-6]|DIV|SPAN|TD)$/.test(el.tagName) && el.textContent.trim().length > 20) { blocks++; if (cs.textAlign === "center") centered++; }
           if ((cs.overflow === "hidden" || cs.textOverflow === "ellipsis") && el.scrollWidth > el.clientWidth + 2) clipped++;
         }
+        // How many elements actually use all-caps labels or a thick colored left bar.
+        let capsEls = 0, barEls = 0;
+        for (const el of document.body.querySelectorAll("*")) {
+          const cs = getComputedStyle(el); const r = el.getBoundingClientRect(); if (!r.width || !r.height) continue;
+          if (cs.textTransform === "uppercase" && el.textContent.trim().length > 2 && [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) capsEls++;
+          const bl = parseFloat(cs.borderLeftWidth), br = parseFloat(cs.borderRightWidth), c = parse(cs.borderLeftColor);
+          if (bl >= 3 && br <= 1 && r.height > 30 && Math.max(c[0], c[1], c[2]) - Math.min(c[0], c[1], c[2]) > 40) barEls++;
+        }
+        const pageBg = (() => { for (const e of [document.body, document.documentElement]) { const c = parse(getComputedStyle(e).backgroundColor); if ((c[3] ?? 1) > 0.5) return lum(c); } return 1; })();
         return {
+          capsEls, barEls, pageBg,
           overflow: document.documentElement.scrollWidth - window.innerWidth,
           low, tiny, centered, blocks, clipped,
           noAlt: [...document.images].filter((i) => !i.hasAttribute("alt")).length,
@@ -227,7 +242,7 @@ if (!chromium) {
 
   add("pass", "screenshots", `Saved ${shots.length}: ${shots.map((s) => basename(s)).join(", ")} in ${outDir}`);
   const ph = Math.max(metrics["phone-light"].overflow, metrics["phone-dark"].overflow);
-  check("phone-overflow", "fail", ph > 1, { fail: `The page scrolls sideways on a phone by ${ph}px.` });
+  check("phone-overflow", "fail", ph > 1, { fail: `The page scrolls sideways on a phone by ${ph}px (with every <details> section open).` });
   const lowAll = [...new Set([...metrics["desktop-light"].low.map((l) => "light: " + l), ...metrics["desktop-dark"].low.map((l) => "dark: " + l)])];
   check("contrast", "fail", lowAll.length > 0, { fail: `${lowAll.length} text items are hard to read (low contrast), e.g. ${lowAll.slice(0, 3).join("; ")}.` });
   const tiny = metrics["phone-light"].tiny;
@@ -238,6 +253,15 @@ if (!chromium) {
   check("clipped-text", "warn", clip > 0, { fail: `${clip} text items are cut off.` });
   const errs = [...new Set(errors)];
   check("console-errors", "fail", errs.length > 0, { fail: `${errs.length} console errors, e.g. ${short(errs[0] || "", 120)}` });
+  // Usage-based versions of two static checks: a single CSS rule can style many elements.
+  const upgrade = (id, n, min, msg) => {
+    const r = results.find((x) => x.id === id);
+    if (r && r.status === "pass" && n >= min) { r.status = allowed.has(id) ? "allowed" : "warn"; r.msg = msg + (allowed.has(id) ? " (allowed)" : ""); }
+  };
+  upgrade("caps-labels", d.capsEls, 4, `${d.capsEls} all-caps labels on the page. Use sentence case; keep caps for at most one tiny label style.`);
+  upgrade("accent-bar-cards", d.barEls, 2, `${d.barEls} blocks have a thick colored bar down the left side. A stock AI card style.`);
+  const dk = metrics["desktop-dark"];
+  check("dark-mode", "warn", d.pageBg > 0.6 && dk.pageBg > 0.6, { fail: "The page stays light when the reader's device is in dark mode. Add a prefers-color-scheme: dark theme, or allow this check if the brand is light only." });
   const noAlt = d.noAlt;
   check("img-alt", "warn", noAlt > 0, { fail: `${noAlt} images have no alt text.` });
 }

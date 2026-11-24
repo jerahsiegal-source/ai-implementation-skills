@@ -14,7 +14,7 @@ It knows the difference between a landing page, a dashboard, a setup flow and a 
 ## Works with
 
 - `/explore`: five directions to pick from before you build
-- `/flow` and `/chart`: deeper UX and data-viz rules (it pulls them in when the job clearly needs them)
+- `/flow-ux` and `/chart`: deeper UX and data-viz rules (it pulls them in when the job clearly needs them)
 - `intent-brief` and `work-loop`: the loop builds against `DESIGN.md` and uses this skill's screenshot check as evidence
 
 ## Examples

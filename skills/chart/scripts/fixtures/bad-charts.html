@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Bad charts</title>
+<style>body{font-family:sans-serif;background:#fff;margin:20px} svg{width:600px;height:300px;display:block}</style></head><body>
+<!-- No title, no table, no aria: fails takeaway and text-path. Bars start at 40: fails bar-baseline. Rotated, overlapping and clipped labels. -->
+<figure data-chart="bar" data-y-min="40">
+<svg viewBox="0 0 600 300">
+  <rect x="40" y="100" width="60" height="180" fill="#ff0000" style="filter:drop-shadow(2px 2px 4px #000)"/>
+  <rect x="120" y="60" width="60" height="220" fill="#ff8800"/>
+  <rect x="200" y="160" width="60" height="120" fill="#ffee00"/>
+  <rect x="280" y="40" width="60" height="240" fill="#00cc00"/>
+  <rect x="360" y="120" width="60" height="160" fill="#00cccc"/>
+  <rect x="440" y="80" width="60" height="200" fill="#0044ff"/>
+  <rect x="520" y="140" width="60" height="140" fill="#8800ff"/>
+  <rect x="580" y="200" width="20" height="80" fill="#ff00cc"/>
+  <text x="50" y="295" transform="rotate(-40 50 295)">January revenue</text>
+  <text x="130" y="295" transform="rotate(-40 130 295)">February revenue</text>
+  <text x="300" y="30">Peak</text><text x="305" y="32">Peak value</text>
+  <text x="560" y="20">Far right label that runs off</text>
+  <text x="20" y="150" style="font-size:8px">tiny</text>
+  <line x1="470" x2="470" y1="40" y2="120" stroke="#000" stroke-dasharray="4 3"/><text x="440" y="70">Target line</text>
+</svg></figure>
+<figure data-chart="pie" data-series="8" data-y2>
+<h2>Share</h2>
+<svg viewBox="0 0 300 300" role="img" aria-label="pie"><circle cx="150" cy="150" r="100" fill="#6d28d9"/></svg>
+</figure>
+</body></html>
