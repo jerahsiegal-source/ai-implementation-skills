@@ -166,7 +166,7 @@ const dots = (visible.match(/\w+ · \w+ · \w+/g) || []).length;
 check("dot-metadata", "warn", dots >= 3, { fail: `${dots} "A · B · C" metadata lines. A stock AI layout habit.` });
 
 // ---------- render checks ----------
-const renderIds = ["screenshots", "phone-overflow", "contrast", "tiny-text", "all-centered", "clipped-text", "console-errors", "img-alt"];
+const renderIds = ["screenshots", "phone-overflow", "contrast", "tiny-text", "all-centered", "clipped-text", "console-errors", "img-alt", "dark-mode"];
 let chromium = null;
 if (!flag("--static")) {
   for (const base of [process.cwd(), resolve(".")]) {
@@ -224,8 +224,9 @@ if (!chromium) {
           const bl = parseFloat(cs.borderLeftWidth), br = parseFloat(cs.borderRightWidth), c = parse(cs.borderLeftColor);
           if (bl >= 3 && br <= 1 && r.height > 30 && Math.max(c[0], c[1], c[2]) - Math.min(c[0], c[1], c[2]) > 40) barEls++;
         }
+        const pageBg = (() => { for (const e of [document.body, document.documentElement]) { const c = parse(getComputedStyle(e).backgroundColor); if ((c[3] ?? 1) > 0.5) return lum(c); } return 1; })();
         return {
-          capsEls, barEls,
+          capsEls, barEls, pageBg,
           overflow: document.documentElement.scrollWidth - window.innerWidth,
           low, tiny, centered, blocks, clipped,
           noAlt: [...document.images].filter((i) => !i.hasAttribute("alt")).length,
@@ -256,6 +257,8 @@ if (!chromium) {
   };
   upgrade("caps-labels", d.capsEls, 4, `${d.capsEls} all-caps labels on the page. Use sentence case; keep caps for at most one tiny label style.`);
   upgrade("accent-bar-cards", d.barEls, 2, `${d.barEls} blocks have a thick colored bar down the left side. A stock AI card style.`);
+  const dk = metrics["desktop-dark"];
+  check("dark-mode", "warn", d.pageBg > 0.6 && dk.pageBg > 0.6, { fail: "The page stays light when the reader's device is in dark mode. Add a prefers-color-scheme: dark theme, or allow this check if the brand is light only." });
   const noAlt = d.noAlt;
   check("img-alt", "warn", noAlt > 0, { fail: `${noAlt} images have no alt text.` });
 }
