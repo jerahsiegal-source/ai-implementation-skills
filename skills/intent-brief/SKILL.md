@@ -96,6 +96,7 @@ A gate is a check the loop runs to decide whether to keep going. Good gates make
 - **Check outcomes, not effort.** "Report shows a score for every segment" not "scoring code updated".
 - **Include one end-to-end check** that proves the pieces work together, not only separately.
 - **Include a no-regressions check** for changes to existing systems: what already worked still works.
+- **Visual work:** settle the look first (`/explore`, or an existing `DESIGN.md`) and name it in the brief as fixed. Gate design items on the design kit's screenshot quality check, plus owner review of the screenshots where taste decides.
 
 ## Handoff to a loop
 

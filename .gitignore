@@ -3,3 +3,7 @@
 .DS_Store
 node_modules/
 __pycache__/
+
+# Personal design taste lives on your own machine, never in this repo
+personal/
+.ai-skills/
