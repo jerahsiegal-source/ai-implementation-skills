@@ -6,7 +6,7 @@ param([switch]$Copy)
 $ErrorActionPreference = "Stop"
 
 $Repo = $PSScriptRoot
-$Targets = @("$HOME\.claude\skills", "$HOME\.codex\skills")
+$Targets = @("$HOME\.claude\skills", "$HOME\.agents\skills")
 $Personal = "$HOME\.ai-skills\personal"
 
 foreach ($target in $Targets) {
