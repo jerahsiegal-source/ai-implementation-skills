@@ -40,7 +40,9 @@ for (const [vpName, vp] of [["desktop", { width: 1280, height: 860 }], ["phone",
   await page.waitForTimeout(500);
   const charts = await page.evaluate(() => {
     const out = [];
-    const parse = (c) => { const m = (c || "").match(/[\d.]+/g); return m ? m.map(Number) : null; };
+    // Any CSS color (rgb, color(srgb ...), oklch, color-mix results) -> [r, g, b, a] in 0-255, via a canvas pixel.
+        const _cv = document.createElement("canvas"); _cv.width = _cv.height = 1; const _cx = _cv.getContext("2d", { willReadFrequently: true });
+        const parse = (c) => { if (!c || c === "none" || c === "transparent") return null; if (/^rgba?\(/.test(c)) { const m = c.match(/[\d.]+/g); return m.map(Number); } _cx.clearRect(0, 0, 1, 1); _cx.fillStyle = "#000"; _cx.fillStyle = c; _cx.fillRect(0, 0, 1, 1); const d = _cx.getImageData(0, 0, 1, 1).data; return [d[0], d[1], d[2], d[3] / 255]; };
     const lum = ([r, g, b]) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
     const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
     const bgOf = (el) => { for (let e = el; e; e = e.parentElement) { const c = parse(getComputedStyle(e).backgroundColor); if (c && (c.length < 4 || c[3] > 0.5)) return c; } return [255, 255, 255]; };
@@ -110,7 +112,7 @@ for (const [vpName, vp] of [["desktop", { width: 1280, height: 860 }], ["phone",
   await page.close();
 
   if (vpName === "desktop") {
-    if (!charts.length) add("warn", "no-charts", "-", "No SVG or canvas charts found on the page.");
+    if (!charts.length) add("skipped", "no-charts", "-", "No SVG or canvas charts found on the page.");
     for (const c of charts) {
       const n = c.name;
       add(c.hasTitle ? "pass" : "fail", "takeaway", n, c.hasTitle ? "" : "Chart has no title or takeaway text next to it. State what the reader should see.");

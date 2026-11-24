@@ -196,7 +196,9 @@ if (!chromium) {
       await page.screenshot({ path: file, fullPage: true });
       shots.push(file);
       metrics[`${name}-${scheme}`] = await page.evaluate(() => {
-        const parse = (c) => { const m = c.match(/[\d.]+/g); return m ? m.map(Number) : [0, 0, 0, 0]; };
+        // Any CSS color (rgb, color(srgb ...), oklch, color-mix results) -> [r, g, b, a] in 0-255, via a canvas pixel.
+        const _cv = document.createElement("canvas"); _cv.width = _cv.height = 1; const _cx = _cv.getContext("2d", { willReadFrequently: true });
+        const parse = (c) => { if (!c || c === "none" || c === "transparent") return [0, 0, 0, 0]; if (/^rgba?\(/.test(c)) { const m = c.match(/[\d.]+/g); return m.map(Number); } _cx.clearRect(0, 0, 1, 1); _cx.fillStyle = "#000"; _cx.fillStyle = c; _cx.fillRect(0, 0, 1, 1); const d = _cx.getImageData(0, 0, 1, 1).data; return [d[0], d[1], d[2], d[3] / 255]; };
         const lum = ([r, g, b]) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
         const bgOf = (el) => { for (let e = el; e; e = e.parentElement) { const st = getComputedStyle(e); if (st.backgroundImage !== "none") return null; const c = parse(st.backgroundColor); if (c.length < 4 || c[3] > 0.5) return c; } return [255, 255, 255]; };
         const els = [...document.body.querySelectorAll("*")].filter((el) => {
