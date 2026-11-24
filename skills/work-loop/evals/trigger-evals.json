@@ -1,0 +1,14 @@
+[
+  {"query": "run the work loop on INTENT.md and take it all the way to done", "should_trigger": true},
+  {"query": "here's the intent brief, loop on it until every done item passes", "should_trigger": true},
+  {"query": "take this feature to done, check your own work and fix until it passes", "should_trigger": true},
+  {"query": "hand this whole migration off and finish it in full with evidence", "should_trigger": true},
+  {"query": "keep iterating on the onboarding rebuild until the done list is green", "should_trigger": true},
+  {"query": "loop on this intent overnight and give me a branch plus handoff", "should_trigger": true},
+  {"query": "show me five style options for the onboarding screen", "should_trigger": false},
+  {"query": "write me an intent brief for the export feature", "should_trigger": false},
+  {"query": "fix this one failing test in utils", "should_trigger": false},
+  {"query": "what's a good loop structure for retrying API calls in python", "should_trigger": false},
+  {"query": "review this PR for bugs", "should_trigger": false},
+  {"query": "explore some design directions for the dashboard", "should_trigger": false}
+]

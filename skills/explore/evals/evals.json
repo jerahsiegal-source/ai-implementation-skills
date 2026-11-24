@@ -1,0 +1,32 @@
+{
+  "skill_name": "explore",
+  "notes": "Baseline: the same prompt with no skill. The main question is whether the directions are truly different and not generic.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/explore Give me design directions for a reading-progress page for a book club app.",
+      "expected_output": "6 to 8 written concepts as quick clickable pages, a shortlist request, then finished directions with a critique and a comparison page.",
+      "files": [],
+      "expectations": [
+        "Real references are gathered with screenshots or links, or the reply says web access was unavailable",
+        "Concepts include an expected, a bold and a borrowed-from-another-category option",
+        "Every pair of concepts differs on at least two of: layout, density, type, color strategy, interaction",
+        "Each concept page passes check-page.mjs with no FAIL",
+        "No two concepts share the same layout skeleton with only colors swapped",
+        "A fresh critique pass scored the shortlist before the comparison page was made"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/explore Directions for our pricing page. Keep our brand.",
+      "expected_output": "Directions that all keep DESIGN.md colors and fonts and vary layout, density and interaction.",
+      "files": ["fixtures/DESIGN.md"],
+      "expectations": [
+        "All directions use only DESIGN.md brand colors and fonts",
+        "Directions vary layout or interaction, not only color",
+        "check-page.mjs exits 0 on every direction page",
+        "The final question is one line: which direction, or which mix"
+      ]
+    }
+  ]
+}
