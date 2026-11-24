@@ -25,6 +25,8 @@ For example: `Reply time fell below target in week 9 | support leads | weekly re
 
 Then look for the pattern before you pick the takeaway: a weekly rhythm, a trend, a jump, an outlier, a gap between groups. The best takeaway is usually that pattern, and the chart should make it visible (for example, color the weekends and gray the weekdays).
 
+**If the user has to decide or act** ("what should I change", "what do I do next"), the page answers that first. Put the actions at the top, before any chart, each with its size worked out from the data (for example "+410 a week if the ticket reaches 12"). The charts come after, as the evidence. A chart page that makes the reader scroll past charts to find what to do has missed the point.
+
 Check the data too: its source, units, date range and any gaps. **Never invent or fill in numbers.** If data is missing, show the gap and say so. If there is no clear takeaway, ask one question or pick the most useful reading and say which.
 
 ## 3. Pick the form

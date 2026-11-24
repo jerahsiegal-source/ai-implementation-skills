@@ -16,7 +16,8 @@ A skill or a stack is worth keeping only if it clearly beats **none** in blind j
 |---|---|
 | cafe-report | none, chart, visualize, chart+visualize+design |
 | signup-build | none, design, design+flow-ux |
-| client-tracker | none, design, intent-brief+explore+design+work-loop |
+| status-update | none, visualize, visualize+work-loop |
+| client-tracker | none, design, design+work-loop, explore+design, explore+design+work-loop, intent-brief+explore+design+work-loop |
 
 ## How to run
 

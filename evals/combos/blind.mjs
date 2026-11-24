@@ -1,14 +1,16 @@
 // Copy each scenario's arms into shuffled folders A, B, C... so a judge can't tell which used skills.
-// node evals/combos/blind.mjs <runs-dir>  -> runs-dir/blind/<scenario>/{A,B,..}, key.json, judge-prompt.md
+// node evals/combos/blind.mjs <runs-dir> [scenario]  -> runs-dir/blind/<scenario>/{A,B,..}, key.json, judge-prompt.md
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(process.argv[2] || "runs");
 const { scenarios, rubric } = JSON.parse(readFileSync(resolve(here, "scenarios.json"), "utf8"));
-const key = {};
+const only = process.argv[3];
+const keyFile = join(root, "blind", "key.json");
+const key = existsSync(keyFile) ? JSON.parse(readFileSync(keyFile, "utf8")) : {};
 const skip = (src) => !/[\\/](loop|\.git|node_modules)([\\/]|$)/.test(src) && !/(INTENT|DESIGN|progress|handoff|answers|brief)\.md$/.test(src);
-for (const s of scenarios) {
+for (const s of scenarios.filter((x) => !only || x.id === only)) {
   const arms = s.arms.filter((a) => existsSync(join(root, s.id, a.id.replace(/\+/g, "_"))));
   const order = arms.map((a) => [Math.random(), a]).sort((x, y) => x[0] - y[0]).map((x) => x[1]);
   key[s.id] = {};
@@ -32,5 +34,6 @@ Then ${rubric.verdict}
 Be strict and specific: name what you saw for each score. Reply as JSON: {"scores":{"A":{"fit":n,"works":n,"clarity":n,"trust":n,"craft":n,"notes":"..."},...},"rank":["A",...],"pairs":[{"a":"A","b":"B","winner":"A","gap":"clear|slight|none","why":"..."}]}
 `);
 }
-writeFileSync(join(root, "blind", "key.json"), JSON.stringify(key, null, 1));
+mkdirSync(join(root, "blind"), { recursive: true });
+writeFileSync(keyFile, JSON.stringify(key, null, 1));
 console.log("blind folders and judge prompts written; key in blind/key.json (don't show it to the judge)");
