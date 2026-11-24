@@ -45,6 +45,8 @@ Formats are building blocks, not templates. Pick by the question the page must a
 - **Short copy.** Titles are names of 1 to 6 words. Captions are one line or none. No sentences explaining the page. Follow the floor's copy rules.
 - **Status** is always icon plus word (Done, In progress, Next, At risk), never color alone.
 - **Detail:** hide it behind a click (expand, tab, drawer), never drop it. Every claim is traceable to a source, but keep tags light: one per section or card, or a small footnote link, not a pill on every line.
+- **If it looks clickable, it works.** Decision options that look pickable are real radio choices with a "Copy my answers" button (see the Decision Desk block); otherwise style them as plain text.
+- **Titles are facts too.** Use names that appear in the source; don't invent a project or release name.
 - **Actions and decisions are different.** An action is something to do; a decision is a real choice that is open in the source. Never turn a blocker or a task into a choice the source doesn't contain.
 - **Facts vs guesses.** Every date, number and status comes from the source, with a pointer (file and line, link, or command). Anything you inferred is labelled as inferred ("about", "inferred from…"), never shown as fact.
 - **Fact check before you finish:** list every fact on the page (numbers, dates, status words and recommendations) with its source pointer and confirm each one against the source. Show the count ("16 facts checked, 0 problems").

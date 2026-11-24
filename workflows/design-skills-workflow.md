@@ -79,8 +79,8 @@ We ran the same tasks several ways and had a judge score each result blind, out 
 | Sign-up (build) | plain Claude | 16 | 55k | 62 s |
 | | `design` | **22** | 101k | 304 s |
 | | `design` + `flow-ux` | **22** | 124k | 446 s |
-| Status from notes | plain Claude | 20 | 55k | 42 s |
-| | `visualize` | 20 | 83k | 103 s |
+| Status from notes (3 judges) | plain Claude | 18 to 20 | 55k | 42 s |
+| | `visualize` | 19 to 20 | 83k | 103 s |
 | | `visualize` + `work-loop` | **23** | 96k | 166 s |
 | Cafe report (numbers) | plain Claude | 21 | 58k | 69 s |
 | | `chart` | 22 | 84k | 132 s |
@@ -91,7 +91,7 @@ We ran the same tasks several ways and had a judge score each result blind, out 
 - **The design skills beat plain Claude on builds** (+6 on the sign-up), at roughly twice the tokens.
 - **Explore hurt when the spec was already clear** (−4 on the tracker). Use it only when the look is open.
 - **Flow UX added cost but no points on a build that was already solid.** Use it when a flow feels wrong, or as Work Loop's check on user tasks, not on every build.
-- **For a quick page, plain Claude is close.** `visualize` alone tied it on the status page; its edge shows with numbers, many sources, or when you add Work Loop.
+- **For a quick page, plain Claude is close.** After fixes, `visualize` alone edged ahead on the status page (20 vs 18); Work Loop scored 23 with all three judges.
 - Every weakness these tests found has since been fixed in the skills, and most runs above happened before those fixes.
 
 One task each, one or two judges: treat these as a guide, not a benchmark. Re-run them when a new model comes out.
