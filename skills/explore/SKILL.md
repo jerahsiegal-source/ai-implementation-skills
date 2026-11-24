@@ -35,7 +35,7 @@ Write **6 to 8 concepts**, each in 3 lines: a name, the big idea, and which refe
 - Include an **expected** concept (the proven pattern done extremely well), a **bold** one, and a **borrowed** one from outside the category.
 - Reuse an existing style only if it truly fits. Recycled looks are not new concepts.
 
-Put the concepts on one page next to the reference gallery, each with an "Open full size" link, and ask the user to shortlist **2 to 4**. If they say "you pick", choose the strongest four and say why in one line each. Skip this step only when the user says "just build them".
+Run the [page checker](../design-kit/scripts/README.md) on every concept mockup and fix its FAILs before showing it (floor problems like overflow and contrast are never part of a concept; WARNs may wait for step 4). Put the concepts on one page next to the reference gallery, each with an "Open full size" link, and ask the user to shortlist **2 to 4**. If they say "you pick", choose the strongest four and say why in one line each. Skip this step only when the user says "just build them".
 
 ## 4. Build the shortlist properly
 
