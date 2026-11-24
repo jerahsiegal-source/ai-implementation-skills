@@ -16,7 +16,7 @@ Works the same in Claude Code and Codex. Best started under the tool's native `/
 - **Check like the owner would.** User-facing items are proven by driving the real app or product: start the flow, finish it, open the result, inspect its content. Unit tests alone never pass a user-facing item.
 - **No fake tests.** New tests must fail without the change and pass with it. Never weaken, skip or delete an existing test or check to get green. Never edit item or check text in `done.json`.
 - **Smallest change that meets the intent.** Build on existing patterns; no parallel paths, no drive-by refactors. Out-of-scope findings go to the found-not-fixed list.
-- **Visual items.** The look is decided before the loop (`DESIGN.md` or `/explore`); never choose between styles inside the loop. Build with the `design` skill's rules and prove each visual item with the design kit's quality check (desktop and phone screenshots shown in the conversation).
+- **Visual items.** The look is decided before the loop (`DESIGN.md` or `/explore`); never choose between styles inside the loop. Build with the `design` skill's rules (or `visualize` for report pages). Every iteration that changes anything visual runs the design kit's [quality check](../design-kit/quality-check.md) as its check: the kit's automated scripts if present, desktop and phone screenshots, the list, and a critique. A visual item passes only when all of them pass with output shown in the conversation; otherwise fix and re-run (check, critique, fix), counting each round as an attempt. The regression check includes re-running these checks on pages already passed, so a later item can't break an earlier look.
 - **Branch, small commits.** Work on a branch, never the default branch. One commit per passed item, so any layer can be rolled back alone. Pushing the branch is fine unless the brief says otherwise. Never deploy to production. Never delete data, branches or files others depend on.
 
 ## 1. Setup (once)
@@ -56,7 +56,7 @@ When every item passes, go to review.
 ## 3. Review (bounded)
 
 1. Run the full test suite and compare it with the baseline.
-2. Start a **fresh reviewer**: a new subagent in the same tool, given [the reviewer brief](references/reviewer-brief.md), `INTENT.md`, `done.json`, `progress.md` and the diff against base. The worker never reviews its own work. If the tool cannot start a subagent, say so and leave review to the handoff.
+2. Start a **fresh reviewer**: a new subagent in the same tool, given [the reviewer brief](references/reviewer-brief.md), `INTENT.md`, `done.json`, `progress.md` and the diff against base. For visual work, also give it the final screenshots and ask it to score "would a strong studio ship this" and to list anything that reads as AI-made, in visuals or wording. The worker never reviews its own work. If the tool cannot start a subagent, say so and leave review to the handoff.
 3. For each finding, record in `progress.md`: **fixed** (with evidence), **disagree** (with evidence), or **declined** (a nit, becomes a follow-up). Re-run the affected checks after any fix.
 4. Run another round only while a blocker or should-fix is open. At most **3 rounds**; 5 only for security, auth, permissions or data loss. Stop early when only nits remain.
 5. A finding still disputed after two exchanges goes to the owner in the handoff, with both sides in 2–3 lines. Do not agree just to end the loop.
