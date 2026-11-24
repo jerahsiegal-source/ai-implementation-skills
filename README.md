@@ -23,10 +23,11 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 | [design](skills/design) | Applies one consistent design taste to any UI, page, mockup or visual HTML, while following each project's brand | _LinkedIn post coming_ |
 | [explore](skills/explore) | Researches standout examples, shortlists concepts with you, then builds and critiques the best directions side by side | _LinkedIn post coming_ |
 | [visualize](skills/visualize) | Turns a big answer (status, research, a system, decisions) into one interactive page: verdict first, detail on click, sources on every claim | _LinkedIn post coming_ |
+| [chart](skills/chart) | Makes honest, readable charts and dashboards: picks the right chart for the point, uses accessible colors, and checks every chart before handing it back | _LinkedIn post coming_ |
 
 **The two work as a pair:** Intent Brief defines *what* and *why*, and Work Loop gets it to done. They run in Claude Code and Codex.
 
-**The design skills share one kit.** `design`, `explore` and `visualize` read from [design-kit](skills/design-kit) (readability floor, copy and anti-slop rules, styles, brand intake, screenshot check), so the rules are written once. Every one of them, and Work Loop, runs the kit's check, critique and fix round before calling visual work done. `flow` (UX review) and `chart` (data viz) are coming next.
+**The design skills share one kit.** `design`, `explore` and `visualize` read from [design-kit](skills/design-kit) (readability floor, copy and anti-slop rules, styles, brand intake, screenshot check), so the rules are written once. Every one of them, and Work Loop, runs the kit's check, critique and fix round before calling visual work done. `chart` (data viz) adds its own chart and color checks; `flow` (UX review) is coming next.
 
 How they fit together on a big design job:
 

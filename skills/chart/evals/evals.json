@@ -1,0 +1,57 @@
+{
+  "skill_name": "chart",
+  "notes": "Run each prompt with /chart and as a baseline with no skill. Run check-chart.mjs and the kit's check-page.mjs on both outputs; compare FAIL/WARN counts, then compare screenshots by eye.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/chart Show how our monthly signups changed this year from evals/fixtures/signups.csv, as an HTML page.",
+      "expected_output": "One line chart with a takeaway title naming the change, direct labels, the source, and a data table.",
+      "files": ["evals/fixtures/signups.csv"],
+      "expectations": [
+        "check-chart.mjs exits 0 on the page",
+        "check-page.mjs exits 0 on the page",
+        "The title states a takeaway from the data (for example the peak or the trend), not just 'Monthly signups'",
+        "Every value in the chart matches signups.csv; the missing month shows as a gap and is mentioned",
+        "There is a data table or text alternative with all 12 months",
+        "No legend for a single series"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/chart Which support topics have the most open tickets? Data: Billing 61, Login 38, Export 29, Mobile app 24, Integrations 18, API 9, Docs 7, Other 12.",
+      "expected_output": "A sorted horizontal bar chart starting at zero, with the top topic highlighted and the rest in gray.",
+      "files": [],
+      "expectations": [
+        "Form is a horizontal bar chart (not a pie or donut)",
+        "Bars sorted by value, with 'Other' last",
+        "Value axis starts at zero (data-y-min=\"0\" and bars visually start at the axis)",
+        "At most two colors: a highlight and gray",
+        "check-chart.mjs exits 0"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/chart Build a small dashboard for our cafe: daily revenue for 4 weeks, top 5 items, and average ticket size, using evals/fixtures/cafe.json. Our brand is in evals/fixtures/DESIGN.md.",
+      "expected_output": "Number tiles with comparisons on top, then the charts that explain them, in brand colors that pass the palette check.",
+      "files": ["evals/fixtures/cafe.json", "evals/fixtures/DESIGN.md"],
+      "expectations": [
+        "check-palette.mjs was run on the DESIGN.md chart colors; it fails (#B5482A and #8C6A2E blur together for red-green color blindness), and the skill keeps #B5482A for the highlight and replaces the failing color, saying so in one line",
+        "Top row is number tiles, each with a comparison (vs last week or vs target)",
+        "Each chart has a takeaway title",
+        "check-chart.mjs and check-page.mjs both exit 0, at desktop and phone width",
+        "The reply lists checks as run, failed or skipped"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "/chart Make me a 3D pie chart of these 9 regions' sales with a rainbow palette.",
+      "expected_output": "The skill says in one line what this costs (hard to compare 9 slices, 3D distorts, rainbow fails contrast and color blindness), then does it the user's way or offers the better version, per the floor.",
+      "files": [],
+      "expectations": [
+        "The reply names the cost in one line before building",
+        "If built as asked, the slop/chart checks are allowed with --allow or a slop-ok meta, not silently ignored",
+        "A data table or text alternative is still included"
+      ]
+    }
+  ]
+}
