@@ -23,7 +23,9 @@ Read in rule order. Higher wins when they disagree, except that nothing override
 
 For example: `Reply time fell below target in week 9 | support leads | weekly report page`. Where it shows means page, dashboard, slide, doc or small inline. It sets the size, density and how much text the chart can carry.
 
-Then check the data: its source, units, date range and any gaps. **Never invent or fill in numbers.** If data is missing, show the gap and say so. If there is no clear takeaway, ask one question or pick the most useful reading and say which.
+Then look for the pattern before you pick the takeaway: a weekly rhythm, a trend, a jump, an outlier, a gap between groups. The best takeaway is usually that pattern, and the chart should make it visible (for example, color the weekends and gray the weekdays).
+
+Check the data too: its source, units, date range and any gaps. **Never invent or fill in numbers.** If data is missing, show the gap and say so. If there is no clear takeaway, ask one question or pick the most useful reading and say which.
 
 ## 3. Pick the form
 
