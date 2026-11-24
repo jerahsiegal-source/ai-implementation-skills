@@ -23,6 +23,8 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 | [design](skills/design) | Applies one consistent design taste to any UI, page, mockup or visual HTML, while following each project's brand | _LinkedIn post coming_ |
 | [explore](skills/explore) | Researches standout examples, shortlists concepts with you, then builds and critiques the best directions side by side | _LinkedIn post coming_ |
 | [visualize](skills/visualize) | Turns a big answer (status, research, a system, decisions) into one interactive page: verdict first, detail on click, sources on every claim | _LinkedIn post coming_ |
+| [flow-ux](skills/flow-ux) | Walks through a user flow like a real person, ranks what blocks them with a screenshot for each, and fixes the worst on request | _LinkedIn post coming_ |
+| [chart](skills/chart) | Makes honest, readable charts and dashboards: picks the right chart for the point, uses accessible colors, and checks every chart before handing it back | _LinkedIn post coming_ |
 | [rate](skills/rate) | Two-second rating after a skill runs: was it right the first time? Saved privately on your computer | _LinkedIn post coming_ |
 | [skill-review](skills/skill-review) | Monthly check: right-first-try rate from real use plus blind lab tests, then keep, fix or cut each skill | _LinkedIn post coming_ |
 
@@ -30,7 +32,9 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 
 **Rate and Skill Review keep the rest honest.** Real use tells you how often a skill gets it right the first time, the lab tests tell you whether it still beats plain Claude, and a skill that stops earning its place gets fixed or cut. See [evals](evals/README.md).
 
-**The design skills share one kit.** `design`, `explore` and `visualize` read from [design-kit](skills/design-kit) (readability floor, copy and anti-slop rules, styles, brand intake, screenshot check), so the rules are written once. Every one of them, and Work Loop, runs the kit's check, critique and fix round before calling visual work done. `flow` (UX review) and `chart` (data viz) are coming next.
+**The design skills share one kit.** `design`, `explore`, `visualize` and `flow-ux` read from [design-kit](skills/design-kit) (readability floor, copy and anti-slop rules, styles, brand intake, screenshot check), so the rules are written once. Every one of them, and Work Loop, runs the kit's check, critique and fix round before calling visual work done. `chart` (data viz) uses the kit too and adds its own chart and color checks.
+
+**Not sure which to use, or whether Work Loop is worth it?** See [Using the skills together](workflows/design-skills-workflow.md), with test results.
 
 How they fit together on a big design job:
 

@@ -1,0 +1,54 @@
+{
+  "skill_name": "flow-ux",
+  "notes": "Run each prompt twice: with /flow-ux and as a baseline with no skill. Grade the expectations. Serve fixtures with any static server or open them as files. The fixture has planted problems; a good review finds them by walking the flow, not by reading the source.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/flow-ux Can a cafe owner sign up for Tidewell? The page is skills/flow-ux/evals/fixtures/signup.html",
+      "expected_output": "A walked-through review with ranked findings and a screenshot for each, starting with the blockers.",
+      "files": ["evals/fixtures/signup.html"],
+      "expectations": [
+        "States who, task and done in three lines before the findings",
+        "Saved a screenshot for each step it walked, plus phone width",
+        "Severity 4: a failed password check wipes every field and gives no message",
+        "Severity 3 or 4: no feedback for 2.5 seconds after Next, so people click again or leave",
+        "Severity 3: labels are placeholders only, so they vanish while typing",
+        "Finds that step 2 asks for email again (redundant entry) and that the end screen gives no result or next step",
+        "Finds the tiny close button (below 24px) that reloads and loses the input",
+        "Finds that a mismatched confirm password is accepted",
+        "Severity 4: the business details on step 2 are never saved or sent, yet the flow ends on Done",
+        "Every finding names its step and screenshot path; no finding is based on the source code alone",
+        "Reports the check-page.mjs summary line for the page",
+        "Changes no files in review mode; the reply is 5 lines or fewer and leads with the verdict and severity counts"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/flow-ux fix the sign-up flow in skills/flow-ux/evals/fixtures/signup.html (work on a copy)",
+      "expected_output": "A fixed copy where no severity 4 or 3 problem remains, proven by walking it again.",
+      "files": ["evals/fixtures/signup.html"],
+      "expectations": [
+        "Works on a copy, not the fixture",
+        "Fixes in severity order and shows before and after screenshots for each fixed finding",
+        "Input survives a failed submit and the error says what to change, next to the field",
+        "Visible labels above every field; the primary buttons say what they do",
+        "The duplicate email field is gone and the end screen says what happened and what to do next",
+        "Walks the whole flow again (happy, mistake, keyboard, phone) after fixing",
+        "check-page.mjs exits 0 on the fixed copy"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/design Build a two-step checkout form (HTML) for a plant shop: delivery details, then payment summary.",
+      "expected_output": "Design pulls in the flow-ux rules and the form is right first time.",
+      "files": [],
+      "expectations": [
+        "The reply says it applied flow-ux's rules",
+        "Shows 'Step 1 of 2' with step names",
+        "Labels above fields, autocomplete and input types set on name, address, email and phone",
+        "The primary button names its action (for example 'Continue to payment')",
+        "check-page.mjs exits 0"
+      ]
+    }
+  ]
+}

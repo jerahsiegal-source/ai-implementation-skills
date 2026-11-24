@@ -14,7 +14,9 @@ jobs:
         run: npm i -g playwright@1.48.2 && npx playwright install --with-deps chromium
       - name: Page checker self-test
         run: NODE_PATH=$(npm root -g) node skills/design-kit/scripts/test-check-page.mjs
+      - name: Chart checker self-test
+        run: NODE_PATH=$(npm root -g) node skills/chart/scripts/test-checks.mjs
       - name: Skill review self-test
         run: node skills/skill-review/scripts/test.mjs
       - name: Eval files are valid JSON
-        run: for f in skills/*/evals/*.json; do node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || exit 1; done
+        run: for f in skills/*/evals/*.json evals/combos/scenarios.json; do node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || exit 1; done

@@ -19,7 +19,7 @@ The floor below sits under all five: accessibility, working features and honest 
 - Body text 16px or larger (17 to 18px for long reading). Line height about 1.5.
 - Lines of running text at most about 70 characters.
 - Left-aligned text. No justified paragraphs. No long runs of all caps or italics.
-- Clear sans-serif for body text unless the brand says otherwise. Use real font fallbacks.
+- Clear sans-serif for body text unless the brand says otherwise. Use real font fallbacks. Avoid fonts with a slashed or dotted zero in reading text (it reads as 8 or Ø); keep those for code and IDs.
 - One idea per short paragraph. Use headings, lists and visuals before long prose.
 - Contrast at least WCAG AA (4.5:1 for body text, 3:1 for large text and UI parts).
 
@@ -47,6 +47,8 @@ The floor below sits under all five: accessibility, working features and honest 
 
 - Short, plain, specific. Name things the way users know them, not how the code names them.
 - Buttons say what happens ("Run test", not "Submit").
+- **No personal data in URLs.** Names, emails and anything the user typed never go in a link or query string; neither do passwords or tokens.
+- **No false promises.** Never say something happened or will happen ("Check your inbox", "Ready in 2 minutes", "3 of 3 done") unless the product actually does it. If it is a mockup, label it as one.
 - No filler intros, no marketing fluff on internal tools, no lorem ipsum.
 - **Titles are names, not descriptions.** A page or section title is 1 to 6 words ("Visualize, round three", "Decisions"). The verdict or one-line summary goes below it, set smaller.
 - **One line or nothing.** Subtitles, captions and card blurbs are one short line. If a caption repeats the title or the obvious, delete it.

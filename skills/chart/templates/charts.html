@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Support Desk Charts</title>
+<style>
+/* Starter for /chart. Copy the tokens, the chart helpers in the script, and one figure pattern.
+   Example data below is labeled as example data; replace it with the real numbers and their source. */
+:root{
+  --bg:#FFFFFF; --ink:#1B2630; --muted:#55636E; --grid:#E3E8EC; --axis:#9AA6AF;
+  --s1:#245080; --s2:#7E4D28; --s3:#0F835B; --s4:#840B47; --s5:#5F21B7; --s6:#A97D1B;
+  --quiet:#B9C2C9;  /* everything that is context, not the point */
+  --body:"Segoe UI",system-ui,-apple-system,sans-serif;
+  --num:ui-monospace,"Cascadia Code",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12181D; --ink:#E6ECF0; --muted:#A3B0B9; --grid:#26313A; --axis:#5E6D78;
+  --s1:#487ABB; --s2:#BC7F4F; --s3:#70EEB6; --s4:#E073B6; --s5:#A070DA; --s6:#DAC66E;
+  --quiet:#4A5661; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12181D; --ink:#E6ECF0; --muted:#A3B0B9; --grid:#26313A; --axis:#5E6D78;
+  --s1:#487ABB; --s2:#BC7F4F; --s3:#70EEB6; --s4:#E073B6; --s5:#A070DA; --s6:#DAC66E;
+  --quiet:#4A5661; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+main{max-width:960px;margin:0 auto;padding:28px 16px 56px;display:flex;flex-direction:column;gap:36px}
+h1{font-size:28px;margin:0}
+h2{font-size:19px;margin:0;line-height:1.3}
+p{margin:0;max-width:64ch}
+.note{color:var(--muted);font-size:14px}
+figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+figure svg{width:100%;height:auto;display:block;overflow:visible}
+svg text{fill:var(--muted);font-size:13px;font-family:var(--body)}
+svg .num{font-family:var(--num);font-variant-numeric:tabular-nums}
+svg .lbl{fill:var(--ink);font-weight:600}
+.grid line{stroke:var(--grid)}
+.axis line{stroke:var(--axis)}
+.source{color:var(--muted);font-size:13px}
+details summary{cursor:pointer;color:var(--muted);font-size:14px;width:max-content}
+details summary:focus-visible,.pt:focus-visible{outline:3px solid var(--s1);outline-offset:2px}
+.table-wrap{overflow-x:auto;max-width:100%}
+table{border-collapse:collapse;font-size:14px;margin-top:8px}
+th,td{padding:4px 10px;text-align:right;border-bottom:1px solid var(--grid)}
+th:first-child,td:first-child{text-align:left}
+td{font-family:var(--num);font-variant-numeric:tabular-nums}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.tile{display:flex;flex-direction:column;gap:2px;min-width:0}
+.tile b{font-size:34px;font-variant-numeric:tabular-nums;line-height:1.1;letter-spacing:-.01em}
+.tile .delta{font-size:14px;color:var(--muted)}
+.multiples{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;padding:4px 8px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header style="display:flex;flex-direction:column;gap:6px">
+  <h1>Support desk, last 12 weeks</h1>
+  <p class="note">Example data for the /chart starter. Replace with real numbers and a real source.</p>
+</header>
+
+<!-- 1. Number tiles: the number, its label, and a comparison. -->
+<section class="tiles" aria-label="Key numbers">
+  <div class="tile"><span class="note">Median first reply</span><b>3.1 h</b><span class="delta">down from 5.4 h in September</span></div>
+  <div class="tile"><span class="note">Open tickets</span><b>182</b><span class="delta">up 12 this week</span></div>
+  <div class="tile"><span class="note">Solved on first reply</span><b>64%</b><span class="delta">target 60%</span></div>
+</section>
+
+<!-- 2. Change over time: line chart, direct labels, no legend. -->
+<figure data-chart="line" data-series="2" id="f-line">
+  <h2>Reply time fell below target in week 9</h2>
+  <svg id="c-line" role="img" aria-label="Line chart. Median first reply time fell from 5.4 hours in week 1 to 3.1 hours in week 12, crossing the 4 hour target in week 9."></svg>
+  <span class="source">Source: example data</span>
+  <details><summary>Show data</summary><div id="t-line"></div></details>
+</figure>
+
+<!-- 3. Ranking: horizontal bars, sorted, one bar highlighted, the rest quiet. Bars start at zero. -->
+<figure data-chart="bar" data-y-min="0" id="f-bar">
+  <h2>Billing questions are the biggest share of open tickets</h2>
+  <svg id="c-bar" role="img" aria-label="Bar chart of open tickets by topic. Billing 61, Login 38, Export 29, Mobile app 24, Integrations 18, Other 12."></svg>
+  <span class="source">Source: example data</span>
+  <details><summary>Show data</summary><div id="t-bar"></div></details>
+</figure>
+
+<!-- 4. Many things at once: small multiples with a shared scale. -->
+<section style="display:flex;flex-direction:column;gap:12px">
+  <h2>Tickets per week by channel</h2>
+  <div class="multiples" id="multiples"></div>
+</section>
+</main>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+// ---------- data (example) ----------
+const weeks = Array.from({length:12},(_,i)=>i+1);
+const reply = [5.4,5.1,5.3,4.9,4.6,4.4,4.2,4.1,3.8,3.5,3.3,3.1];
+const target = 4;
+const topics = [["Billing",61],["Login",38],["Export",29],["Mobile app",24],["Integrations",18],["Other",12]];
+const channels = {Email:[120,118,125,130,128,122,119,115,117,110,108,104], Chat:[60,64,70,72,75,80,84,88,90,95,99,102], Phone:[30,29,31,28,27,26,25,24,24,23,22,21]};
+
+// ---------- helpers ----------
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs = {}, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+function scale(d0, d1, r0, r1) { return (v) => r0 + ((v - d0) / (d1 - d0)) * (r1 - r0); }
+function niceTicks(min, max, count = 5) {
+  const step0 = (max - min) / count, mag = 10 ** Math.floor(Math.log10(step0));
+  const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => s >= step0);
+  const ticks = []; for (let v = Math.ceil(min / step) * step; v <= max + 1e-9; v += step) ticks.push(+v.toFixed(6));
+  return ticks;
+}
+function table(id, head, rows) {
+  document.getElementById(id).innerHTML = `<div class="table-wrap"><table><thead><tr>${head.map((h) => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+const tip = document.getElementById("tip");
+function hover(node, text) {
+  node.setAttribute("tabindex", "0"); node.classList.add("pt"); node.setAttribute("aria-label", text);
+  const show = (x, y) => { tip.textContent = text; tip.hidden = false; tip.style.left = x + 12 + "px"; tip.style.top = y - 28 + "px"; };
+  node.addEventListener("mousemove", (e) => show(e.clientX, e.clientY));
+  node.addEventListener("focus", () => { const r = node.getBoundingClientRect(); show(r.right, r.top); });
+  for (const ev of ["mouseleave", "blur"]) node.addEventListener(ev, () => (tip.hidden = true));
+}
+const width = (svg) => Math.max(300, svg.parentElement.clientWidth);
+
+// ---------- line chart ----------
+function drawLine() {
+  const svg = document.getElementById("c-line"); svg.innerHTML = "";
+  const W = width(svg), H = W < 500 ? 240 : 300, m = { t: 12, r: W < 500 ? 70 : 110, b: 28, l: 36 };
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  const x = scale(1, 12, m.l, W - m.r), y = scale(0, 6, H - m.b, m.t);
+  const g = el("g", { class: "grid" }, svg);
+  for (const t of niceTicks(0, 6, 3)) { el("line", { x1: m.l, x2: W - m.r, y1: y(t), y2: y(t) }, g); el("text", { x: m.l - 8, y: y(t) + 4, "text-anchor": "end", class: "num" }, svg).textContent = t + "h"; }
+  for (const w of [1, 4, 8, 12]) el("text", { x: x(w), y: H - 8, "text-anchor": "middle", class: "num" }, svg).textContent = "W" + w;
+  el("line", { x1: m.l, x2: W - m.r, y1: y(target), y2: y(target), stroke: css("--s2"), "stroke-dasharray": "5 4", "stroke-width": 1.5 }, svg);
+  el("text", { x: W - m.r + 8, y: y(target) + 4 }, svg).textContent = "Target 4h";
+  el("polyline", { points: reply.map((v, i) => `${x(i + 1)},${y(v)}`).join(" "), fill: "none", stroke: css("--s1"), "stroke-width": 2.5, "stroke-linejoin": "round" }, svg);
+  reply.forEach((v, i) => hover(el("circle", { cx: x(i + 1), cy: y(v), r: i === 11 ? 5 : 3.5, fill: css("--s1") }, svg), `Week ${i + 1}: ${v} h`));
+  const last = el("text", { x: W - m.r + 8, y: y(reply[11]) + 4, class: "lbl num" }, svg); last.textContent = "3.1h";
+  table("t-line", ["Week", "Median first reply (h)"], reply.map((v, i) => [i + 1, v]));
+}
+
+// ---------- bar chart ----------
+function drawBar() {
+  const svg = document.getElementById("c-bar"); svg.innerHTML = "";
+  const W = width(svg), row = 34, m = { t: 4, r: 44, b: 4, l: W < 500 ? 92 : 110 }, H = m.t + m.b + row * topics.length;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  const max = Math.max(...topics.map((t) => t[1])), x = scale(0, max, m.l, W - m.r);
+  topics.forEach(([name, v], i) => {
+    const yy = m.t + i * row;
+    el("text", { x: m.l - 10, y: yy + row / 2 + 4, "text-anchor": "end", class: i === 0 ? "lbl" : "" }, svg).textContent = name;
+    hover(el("rect", { x: m.l, y: yy + 6, width: x(v) - m.l, height: row - 12, fill: i === 0 ? css("--s1") : css("--quiet") }, svg), `${name}: ${v} open tickets`);
+    el("text", { x: x(v) + 6, y: yy + row / 2 + 4, class: "num" + (i === 0 ? " lbl" : "") }, svg).textContent = v;
+  });
+  el("line", { x1: m.l, x2: m.l, y1: 0, y2: H, stroke: css("--axis") }, svg);
+  table("t-bar", ["Topic", "Open tickets"], topics);
+}
+
+// ---------- small multiples ----------
+function drawMultiples() {
+  const wrap = document.getElementById("multiples"); wrap.innerHTML = "";
+  const max = Math.max(...Object.values(channels).flat());
+  const figs = Object.entries(channels).map(([name, vals]) => {
+    const fig = document.createElement("figure"); fig.setAttribute("data-chart", "line"); fig.setAttribute("data-series", "1");
+    fig.innerHTML = `<h3 style="margin:0;font-size:15px">${name}: ${vals[vals.length - 1]}/week</h3>`;
+    wrap.appendChild(fig); return [fig, name, vals];
+  });
+  // Measure only after every panel is in the grid, so each gets its real width.
+  for (const [fig, name, vals] of figs) {
+    const first = vals[0], last = vals[vals.length - 1];
+    const svg = el("svg", { role: "img", "aria-label": `${name} tickets per week went from ${first} to ${last} over 12 weeks.` }, fig);
+    const W = Math.max(200, fig.clientWidth), H = 90, m = { t: 8, r: 10, b: 8, l: 4 };
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    const x = scale(0, 11, m.l, W - m.r), y = scale(0, max, H - m.b, m.t);
+    el("line", { x1: m.l, x2: W - m.r, y1: y(0), y2: y(0), stroke: css("--grid") }, svg);
+    el("path", { d: `M${x(0)},${y(0)} ` + vals.map((v, i) => `L${x(i)},${y(v)}`).join(" ") + ` L${x(11)},${y(0)} Z`, fill: css("--s1"), "fill-opacity": 0.12, stroke: "none" }, svg);
+    el("polyline", { points: vals.map((v, i) => `${x(i)},${y(v)}`).join(" "), fill: "none", stroke: css("--s1"), "stroke-width": 2 }, svg);
+    el("circle", { cx: x(11), cy: y(last), r: 3.5, fill: css("--s1") }, svg);
+  }
+}
+
+function drawAll() { drawLine(); drawBar(); drawMultiples(); }
+drawAll();
+let t; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(drawAll, 120); }).observe(document.querySelector("main"));
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
+</script>
+</body>
+</html>

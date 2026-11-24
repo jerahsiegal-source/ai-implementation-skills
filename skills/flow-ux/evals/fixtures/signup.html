@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tidewell sign-up</title>
+<!-- Eval fixture: a 3-step sign-up with planted usability problems. Do not fix in place. -->
+<style>
+:root{--ink:#1d2430;--muted:#5d6675;--line:#d8dde4;--accent:#1f5fa8;--bad:#c23b3b;--bg:#f7f8fa}
+body{margin:0;font:16px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:480px;margin:40px auto;padding:0 16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:12px}
+h1{font-size:24px;margin:0}
+input,select{font:inherit;padding:10px;border:1px solid var(--line);border-radius:6px}
+input.err{border-color:var(--bad)}
+.row{display:flex;gap:8px}.row>*{flex:1}
+button{font:inherit;padding:10px 16px;border:0;border-radius:6px;background:var(--accent);color:#fff;cursor:pointer}
+.tiny{font-size:12px;color:#9aa1ab}
+.x{position:absolute;top:8px;right:8px;width:14px;height:14px;padding:0;font-size:10px;background:#ccc}
+.done{text-align:center}
+</style></head><body><main id="app"></main>
+<script>
+const app=document.getElementById("app");let data={};
+function s1(){app.innerHTML=`<div class="card" style="position:relative"><button class="x" onclick="location.reload()">x</button><h1>Create account</h1>
+<input id="em" placeholder="Email"><input id="pw" type="password" placeholder="Password">
+<input id="pw2" type="password" placeholder="Confirm password"><p class="tiny">By continuing you agree to the terms.</p><button id="go">Submit</button></div>`;
+document.getElementById("go").onclick=()=>{const em=document.getElementById("em"),pw=document.getElementById("pw");
+ if(!em.value.includes("@")||pw.value.length<10){s1();document.querySelectorAll("input").forEach(i=>i.classList.add("err"));return}
+ data.em=em.value;s2()}}
+function s2(){app.innerHTML=`<div class="card"><h1>Your business</h1>
+<input id="biz" placeholder="Business name"><div class="row"><input placeholder="Phone"><select><option>Choose</option><option>Bakery</option><option>Cafe</option><option>Restaurant</option><option>Food truck</option><option>Catering</option><option>Bar</option><option>Grocery</option><option>Other</option></select></div>
+<input placeholder="Email for invoices"><button id="go">Next</button></div>`;
+document.getElementById("go").onclick=()=>{setTimeout(s3,2500)}}
+function s3(){app.innerHTML=`<div class="card done"><h1>Done</h1></div>`}
+s1();
+</script></body></html>

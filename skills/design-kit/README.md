@@ -1,6 +1,6 @@
 # Design Kit
 
-Shared building blocks for the design skills. You never call this folder directly. `design`, `explore`, `flow`, `chart` and `visualize` read from it, so each rule is written once.
+Shared building blocks for the design skills. You never call this folder directly. `design`, `explore`, `flow-ux`, `chart` and `visualize` read from it, so each rule is written once.
 
 It has no `SKILL.md` on purpose, so Claude Code and Codex do not list it as a command.
 

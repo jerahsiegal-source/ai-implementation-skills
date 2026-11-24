@@ -16,6 +16,10 @@ Each skill can have an `evals/` folder:
 
 Run the tests again when a new model comes out, in both Claude Code and Codex. A skill that no longer beats the baseline needs updating, or may no longer be needed.
 
+## Testing skills together
+
+`combos/` tests the same real tasks with no skills, one skill and several skills stacked, scored by the checkers and by a blind judge. See [combos/README.md](combos/README.md).
+
 ## Checks on every push
 
 `.github/workflows/checks.yml` runs the page checker's self-test on every push and pull request.
