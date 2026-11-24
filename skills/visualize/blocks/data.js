@@ -27,7 +27,7 @@ window.P = {
     { id: "visualize", name: "/visualize", s: "doing", pct: 40, note: "Six formats built", detail: "12 references studied. Six formats built, critiqued and revised. Studio picked as the look. Now packaging it as a skill.", src: "INTENT.md, research page" },
     { id: "loop", name: "Intent + Work Loop fit", s: "doing", pct: 70, note: "Wired, not yet used for real", detail: "Both skills now say how design work fits: pick the look first, then the loop builds and proves each visual item with screenshots. Not yet exercised on a real build.", src: "PR #1" },
     { id: "chart", name: "/chart", s: "next", pct: 0, note: "After Visualize", detail: "Chart rules: pick the chart by relationship (FT Visual Vocabulary), honest scales, labels on lines, a takeaway headline.", src: "Plan page" },
-    { id: "flow", name: "/flow", s: "next", pct: 0, note: "After Chart", detail: "UX review: cognitive walkthrough, 0 to 4 severity, every finding tied to a screenshot.", src: "Repo research" }
+    { id: "flow", name: "/flow-ux", s: "next", pct: 0, note: "After Chart", detail: "UX review: cognitive walkthrough, 0 to 4 severity, every finding tied to a screenshot.", src: "Repo research" }
   ],
   risks: [
     { t: "/explore not yet tried inside Codex", d: "Codex lists same-named skills side by side and Claude has a built-in Explore agent. Needs one real run in each tool.", tone: "warn" },
@@ -46,7 +46,7 @@ window.P = {
     ], rec: 1, recWhy: "Keeps you in control and still saves you from walls of text." },
     { q: "Next skill", why: "Visualize leans on charts.", opts: [
       { n: "/chart next", c: "Visualize's charts get the full rule set sooner." },
-      { n: "/flow next", c: "Better UX reviews for your product pages sooner." }
+      { n: "/flow-ux next", c: "Better UX reviews for your product pages sooner." }
     ], rec: 0, recWhy: "Visualize will use charts every day." }
   ],
   get open(){return this.decisions.filter(d=>d.pick==null)},

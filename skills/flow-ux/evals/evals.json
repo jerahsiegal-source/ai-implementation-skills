@@ -16,6 +16,7 @@
         "Finds that step 2 asks for email again (redundant entry) and that the end screen gives no result or next step",
         "Finds the tiny close button (below 24px) that reloads and loses the input",
         "Finds that a mismatched confirm password is accepted",
+        "Severity 4: the business details on step 2 are never saved or sent, yet the flow ends on Done",
         "Every finding names its step and screenshot path; no finding is based on the source code alone",
         "Reports the check-page.mjs summary line for the page",
         "Changes no files in review mode; the reply is 5 lines or fewer and leads with the verdict and severity counts"

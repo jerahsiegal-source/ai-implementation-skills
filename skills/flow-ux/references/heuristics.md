@@ -8,8 +8,8 @@ Rate by three things together: how many people hit it, whether they can get past
 
 | | Meaning | Example |
 |---|---|---|
-| **4** Blocker | The person cannot finish, or loses data or money | Submit does nothing on phone; form clears on error |
-| **3** Major | They finish only after real confusion, a retry or help | Error says "Invalid input" with no hint what to change |
+| **4** Blocker | The person cannot finish, loses data or money, or is told it worked when it didn't | Submit does nothing on phone; form clears on error |
+| **3** Major | They finish only after real confusion, a retry or help, or an accessibility failure blocks some people | Error says "Invalid input" with no hint what to change; fields labelled only by placeholders |
 | **2** Minor | Slows them down or makes them hesitate | Required fields not marked until submit |
 | **1** Cosmetic | Noticeable, doesn't slow anyone | Inconsistent button casing |
 | **0** Not a problem | Drop it | |

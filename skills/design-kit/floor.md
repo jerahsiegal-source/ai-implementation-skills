@@ -19,7 +19,7 @@ The floor below sits under all five: accessibility, working features and honest 
 - Body text 16px or larger (17 to 18px for long reading). Line height about 1.5.
 - Lines of running text at most about 70 characters.
 - Left-aligned text. No justified paragraphs. No long runs of all caps or italics.
-- Clear sans-serif for body text unless the brand says otherwise. Use real font fallbacks.
+- Clear sans-serif for body text unless the brand says otherwise. Use real font fallbacks. Avoid fonts with a slashed or dotted zero in reading text (it reads as 8 or Ø); keep those for code and IDs.
 - One idea per short paragraph. Use headings, lists and visuals before long prose.
 - Contrast at least WCAG AA (4.5:1 for body text, 3:1 for large text and UI parts).
 

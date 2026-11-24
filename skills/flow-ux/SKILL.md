@@ -30,6 +30,8 @@ If `INTENT.md` exists, take these from it: its **Who uses it** section lists the
 - **Drive the real thing.** Open the running app, preview or HTML in a browser (Playwright or the tool's browser) and complete the task as that person would. Reading code alone is not a review. If nothing runs, say so and review screenshots or a design file instead, labelled as such.
 - **Record every step:** a screenshot of each screen (save to `./flow-ux/<task>/`), the action taken, and what the person has to read, decide or type.
 - **Walk it three ways:** the happy path; a mistake path (wrong input, back button, refresh, empty fields, slow or failed request); and keyboard only. Then repeat the happy path at phone width (about 390px).
+- **Check it really works, not just looks done.** On every submit, confirm the data goes somewhere: watch the network request (or read the form's field names and action) and confirm the next screen reflects what was entered. A success screen after a request that sent nothing is a severity 4.
+- **Check the basics a person never sees but always feels:** a viewport meta tag (phone zoom), page title, and that back and refresh behave.
 - **Count the cost:** steps, decisions, fields, and anything the person must remember from one screen to the next.
 - **Run the checker on each distinct screen** that is an HTML page or URL:
   `node ../design-kit/scripts/check-page.mjs <page or url> --out ./flow-ux/<task>/checks`
@@ -59,8 +61,9 @@ Never report a finding you didn't see happen or can't point to on a screenshot. 
 
 ## 5. Report
 
+- **Where it goes:** `./flow-ux/<task>/review.html` when `visualize` is installed, otherwise `./flow-ux/<task>/review.md`. Screenshots sit next to it in the same folder. Work Loop points to this path as evidence.
 - If the `visualize` skill is installed, make the report with it: the flow as a **Mission Map** (one box per step, findings pinned to the step they occur on, the worst steps marked At risk), a **Decision Desk** for any fix that needs the user's choice, and the screenshots one click away.
-- Otherwise write `./flow-ux/<task>/review.md`: the frame, a one-line verdict ("Can a first-timer finish? Yes, with 2 major snags"), the step table (step, screenshot, cost), then findings by severity.
+- Otherwise write the markdown report: the frame, a one-line verdict ("Can a first-timer finish? Yes, with 2 major snags"), the step table (step, screenshot, cost), then findings by severity.
 - Start with the verdict and the count: `0 blockers · 2 major · 5 minor`.
 
 ## 6. Fix mode
