@@ -180,7 +180,8 @@ export function render(a, { sample = false } = {}) {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap">
 <style>
 :root{--bg:#FFFFFF;--surface:#FFFFFF;--sunk:#F1F3F6;--ink:#0F141C;--muted:#535D6C;--line:#D9DEE5;--accent:#2F3FD0;--accent-soft:#ECEEFC;--ok:#17704A;--ok-soft:#E3F3EA;--warn:#9A5B00;--warn-soft:#FDF0DC;--bad:#A82E25;--bad-soft:#FBE2DF;--r:6px;--f:"IBM Plex Sans",system-ui,"Segoe UI",sans-serif;color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#11161D;--surface:#18202A;--sunk:#222C38;--ink:#E8EDF2;--muted:#A5B0BD;--line:#2F3A47;--accent:#8E9BFF;--accent-soft:#1F2547;--ok:#5FCB8F;--ok-soft:#163324;--warn:#F2C36B;--warn-soft:#30291B;--bad:#EF8A82;--bad-soft:#3C2220;color-scheme:dark}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11161D;--surface:#18202A;--sunk:#222C38;--ink:#E8EDF2;--muted:#A5B0BD;--line:#2F3A47;--accent:#8E9BFF;--accent-soft:#1F2547;--ok:#5FCB8F;--ok-soft:#163324;--warn:#F2C36B;--warn-soft:#30291B;--bad:#EF8A82;--bad-soft:#3C2220;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#11161D;--surface:#18202A;--sunk:#222C38;--ink:#E8EDF2;--muted:#A5B0BD;--line:#2F3A47;--accent:#8E9BFF;--accent-soft:#1F2547;--ok:#5FCB8F;--ok-soft:#163324;--warn:#F2C36B;--warn-soft:#30291B;--bad:#EF8A82;--bad-soft:#3C2220;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--f)}
 .wrap{max-width:1120px;margin:0 auto;padding:32px max(16px,env(safe-area-inset-right,0px)) 80px max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:26px}
