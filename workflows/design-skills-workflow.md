@@ -113,6 +113,6 @@ One task each, one or two judges: treat these as a guide, not a benchmark. Re-ru
 
 ## Tips
 
-- Say the skill's name to run it: `/visualize` in Claude Code, `$visualize` in Codex. None of them start on their own.
+- Say the skill's name to run it: `/visualize` in Claude Code, `$visualize` in Codex. Only `visualize` speaks up on its own: after a long answer it offers a page in one line, and builds it only if you say yes.
 - Keep your own taste in `~/.ai-skills/personal/taste.md`. Every design skill reads it.
 - Every design skill runs the page checker before it calls a page done. You can run it yourself: `node skills/design-kit/scripts/check-page.mjs <page>`.

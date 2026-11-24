@@ -2,7 +2,7 @@
 
 Turns a big answer into one interactive page: the verdict up top, what needs you, and every detail one click away with its source.
 
-Type `/visualize` (Claude Code) or `$visualize` (Codex):
+Type `/visualize` (Claude Code) or `$visualize` (Codex). After a long answer it also offers itself in one line; say yes and it builds the page.
 
 ```
 /visualize where this project stands
