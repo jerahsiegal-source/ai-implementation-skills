@@ -216,7 +216,16 @@ if (!chromium) {
           if (/^(P|LI|H[1-6]|DIV|SPAN|TD)$/.test(el.tagName) && el.textContent.trim().length > 20) { blocks++; if (cs.textAlign === "center") centered++; }
           if ((cs.overflow === "hidden" || cs.textOverflow === "ellipsis") && el.scrollWidth > el.clientWidth + 2) clipped++;
         }
+        // How many elements actually use all-caps labels or a thick colored left bar.
+        let capsEls = 0, barEls = 0;
+        for (const el of document.body.querySelectorAll("*")) {
+          const cs = getComputedStyle(el); const r = el.getBoundingClientRect(); if (!r.width || !r.height) continue;
+          if (cs.textTransform === "uppercase" && el.textContent.trim().length > 2 && [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) capsEls++;
+          const bl = parseFloat(cs.borderLeftWidth), br = parseFloat(cs.borderRightWidth), c = parse(cs.borderLeftColor);
+          if (bl >= 3 && br <= 1 && r.height > 30 && Math.max(c[0], c[1], c[2]) - Math.min(c[0], c[1], c[2]) > 40) barEls++;
+        }
         return {
+          capsEls, barEls,
           overflow: document.documentElement.scrollWidth - window.innerWidth,
           low, tiny, centered, blocks, clipped,
           noAlt: [...document.images].filter((i) => !i.hasAttribute("alt")).length,
@@ -240,6 +249,13 @@ if (!chromium) {
   check("clipped-text", "warn", clip > 0, { fail: `${clip} text items are cut off.` });
   const errs = [...new Set(errors)];
   check("console-errors", "fail", errs.length > 0, { fail: `${errs.length} console errors, e.g. ${short(errs[0] || "", 120)}` });
+  // Usage-based versions of two static checks: a single CSS rule can style many elements.
+  const upgrade = (id, n, min, msg) => {
+    const r = results.find((x) => x.id === id);
+    if (r && r.status === "pass" && n >= min) { r.status = allowed.has(id) ? "allowed" : "warn"; r.msg = msg + (allowed.has(id) ? " (allowed)" : ""); }
+  };
+  upgrade("caps-labels", d.capsEls, 4, `${d.capsEls} all-caps labels on the page. Use sentence case; keep caps for at most one tiny label style.`);
+  upgrade("accent-bar-cards", d.barEls, 2, `${d.barEls} blocks have a thick colored bar down the left side. A stock AI card style.`);
   const noAlt = d.noAlt;
   check("img-alt", "warn", noAlt > 0, { fail: `${noAlt} images have no alt text.` });
 }
