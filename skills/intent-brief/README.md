@@ -21,7 +21,7 @@ Then hand the finished `INTENT.md` to the [Work Loop](../work-loop) skill, or to
 ## Install
 
 - **Claude Code:** copy this folder to `~/.claude/skills/intent-brief/` (or `.claude/skills/` in a project).
-- **Codex:** copy this folder to `~/.codex/skills/intent-brief/`. `agents/openai.yaml` sets the display name and turns off implicit invocation.
+- **Codex:** copy this folder to `~/.agents/skills/intent-brief/`. `agents/openai.yaml` sets the display name and turns off implicit invocation.
 - **Claude.ai:** zip this folder and upload it under Settings, Capabilities, Skills.
 
 ---

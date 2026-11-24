@@ -26,7 +26,7 @@ Best for big features or fundamental changes you want finished in full. Not for 
 ## Install
 
 - **Claude Code:** copy this folder to `~/.claude/skills/work-loop/`.
-- **Codex:** copy this folder to `~/.codex/skills/work-loop/`.
+- **Codex:** copy this folder to `~/.agents/skills/work-loop/`.
 
 ---
 Built by [Jerah Siegal](https://www.linkedin.com/in/jerah-siegal-ai-tech/) · MIT License

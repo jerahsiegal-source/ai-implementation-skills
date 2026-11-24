@@ -7,7 +7,7 @@ set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")" && pwd)"
 MODE="${1:-link}"
-TARGETS=("$HOME/.claude/skills" "$HOME/.codex/skills")
+TARGETS=("$HOME/.claude/skills" "$HOME/.agents/skills")
 PERSONAL="$HOME/.ai-skills/personal"
 
 for target in "${TARGETS[@]}"; do

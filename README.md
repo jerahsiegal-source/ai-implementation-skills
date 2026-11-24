@@ -41,7 +41,7 @@ All of them are called by name only (`/design` in Claude Code, `$design` in Code
 
 ## Install
 
-Clone the repo once, then run the install script. It links every skill into both Claude Code (`~/.claude/skills/`) and Codex (`~/.codex/skills/`), so they work in all your projects and a `git pull` updates them everywhere.
+Clone the repo once, then run the install script. It links every skill into both Claude Code (`~/.claude/skills/`) and Codex (`~/.agents/skills/`, where current Codex looks for personal skills), so they work in all your projects and a `git pull` updates them everywhere.
 
 ```bash
 git clone https://github.com/jerahsiegal-source/ai-implementation-skills.git
