@@ -27,6 +27,8 @@ A skill or a stack is worth keeping only if it clearly beats **none** in blind j
 2. **Run each prompt** in a fresh Claude Code or Codex session, for example `claude -p "$(node evals/combos/prompt.mjs ...)"`. The none arm must not have the skills installed.
 3. **Score with the checkers:** `node evals/combos/score.mjs runs` writes `runs/scores.json` (FAIL and WARN counts for every page).
 4. **Judge blind:** `node evals/combos/blind.mjs runs` copies each task's arms into shuffled folders A, B, C and writes `judge-prompt.md`. Give that prompt to a fresh session that has no skills and has not seen the runs. Keep `blind/key.json` away from the judge.
-5. **Read the results:** unblind with `key.json` and put the scores on one page, made with `/visualize`.
+5. **Record the cost** of each run in `runs/costs.json` as `{"<task>/<arm>": {"tokens": n, "seconds": n}}`, so quality can be weighed against cost.
+6. **Judge again in a new order:** `node evals/combos/blind.mjs runs <task> --tag 2` makes a second shuffle in `runs/blind-2/`. Judges tend to favor early slots, so count a win only if it holds in both.
+7. **Read the results:** unblind with `key.json` and put the scores on one page, made with `/visualize`.
 
 Run it again when a new model comes out, in both Claude Code and Codex. One run per arm is noisy: when two arms are close, run both again before deciding.
