@@ -23,8 +23,12 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 | [design](skills/design) | Applies one consistent design taste to any UI, page, mockup or visual HTML, while following each project's brand | _LinkedIn post coming_ |
 | [explore](skills/explore) | Researches standout examples, shortlists concepts with you, then builds and critiques the best directions side by side | _LinkedIn post coming_ |
 | [visualize](skills/visualize) | Turns a big answer (status, research, a system, decisions) into one interactive page: verdict first, detail on click, sources on every claim | _LinkedIn post coming_ |
+| [rate](skills/rate) | Two-second rating after a skill runs: was it right the first time? Saved privately on your computer | _LinkedIn post coming_ |
+| [skill-review](skills/skill-review) | Monthly check: right-first-try rate from real use plus blind lab tests, then keep, fix or cut each skill | _LinkedIn post coming_ |
 
 **The two work as a pair:** Intent Brief defines *what* and *why*, and Work Loop gets it to done. They run in Claude Code and Codex.
+
+**Rate and Skill Review keep the rest honest.** Real use tells you how often a skill gets it right the first time, the lab tests tell you whether it still beats plain Claude, and a skill that stops earning its place gets fixed or cut. See [evals](evals/README.md).
 
 **The design skills share one kit.** `design`, `explore` and `visualize` read from [design-kit](skills/design-kit) (readability floor, copy and anti-slop rules, styles, brand intake, screenshot check), so the rules are written once. Every one of them, and Work Loop, runs the kit's check, critique and fix round before calling visual work done. `flow` (UX review) and `chart` (data viz) are coming next.
 

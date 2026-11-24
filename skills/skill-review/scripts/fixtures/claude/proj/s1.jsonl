@@ -1,0 +1,13 @@
+{"type": "user", "timestamp": "2026-11-20T10:00:00Z", "cwd": "/work/cafe", "sessionId": "s1", "message": {"role": "user", "content": "<system-reminder>ignore</system-reminder>"}, "isMeta": true}
+{"type": "user", "timestamp": "2026-11-20T10:00:01Z", "cwd": "/work/cafe", "sessionId": "s1", "message": {"role": "user", "content": "<command-message>design</command-message>\n<command-name>/design</command-name>\n<command-args>make the settings page</command-args>"}}
+{"type": "assistant", "timestamp": "2026-11-20T10:01:00Z", "message": {"role": "assistant", "model": "claude-opus-5-5", "content": [{"type": "text", "text": "done"}]}}
+{"type": "user", "timestamp": "2026-11-20T10:01:01Z", "message": {"role": "user", "content": [{"type": "tool_result", "content": "x"}]}}
+{"type": "user", "timestamp": "2026-11-20T10:02:00Z", "cwd": "/work/cafe", "sessionId": "s1", "message": {"role": "user", "content": "No, the header is too big. Make it smaller."}}
+{"type": "assistant", "timestamp": "2026-11-20T10:03:00Z", "message": {"role": "assistant", "model": "claude-opus-5-5", "content": [{"type": "text", "text": "done"}]}}
+{"type": "user", "timestamp": "2026-11-20T10:04:00Z", "cwd": "/work/cafe", "sessionId": "s1", "message": {"role": "user", "content": "<command-name>/rate</command-name>\n<command-args>n header too big</command-args>"}}
+{"type": "user", "timestamp": "2026-11-20T11:00:00Z", "cwd": "/work/cafe", "sessionId": "s1", "message": {"role": "user", "content": "/visualize the status of this project"}}
+{"type": "assistant", "timestamp": "2026-11-20T11:01:00Z", "message": {"role": "assistant", "model": "claude-opus-5-5", "content": [{"type": "text", "text": "done"}]}}
+{"type": "user", "timestamp": "2026-11-20T11:02:00Z", "cwd": "/work/cafe", "sessionId": "s1", "message": {"role": "user", "content": "great, thanks"}}
+{"type": "user", "timestamp": "2026-11-20T12:00:00Z", "cwd": "/work/cafe", "sessionId": "s1", "message": {"role": "user", "content": "now chart the sales"}}
+{"type": "assistant", "timestamp": "2026-11-20T12:00:30Z", "message": {"role": "assistant", "model": "claude-opus-5-5", "content": [{"type": "tool_use", "name": "Skill", "input": {"skill": "chart"}}]}}
+{"type": "user", "timestamp": "2026-11-20T12:05:00Z", "cwd": "/work/cafe", "sessionId": "s1", "message": {"role": "user", "content": "perfect"}}

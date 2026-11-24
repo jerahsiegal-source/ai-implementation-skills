@@ -1,0 +1,5 @@
+interface:
+  display_name: "Rate"
+  short_description: "Log if the last output was right first try"
+policy:
+  allow_implicit_invocation: false

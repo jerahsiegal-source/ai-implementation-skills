@@ -1,0 +1,9 @@
+{
+  "about": "Thresholds /skill-review uses to mark each skill Keep, Fix, Trim, Cut or Watch. Change them here, not in the code.",
+  "first_try_target": 0.5,
+  "window": 10,
+  "min_uses": 5,
+  "unused_days": 60,
+  "cost_ratio_trim": 2,
+  "recent_days": 30
+}
