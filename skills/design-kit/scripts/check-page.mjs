@@ -195,6 +195,9 @@ if (!chromium) {
       const file = join(outDir, `${stem}-${name}-${scheme}.png`);
       await page.screenshot({ path: file, fullPage: true });
       shots.push(file);
+      // Open every "Show data" and other <details>, so hidden tables count for sideways scroll.
+      await page.evaluate(() => document.querySelectorAll("details:not([open])").forEach((d) => d.setAttribute("open", ""))).catch(() => {});
+      await page.waitForTimeout(150);
       metrics[`${name}-${scheme}`] = await page.evaluate(() => {
         // Any CSS color (rgb, color(srgb ...), oklch, color-mix results) -> [r, g, b, a] in 0-255, via a canvas pixel.
         const _cv = document.createElement("canvas"); _cv.width = _cv.height = 1; const _cx = _cv.getContext("2d", { willReadFrequently: true });
@@ -239,7 +242,7 @@ if (!chromium) {
 
   add("pass", "screenshots", `Saved ${shots.length}: ${shots.map((s) => basename(s)).join(", ")} in ${outDir}`);
   const ph = Math.max(metrics["phone-light"].overflow, metrics["phone-dark"].overflow);
-  check("phone-overflow", "fail", ph > 1, { fail: `The page scrolls sideways on a phone by ${ph}px.` });
+  check("phone-overflow", "fail", ph > 1, { fail: `The page scrolls sideways on a phone by ${ph}px (with every <details> section open).` });
   const lowAll = [...new Set([...metrics["desktop-light"].low.map((l) => "light: " + l), ...metrics["desktop-dark"].low.map((l) => "dark: " + l)])];
   check("contrast", "fail", lowAll.length > 0, { fail: `${lowAll.length} text items are hard to read (low contrast), e.g. ${lowAll.slice(0, 3).join("; ")}.` });
   const tiny = metrics["phone-light"].tiny;

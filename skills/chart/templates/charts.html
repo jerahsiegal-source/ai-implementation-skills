@@ -39,6 +39,7 @@ svg .lbl{fill:var(--ink);font-weight:600}
 .source{color:var(--muted);font-size:13px}
 details summary{cursor:pointer;color:var(--muted);font-size:14px;width:max-content}
 details summary:focus-visible,.pt:focus-visible{outline:3px solid var(--s1);outline-offset:2px}
+.table-wrap{overflow-x:auto;max-width:100%}
 table{border-collapse:collapse;font-size:14px;margin-top:8px}
 th,td{padding:4px 10px;text-align:right;border-bottom:1px solid var(--grid)}
 th:first-child,td:first-child{text-align:left}
@@ -110,7 +111,7 @@ function niceTicks(min, max, count = 5) {
   return ticks;
 }
 function table(id, head, rows) {
-  document.getElementById(id).innerHTML = `<table><thead><tr>${head.map((h) => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  document.getElementById(id).innerHTML = `<div class="table-wrap"><table><thead><tr>${head.map((h) => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 }
 const tip = document.getElementById("tip");
 function hover(node, text) {

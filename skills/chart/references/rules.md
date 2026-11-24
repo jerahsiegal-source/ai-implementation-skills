@@ -29,7 +29,7 @@ Where a rule has a check, `check-chart.mjs` or `check-palette.mjs` tests it. The
 - **C14 [R] No overlapping or cut-off labels** at desktop or phone width. [label-overlap] [label-clipped]
 - **C15 [P] Chart text 12px or larger**, never under 11px. [tiny-chart-text]
 - **C16 [T] Few gridlines**, light, on the value axis only. No chart borders, no background fills.
-- **C17 [P] Round to what matters.** 3.1 h, not 3.1416 h. Same decimals across a series.
+- **C17 [P] Round to what matters.** 3.1 h, not 3.1416 h. Same decimals across a series. Never round so far that values the takeaway compares look the same (867 and 925 both shown as "0.9k"); keep that precision on phone labels too.
 - **C18 [P] Tabular numbers** wherever digits line up.
 
 ## Color

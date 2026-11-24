@@ -13,9 +13,11 @@
   <h2>Billing questions are the biggest share of open tickets</h2>   <!-- takeaway title -->
   <svg role="img" aria-label="Bar chart of open tickets by topic. Billing 61, Login 38, ..."></svg>
   <span class="source">Source: Zendesk export, 18 Nov 2026</span>
-  <details><summary>Show data</summary><table>...</table></details>
+  <details><summary>Show data</summary><div class="table-wrap"><table>...</table></div></details>
 </figure>
 ```
+
+The `table-wrap` (`overflow-x:auto`) keeps a wide data table from making the whole page scroll sideways on a phone when it is opened.
 
 - `data-chart` is the form (`line`, `bar`, `column`, `scatter`, `pie`, `area`, `dot`, `histogram`, `map`, `table`).
 - `data-y-min` is where the value axis starts. `data-y2` marks a second axis (avoid it). `data-series` is the number of series or slices.
