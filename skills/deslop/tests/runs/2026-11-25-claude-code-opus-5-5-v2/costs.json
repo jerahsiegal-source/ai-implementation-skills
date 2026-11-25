@@ -1,0 +1,398 @@
+{
+ "a01-resume-pm/baseline": {
+  "seconds": 8.4,
+  "tokens": 40662
+ },
+ "a01-resume-pm/deslop": {
+  "seconds": 26.0,
+  "tokens": 223475
+ },
+ "a01-resume-pm/deslop2": {
+  "seconds": 15.7,
+  "tokens": 131695
+ },
+ "a02-resume-data/baseline": {
+  "seconds": 9.2,
+  "tokens": 40578
+ },
+ "a02-resume-data/deslop": {
+  "seconds": 24.4,
+  "tokens": 263636
+ },
+ "a02-resume-data/deslop2": {
+  "seconds": 11.0,
+  "tokens": 84642
+ },
+ "a03-email-coverletter-ux/baseline": {
+  "seconds": 12.0,
+  "tokens": 41133
+ },
+ "a03-email-coverletter-ux/deslop": {
+  "seconds": 27.3,
+  "tokens": 223327
+ },
+ "a03-email-coverletter-ux/deslop2": {
+  "seconds": 13.5,
+  "tokens": 85434
+ },
+ "a04-social-launch/baseline": {
+  "seconds": 7.8,
+  "tokens": 40227
+ },
+ "a04-social-launch/deslop": {
+  "seconds": 16.0,
+  "tokens": 128426
+ },
+ "a04-social-launch/deslop2": {
+  "seconds": 12.9,
+  "tokens": 128031
+ },
+ "a05-social-lesson/baseline": {
+  "seconds": 8.6,
+  "tokens": 40850
+ },
+ "a05-social-lesson/deslop": {
+  "seconds": 15.5,
+  "tokens": 171741
+ },
+ "a05-social-lesson/deslop2": {
+  "seconds": 10.3,
+  "tokens": 84792
+ },
+ "a06-report-support-q3/baseline": {
+  "seconds": 4.9,
+  "tokens": 39995
+ },
+ "a06-report-support-q3/deslop": {
+  "seconds": 8.0,
+  "tokens": 84317
+ },
+ "a06-report-support-q3/deslop2": {
+  "seconds": 8.1,
+  "tokens": 84330
+ },
+ "a07-report-billing-status/baseline": {
+  "seconds": 10.8,
+  "tokens": 40871
+ },
+ "a07-report-billing-status/deslop": {
+  "seconds": 11.7,
+  "tokens": 85161
+ },
+ "a07-report-billing-status/deslop2": {
+  "seconds": 10.8,
+  "tokens": 85173
+ },
+ "a08-email-kickoff-followup/baseline": {
+  "seconds": 11.7,
+  "tokens": 40438
+ },
+ "a08-email-kickoff-followup/deslop": {
+  "seconds": 23.9,
+  "tokens": 225927
+ },
+ "a08-email-kickoff-followup/deslop2": {
+  "seconds": 10.8,
+  "tokens": 85306
+ },
+ "a09-email-dashboard-delay/baseline": {
+  "seconds": 6.2,
+  "tokens": 40101
+ },
+ "a09-email-dashboard-delay/deslop": {
+  "seconds": 10.2,
+  "tokens": 84547
+ },
+ "a09-email-dashboard-delay/deslop2": {
+  "seconds": 14.6,
+  "tokens": 128040
+ },
+ "a10-docs-tidycsv-readme/baseline": {
+  "seconds": 11.1,
+  "tokens": 41825
+ },
+ "a10-docs-tidycsv-readme/deslop": {
+  "seconds": 15.2,
+  "tokens": 86063
+ },
+ "a10-docs-tidycsv-readme/deslop2": {
+  "seconds": 15.2,
+  "tokens": 86091
+ },
+ "a11-web-notewise-landing/baseline": {
+  "seconds": 10.8,
+  "tokens": 40981
+ },
+ "a11-web-notewise-landing/deslop": {
+  "seconds": 17.8,
+  "tokens": 129995
+ },
+ "a11-web-notewise-landing/deslop2": {
+  "seconds": 9.8,
+  "tokens": 85127
+ },
+ "a12-web-bakery-about/baseline": {
+  "seconds": 8.8,
+  "tokens": 40653
+ },
+ "a12-web-bakery-about/deslop": {
+  "seconds": 9.4,
+  "tokens": 84745
+ },
+ "a12-web-bakery-about/deslop2": {
+  "seconds": 9.2,
+  "tokens": 84709
+ },
+ "a13-general-security-blog/baseline": {
+  "seconds": 8.2,
+  "tokens": 40473
+ },
+ "a13-general-security-blog/deslop": {
+  "seconds": 21.3,
+  "tokens": 130139
+ },
+ "a13-general-security-blog/deslop2": {
+  "seconds": 11.7,
+  "tokens": 85027
+ },
+ "a14-resume-marketing-classic/baseline": {
+  "seconds": 9.3,
+  "tokens": 40593
+ },
+ "a14-resume-marketing-classic/deslop": {
+  "seconds": 30.0,
+  "tokens": 271291
+ },
+ "a14-resume-marketing-classic/deslop2": {
+  "seconds": 21.0,
+  "tokens": 173295
+ },
+ "a15-social-manager-classic/baseline": {
+  "seconds": 10.0,
+  "tokens": 40595
+ },
+ "a15-social-manager-classic/deslop": {
+  "seconds": 24.5,
+  "tokens": 178456
+ },
+ "a15-social-manager-classic/deslop2": {
+  "seconds": 10.4,
+  "tokens": 84723
+ },
+ "a16-report-fourday-classic/baseline": {
+  "seconds": 6.4,
+  "tokens": 40301
+ },
+ "a16-report-fourday-classic/deslop": {
+  "seconds": 17.4,
+  "tokens": 173178
+ },
+ "a16-report-fourday-classic/deslop2": {
+  "seconds": 8.3,
+  "tokens": 84338
+ },
+ "a17-email-coverletter-classic/baseline": {
+  "seconds": 9.1,
+  "tokens": 40737
+ },
+ "a17-email-coverletter-classic/deslop": {
+  "seconds": 26.8,
+  "tokens": 221615
+ },
+ "a17-email-coverletter-classic/deslop2": {
+  "seconds": 12.6,
+  "tokens": 85223
+ },
+ "a18-web-ledgerline-classic/baseline": {
+  "seconds": 11.5,
+  "tokens": 40995
+ },
+ "a18-web-ledgerline-classic/deslop": {
+  "seconds": 30.5,
+  "tokens": 226896
+ },
+ "a18-web-ledgerline-classic/deslop2": {
+  "seconds": 11.0,
+  "tokens": 84946
+ },
+ "a19-report-freight-facts/baseline": {
+  "seconds": 7.6,
+  "tokens": 40549
+ },
+ "a19-report-freight-facts/deslop": {
+  "seconds": 14.4,
+  "tokens": 128585
+ },
+ "a19-report-freight-facts/deslop2": {
+  "seconds": 8.8,
+  "tokens": 84534
+ },
+ "h01-report-onboarding/baseline": {
+  "seconds": 9.4,
+  "tokens": 41396
+ },
+ "h01-report-onboarding/deslop": {
+  "seconds": 15.1,
+  "tokens": 85967
+ },
+ "h01-report-onboarding/deslop2": {
+  "seconds": 14.3,
+  "tokens": 85935
+ },
+ "h02-docs-site-tests/baseline": {
+  "seconds": 11.0,
+  "tokens": 41609
+ },
+ "h02-docs-site-tests/deslop": {
+  "seconds": 15.3,
+  "tokens": 85955
+ },
+ "h02-docs-site-tests/deslop2": {
+  "seconds": 14.3,
+  "tokens": 86000
+ },
+ "h03-web-cloudgov-faq/baseline": {
+  "seconds": 12.5,
+  "tokens": 41509
+ },
+ "h03-web-cloudgov-faq/deslop": {
+  "seconds": 26.8,
+  "tokens": 178037
+ },
+ "h03-web-cloudgov-faq/deslop2": {
+  "seconds": 16.9,
+  "tokens": 86219
+ },
+ "h04-docs-oauth-proxy/baseline": {
+  "seconds": 18.3,
+  "tokens": 43224
+ },
+ "h04-docs-oauth-proxy/deslop": {
+  "seconds": 23.9,
+  "tokens": 132675
+ },
+ "h04-docs-oauth-proxy/deslop2": {
+  "seconds": 18.7,
+  "tokens": 87536
+ },
+ "h05-general-new-ten/baseline": {
+  "seconds": 12.0,
+  "tokens": 41365
+ },
+ "h05-general-new-ten/deslop": {
+  "seconds": 13.2,
+  "tokens": 85611
+ },
+ "h05-general-new-ten/deslop2": {
+  "seconds": 14.1,
+  "tokens": 85740
+ },
+ "h06-report-https/baseline": {
+  "seconds": 13.9,
+  "tokens": 41530
+ },
+ "h06-report-https/deslop": {
+  "seconds": 20.2,
+  "tokens": 131481
+ },
+ "h06-report-https/deslop2": {
+  "seconds": 13.4,
+  "tokens": 86006
+ },
+ "h07-email-va-enrollment/baseline": {
+  "seconds": 9.1,
+  "tokens": 40949
+ },
+ "h07-email-va-enrollment/deslop": {
+  "seconds": 11.2,
+  "tokens": 85136
+ },
+ "h07-email-va-enrollment/deslop2": {
+  "seconds": 12.8,
+  "tokens": 85312
+ },
+ "h08-email-va-claim/baseline": {
+  "seconds": 8.0,
+  "tokens": 40248
+ },
+ "h08-email-va-claim/deslop": {
+  "seconds": 9.9,
+  "tokens": 84873
+ },
+ "h08-email-va-claim/deslop2": {
+  "seconds": 9.7,
+  "tokens": 84702
+ },
+ "h09-social-parks-day/baseline": {
+  "seconds": 9.4,
+  "tokens": 40615
+ },
+ "h09-social-parks-day/deslop": {
+  "seconds": 20.0,
+  "tokens": 173662
+ },
+ "h09-social-parks-day/deslop2": {
+  "seconds": 8.8,
+  "tokens": 84792
+ },
+ "h10-docs-express-readme/baseline": {
+  "seconds": 11.4,
+  "tokens": 41784
+ },
+ "h10-docs-express-readme/deslop": {
+  "seconds": 15.2,
+  "tokens": 130174
+ },
+ "h10-docs-express-readme/deslop2": {
+  "seconds": 12.6,
+  "tokens": 86195
+ },
+ "h11-report-gao-review/baseline": {
+  "seconds": 7.9,
+  "tokens": 40457
+ },
+ "h11-report-gao-review/deslop": {
+  "seconds": 14.4,
+  "tokens": 128257
+ },
+ "h11-report-gao-review/deslop2": {
+  "seconds": 9.9,
+  "tokens": 84789
+ },
+ "h12-general-emoji-docs/baseline": {
+  "seconds": 7.9,
+  "tokens": 40703
+ },
+ "h12-general-emoji-docs/deslop": {
+  "seconds": 14.5,
+  "tokens": 128596
+ },
+ "h12-general-emoji-docs/deslop2": {
+  "seconds": 10.3,
+  "tokens": 84991
+ },
+ "h13-general-estonia/baseline": {
+  "seconds": 16.1,
+  "tokens": 41902
+ },
+ "h13-general-estonia/deslop": {
+  "seconds": 19.4,
+  "tokens": 130606
+ },
+ "h13-general-estonia/deslop2": {
+  "seconds": 18.8,
+  "tokens": 130194
+ },
+ "h14-resume-sample/baseline": {
+  "seconds": 10.1,
+  "tokens": 41053
+ },
+ "h14-resume-sample/deslop": {
+  "seconds": 30.2,
+  "tokens": 266953
+ },
+ "h14-resume-sample/deslop2": {
+  "seconds": 12.6,
+  "tokens": 85203
+ }
+}

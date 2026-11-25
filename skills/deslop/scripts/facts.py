@@ -34,8 +34,12 @@ installation usage example examples license credits today tomorrow yesterday mon
 wednesday thursday friday saturday sunday q1 q2 q3 q4""".split())
 
 
+PLACEHOLDER = re.compile(r"\[[^\]\n]{0,40}\b[XN]\b[^\]\n]{0,40}\]")
+
+
 def strip(text):
-    return MARKER.sub(" ", text)
+    """Drop our markers and template slots like [X,000] or [N] before comparing."""
+    return PLACEHOLDER.sub(" ", MARKER.sub(" ", text))
 
 
 def numbers(text):
@@ -101,7 +105,9 @@ def name_tokens(counter):
 def compare(original, rewrite):
     res = {}
     for key, fn in (("numbers", numbers), ("urls", urls), ("inline_code", inline_code), ("quotes", quotes)):
-        lost, added = diff(fn(original), fn(rewrite))
+        # compare as sets: repeating a fact that is already there is not adding one
+        a, b = set(fn(original)), set(fn(rewrite))
+        lost, added = sorted(a - b), sorted(b - a)
         res[key] = {"lost": lost, "added": added}
     # names: compare at the word level so "Stripe Billing" vs "Stripe" isn't noise
     a, b = names(original), names(rewrite)

@@ -83,11 +83,8 @@ The standard first line of generated posts and cover letters. Start with the new
 > Before: Thrilled to share that I just launched my first open-source project!
 > After: I just released tidycsv, a command-line tool that fixes broken CSV headers and encodings.
 
-## P-10 Unfilled placeholder (high)
+## P-10 Unfilled placeholder (medium)
 
 "[Your Name]", "[X%]", "[metric]", "[Company]", "[N] users"
 
-A template slot nobody filled. Convert it to a `[NEEDS SPECIFIC: ...]` marker so it lands in the needs-input list and can't ship by accident. Never fill it with a guess.
-
-> Before: Grew [metric] by [X%] year over year.
-> After: Grew [NEEDS SPECIFIC: which metric?] by [NEEDS SPECIFIC: how much?] year over year.
+A template slot nobody filled. Leave it exactly as written and list it under NEEDS YOUR INPUT so it can't ship by accident. Never fill it with a guess, and don't rewrite it as a `[NEEDS SPECIFIC]` marker: the author already knows what goes there.

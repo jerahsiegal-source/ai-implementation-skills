@@ -1,0 +1,10 @@
+{
+ "runner": "claude",
+ "model": "default",
+ "date": "2026-11-25",
+ "fixtures": 2,
+ "arms": [
+  "deslop",
+  "deslop2"
+ ]
+}

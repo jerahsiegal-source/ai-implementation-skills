@@ -340,12 +340,12 @@
     {
       "id": "P-10",
       "name": "unfilled placeholder",
-      "severity": "high",
+      "severity": "medium",
       "patterns": [
         "\\[(?:your|insert|add|company|client|x|n|number|name|metric|tool|date|feature|product|segment|topic|link|url|role|team|title)\\b[^\\]\\n]{0,40}\\]",
         "\\[x[,.0-9]*%?\\]"
       ],
-      "suggestion": "Turn it into a [NEEDS SPECIFIC: ...] marker so nobody ships the placeholder."
+      "suggestion": "Leave it as is and list it under NEEDS YOUR INPUT so nobody ships the placeholder."
     }
   ],
   "structure_rules": [

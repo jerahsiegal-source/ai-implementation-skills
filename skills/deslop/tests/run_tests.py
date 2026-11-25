@@ -62,6 +62,10 @@ def similarity(a, b):
     return difflib.SequenceMatcher(None, a.split(), b.split(), autojunk=False).ratio()
 
 
+def strip_markers(t):
+    return re.sub(r"\s*\[NEEDS SPECIFIC:[^\]]*\]", "", t)
+
+
 def markers(t):
     return len(re.findall(r"\[NEEDS SPECIFIC:[^\]]*\]", t))
 
@@ -91,7 +95,7 @@ def unit_tests():
     e = L("Hi Sam,\n\n**Update:** the deploy moved.\n\n### Next\nThanks", context="email")
     check("linter: markdown in email is high", any(h["id"] == "F-08" and h["severity"] == "high" for h in e["hits"]))
     check("linter: chatbot leftovers are high", any(h["id"] == "P-02" and h["severity"] == "high" for h in L("Great question! I hope this helps.")["hits"]))
-    check("linter: placeholders are high", any(h["id"] == "P-10" for h in L("Grew [metric] by [X%].")["hits"]))
+    check("linter: placeholders are flagged", any(h["id"] == "P-10" for h in L("Grew [metric] by [X%].")["hits"]))
     check("linter: own [NEEDS SPECIFIC] markers are ignored", not L("It improved [NEEDS SPECIFIC: delve robust tapestry?].")["hits"])
     check("linter: contrast frame", "S-02" in ids(L("It's not just a CRM, it's a growth engine.")))
     check("linter: size word with a number is fine", "W-08" not in ids(L("Revenue grew significantly, from $2M to $3M.")))
@@ -163,7 +167,9 @@ def run_tests(run_dir, before):
             fr = facts.compare(src if arm != "deslop2" else ref, out)
             row[arm] = {
                 "score": lr["score"], "high": lr["counts_by_severity"]["high"],
-                "similarity": round(similarity(ref, out), 3), "markers": markers(out),
+                # pass 2 is compared with markers stripped: a new question is reported, not counted as churn
+                "similarity": round(similarity(strip_markers(ref), strip_markers(out)) if arm == "deslop2" else similarity(ref, out), 3),
+                "markers": markers(out),
                 "facts_hard_fail": fr["hard_fail"], "lost_numbers": fr["numbers"]["lost"],
                 "added_numbers": fr["numbers"]["added"], "lost_names": fr["names"]["lost"],
                 "added_names": fr["names"]["added"], "code_changed": fr["code_blocks"]["changed"],
@@ -194,12 +200,14 @@ def run_tests(run_dir, before):
     idem = [r for r in have if "deslop2" in r]
     if idem:
         bad = ["%s %.2f" % (r["fixture"], r["deslop2"]["similarity"]) for r in idem if r["deslop2"]["similarity"] < IDEMPOTENT_MIN]
-        check("run: idempotent (second pass similarity >= %.2f)" % IDEMPOTENT_MIN, not bad, ", ".join(bad))
+        check("run: idempotent (second pass prose similarity >= %.2f)" % IDEMPOTENT_MIN, not bad, ", ".join(bad))
+        more = ["%s +%d" % (r["fixture"], r["deslop2"]["markers"] - r["deslop"]["markers"]) for r in idem if r["deslop2"]["markers"] > r["deslop"]["markers"]]
+        print("      note: second pass added markers on %d samples%s" % (len(more), (": " + ", ".join(more)) if more else ""))
 
     # comparison with plain Claude: reported, not pass/fail
     def mean(xs):
         xs = [x for x in xs if x is not None]
-        return round(statistics.mean(xs), 1) if xs else None
+        return round(statistics.mean(xs), 2) if xs else None
     summary = {"meta": meta}
     for arm in ("deslop", "baseline"):
         a_ai = [r[arm] for r in ai if arm in r]
@@ -243,6 +251,15 @@ def write_md(run_dir, s, rows):
         d, b, d2 = r.get("deslop", {}), r.get("baseline", {}), r.get("deslop2", {})
         L.append("| %s | %s | %s | %s | %s | %s | %s | %s |" % (r["fixture"], r["context"], r["before"], d.get("score", "-"),
                  b.get("score", "-"), d.get("similarity", "-"), d.get("markers", "-"), d2.get("similarity", "-")))
+    vp = os.path.join(run_dir, "blind", "verdicts.json")
+    if os.path.exists(vp):
+        v = json.load(open(vp))
+        sm, mn = v["summary"], v["means"]
+        L += ["", "## Blind judge (AI samples, both orders)", "",
+              "Wins that held in both orders: deslop %d, plain Claude %d, split or tie %d." % (sm["deslop"], sm["plain"], sm["split_or_tie"]),
+              "", "| Mean score (1-10) | deslop | plain Claude |", "|---|---|---|"]
+        for k in ("human", "specific", "faithful"):
+            L.append("| %s | %s | %s |" % (k, mn["deslop_" + k], mn["plain_" + k]))
     with open(os.path.join(run_dir, "report.md"), "w") as f:
         f.write("\n".join(L) + "\n")
 

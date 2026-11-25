@@ -10,18 +10,21 @@ Works in Claude Code and Codex. Use it on its own, or as the last pass of anothe
 ```
 
 ```
-SCORE: 1 → 88   (context: resume)
+SCORE: 1 → 100   (context: resume)
 NEEDS YOUR INPUT (2):
-  - Line 4: [NEEDS SPECIFIC: which lead capture methods?]
-  - Line 6: [NEEDS SPECIFIC: open rate from what to what?]
+  - Line 5: [NEEDS SPECIFIC: which lead capture channels?]
+  - Line 8: [NEEDS SPECIFIC: by how much?]
 
 CLEAN TEXT:
+Marketing Manager who runs email marketing in HubSpot, from audience
+segmentation to performance reporting. Grew Acme Retail's newsletter
+list from 8,000 to 21,000 subscribers.
 ...
 
 CHANGES:
-  - Cut 3 cliches (results-driven, proven track record, passionate about)
-  - Removed 2 stock verbs (leveraging, partnered closely)
-  - Turned 2 vague results into questions for you
+  - Cut 4 cliches (results-driven, proven track record, passionate about, eager to bring)
+  - Removed 3 vague impact phrases (driving growth, data-driven insights, deliver measurable results)
+  - Cut "partnered closely with cross-functional teams" to "worked with the sales, design and e-commerce teams"
 FACTS: all numbers, names, URLs and code kept.
 ```
 
@@ -72,6 +75,7 @@ It also starts on its own when you ask to "humanize", "de-slop" or "make this so
 python3 tests/run_tests.py            # linter, fact checker, fixtures, newest saved run
 python3 tests/run_live.py --jobs 6     # re-run the skill and plain Claude on every fixture
 python3 tests/run_live.py --runner codex
+python3 tests/judge.py --runs tests/runs/<run>   # blind A/B judge, both orders
 ```
 
 `tests/fixtures/ai/` holds 19 model-written samples across all seven contexts. `tests/fixtures/human/` holds 14 human samples written before 2023 (public domain and MIT, see [SOURCES](tests/fixtures/SOURCES.md)). `run_live.py` runs each one through deslop, through deslop a second time, and through plain Claude with the same request, then `run_tests.py` checks:
@@ -81,14 +85,35 @@ python3 tests/run_live.py --runner codex
 - Code blocks byte-for-byte unchanged.
 - A second pass changes less than 5%.
 - deslop vs plain Claude: scores, facts lost or invented, edits to human text, tokens and time.
+- A blind judge (a fresh model with no skills) compares deslop and plain Claude on each AI sample in both A/B orders, because the linter alone would be grading its own homework. A win counts only if it holds in both orders.
 
 Results of each run are saved in `tests/runs/<date>-<runner>-<model>/report.md`. Run it again when a new model comes out; if plain Claude catches up, the skill needs changing or cutting.
+
+## Results (2026-11-25, Claude Code, default model)
+
+33 samples, each run through deslop and through plain Claude with the same one-line request. Full table: [tests/runs/2026-11-25-claude-code-opus-5-5-v3/report.md](tests/runs/2026-11-25-claude-code-opus-5-5-v3/report.md).
+
+| | deslop | plain Claude |
+|---|---|---|
+| AI samples, linter score (before 50) | 80 | 71 |
+| High-severity hits left | 0 | 2 |
+| Human samples, words kept unchanged | 98% | 54% |
+| Rewrites that lost or changed a number, URL or code | 0 of 33 | 5 of 33 |
+| Blind judge, wins held in both orders (19 AI samples) | 8 | 9 (2 split) |
+| Blind judge, "reads like a person" (1-10) | 6.5 | 8.0 |
+| Blind judge, "specific" / "faithful" (1-10) | 7.3 / 8.6 | 6.6 / 7.8 |
+| Tokens per run | about 147k | about 41k |
+
+Where it wins: no rewrite lost or changed a number, URL or code; it leaves human writing alone; and it marks missing details instead of making them up. The judge noted plain Claude adding details the original never gave on 8 of 19 samples. Where it doesn't: plain Claude's freer rewrites read more natural; on clean-looking modern model output deslop often changes nothing; and the judge noted deslop dropping a non-numeric point from the original on 5 samples, which `facts.py` can't catch. Earlier runs (v1, v2) are kept next to v3 for comparison.
 
 ## Limits
 
 - The linter is English-only.
 - It can't tell whether a number is true. It only checks that the rewrite didn't change it.
-- Current models write fewer surface tells than 2023 models. On their output, most of the value is the content pass and the markers, which depend on the model doing its part.
+- `facts.py` checks numbers, names, URLs, quotes and code. A dropped claim in plain words ("teamwork", "clear communication") isn't caught.
+- Current models write fewer surface tells than 2023 models. On their output, the linter often scores 85+ and deslop returns the text almost unchanged, even when it still reads stiff.
+- Minimum change is a trade-off: it protects human writing and facts, but a free rewrite reads more natural to a blind judge.
+- Costs about 3.5x the tokens of a plain rewrite, mostly from loading the skill and running the scripts.
 - Scores are a guide, not a verdict. A human text can score 70 because the author likes em dashes and lists of three.
 
 ## Credits and licenses
