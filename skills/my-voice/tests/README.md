@@ -34,7 +34,7 @@ Add `--model <name>` to test a new model, or `--runner codex` for Codex. Results
 | samples | Plain Claude with all your other real samples pasted in |
 | voice | `/my-voice draft`, profile only |
 | voice_lint | `/my-voice draft` with deslop installed (lint final check) |
-| voice_deslop | The voice draft, then a full `/deslop` pass |
+| voice_deslop | The voice draft, then the polish pass (`/deslop mode=rewrite`) |
 
 ## Judges
 

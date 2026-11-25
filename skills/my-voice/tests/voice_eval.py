@@ -10,7 +10,7 @@ Arms:
   samples       plain Claude plus all your other real samples pasted in
   voice         /my-voice draft, profile only (no deslop installed)
   voice_lint    /my-voice draft with deslop installed (lint final check)
-  voice_deslop  the voice draft, then a full /deslop pass (mode=embedded)
+  voice_deslop  the voice draft, then the polish pass (/deslop mode=rewrite)
   alt_<arm>     the same arm with --alt-skill (e.g. last version vs this one)
 
 Judges (all blind, A/B shuffled):
@@ -193,7 +193,7 @@ def gen(arm, task, a, shome, author, pack, outdir):
             raise RuntimeError("run the voice arm first")
         install(work, ["deslop"], a.deslop)
         shutil.copy(src, os.path.join(work, "input.md"))
-        prompt = (f"/deslop context={CONTEXT.get(medium, 'general')} mode=embedded\n\n"
+        prompt = (f"/deslop context={CONTEXT.get(medium, 'general')} mode=rewrite mode=embedded\n\n"
                   "The text to clean is in input.md in the current folder.")
         out, cost = call(a.runner, a.model, prompt, work, env)
         return clean_block(out), cost

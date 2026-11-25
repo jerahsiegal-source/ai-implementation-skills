@@ -33,11 +33,13 @@ Optional deep setup, any order:
 
 ## With deslop
 
-my-voice writes in your voice. [deslop](../deslop) catches AI tells. They work together in one step: after drafting, my-voice runs deslop's linter on the draft and fixes only the real tells, in your words. It does not run a full deslop rewrite, because deslop is voice-neutral and would sand your voice off. deslop is optional; without it my-voice checks the common tells by eye.
+my-voice writes in your voice. [deslop](../deslop) catches AI tells. They work together: after drafting, my-voice runs deslop's linter and fixes only the real tells, in your words. For reports and long emails it also runs a deslop rewrite as a polish pass, then re-checks the result against your profile. It never polishes texts or posts. deslop is optional; without it my-voice checks the common tells by eye.
 
 ```
-your facts  ->  my-voice draft (profile)  ->  deslop lint check  ->  ready to paste  ->  your edits  ->  learn
+your facts -> my-voice draft -> deslop lint check -> (reports, long emails: deslop polish) -> paste -> your edits -> learn
 ```
+
+In a blind test on 20 mixed tasks, the chance the judge called a draft AI dropped from 64% (plain Claude) to 27% (my-voice). deslop on plain Claude barely moved it (61%). Polish didn't change how human it felt but was picked as the one to send almost twice as often; on posts it hurt, so it's off there.
 
 ## Privacy
 
