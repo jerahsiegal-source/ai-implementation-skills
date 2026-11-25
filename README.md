@@ -27,6 +27,7 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 | [chart](skills/chart) | Makes honest, readable charts and dashboards: picks the right chart for the point, uses accessible colors, and checks every chart before handing it back | _LinkedIn post coming_ |
 | [rate](skills/rate) | Two-second rating after a skill runs: was it right the first time? Saved privately on your computer | _LinkedIn post coming_ |
 | [skill-review](skills/skill-review) | Monthly check: right-first-try rate from real use plus blind lab tests, then keep, fix or cut each skill | _LinkedIn post coming_ |
+| [deslop](skills/deslop) | Removes the patterns that make writing read as AI-generated, flags vague claims with `[NEEDS SPECIFIC]` instead of inventing details, and keeps every fact. Works alone or as the last pass of another writing skill | _LinkedIn post coming_ |
 
 **The two work as a pair:** Intent Brief defines *what* and *why*, and Work Loop gets it to done. They run in Claude Code and Codex.
 
@@ -43,7 +44,7 @@ How they fit together on a big design job:
 intent-brief  ->  explore (you pick a look)  ->  work-loop builds it with design  ->  visualize the handoff
 ```
 
-All of them are called by name only (`/design` in Claude Code, `$design` in Codex). None run on their own.
+All of them are called by name (`/design` in Claude Code, `$design` in Codex). Only `deslop` also starts on its own, when you ask to humanize or de-slop text.
 
 <!-- Add one row per skill, e.g.
 | [linkedin-post-drafter](skills/linkedin-post-drafter) | Turns rough notes into a LinkedIn post in your voice | [Post](https://www.linkedin.com/posts/...) |
