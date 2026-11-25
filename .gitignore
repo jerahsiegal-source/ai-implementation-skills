@@ -7,3 +7,7 @@ __pycache__/
 # Personal design taste lives on your own machine, never in this repo
 personal/
 .ai-skills/
+
+# my-voice data is private, never in this repo
+.my-voice/
+my-voice-data/
