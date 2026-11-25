@@ -44,7 +44,7 @@ How they fit together on a big design job:
 intent-brief  ->  explore (you pick a look)  ->  work-loop builds it with design  ->  visualize the handoff
 ```
 
-All of them are called by name (`/design` in Claude Code, `$design` in Codex). Only `deslop` also starts on its own, when you ask to humanize or de-slop text.
+All of them are called by name (`/design` in Claude Code, `$design` in Codex). Two exceptions: `deslop` also starts on its own when you ask to humanize or de-slop text, and `visualize` offers itself in one line when an answer runs long ("Want this as a visual page?") and only builds the page if you say yes.
 
 <!-- Add one row per skill, e.g.
 | [linkedin-post-drafter](skills/linkedin-post-drafter) | Turns rough notes into a LinkedIn post in your voice | [Post](https://www.linkedin.com/posts/...) |

@@ -1,10 +1,11 @@
 ---
 name: visualize
-description: Turn a big output (status, research, a plan, a system, decisions) into one interactive HTML page with the answer first and every detail one click away. Use only when the user types /visualize or $visualize.
-disable-model-invocation: true
+description: Turn a big output (status, research, a plan, a system, decisions) into one interactive HTML page with the answer first and every detail one click away. Build it when the user types /visualize or $visualize, or says yes to the offer. When your answer would be long (a report, research, a status across several items, a plan, a comparison) and the user didn't ask for a page, don't build it; end the answer with one line: "Want this as a visual page? Say visualize."
 ---
 
 # Visualize
+
+**Offer, don't run.** If the user didn't type `/visualize` or `$visualize`, didn't ask for a page or visual, and didn't say yes to the offer, stop here: answer normally and end with one line, "Want this as a visual page? Say visualize." Offer once per answer, never for short answers, and never twice in a row if they ignored it.
 
 Turn work the user would otherwise have to read into a page they can take in at a glance: the answer in 5 seconds, scannable sections, and full detail behind clicks with a source on every claim.
 

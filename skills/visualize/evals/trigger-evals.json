@@ -1,0 +1,50 @@
+[
+ {
+  "query": "summarize where every workstream on the migration stands, there are about eight of them",
+  "should_trigger": true
+ },
+ {
+  "query": "research the top five project tracking tools and compare them for a small agency",
+  "should_trigger": true
+ },
+ {
+  "query": "/visualize this status",
+  "should_trigger": true
+ },
+ {
+  "query": "turn this progress.md into something I can take in at a glance",
+  "should_trigger": true
+ },
+ {
+  "query": "give me a full report on last month's sales by region and product",
+  "should_trigger": true
+ },
+ {
+  "query": "walk me through how our services connect and what depends on what",
+  "should_trigger": true
+ },
+ {
+  "query": "what time zone is Denver in",
+  "should_trigger": false
+ },
+ {
+  "query": "fix the typo on line 12 of README",
+  "should_trigger": false
+ },
+ {
+  "query": "rename this variable to userId",
+  "should_trigger": false
+ },
+ {
+  "query": "write a regex that matches email addresses",
+  "should_trigger": false
+ },
+ {
+  "query": "make the submit button blue",
+  "should_trigger": false
+ },
+ {
+  "query": "draft a two-line reply to this email",
+  "should_trigger": false
+ }
+]
