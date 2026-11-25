@@ -1,0 +1,705 @@
+{
+  "about": "Rules for lint.py. Edit the lists here; no code changes needed. Each rule id matches a section in ../references/. 'terms' are matched case-insensitively as whole words and may use regex. 'patterns' are full regexes (case-insensitive). 'checks' are built into lint.py and only take settings here. Severity: high, medium, low. Context overrides set a rule to another severity or 'off'.",
+  "version": 1,
+  "scoring": {
+    "weights": {
+      "high": 6,
+      "medium": 3,
+      "low": 1
+    },
+    "decay": 0.012,
+    "min_words": 150,
+    "note": "score = 100 * exp(-decay * penalty_per_1000_words). Penalty is the sum of hit weights. Texts shorter than min_words are scored as if they were min_words long, so one hit in a short email doesn't sink it."
+  },
+  "cluster": {
+    "categories": [
+      "words"
+    ],
+    "window_words": 120,
+    "medium_at": 3,
+    "high_at": 5,
+    "note": "Vocabulary hits start low. When 3 or more land inside any 120-word stretch they become medium; 5 or more become high."
+  },
+  "word_rules": [
+    {
+      "id": "W-01",
+      "name": "stock business verbs",
+      "severity": "low",
+      "terms": [
+        "spearhead(?:s|ed|ing)?",
+        "leverag(?:e|es|ed|ing)",
+        "orchestrat(?:e|es|ed|ing)",
+        "hon(?:ed|ing)",
+        "streamlin(?:e|es|ed|ing)",
+        "utiliz(?:e|es|ed|ing|ation)",
+        "utilis(?:e|es|ed|ing|ation)",
+        "synergiz(?:e|es|ed|ing)",
+        "champion(?:ed|ing)",
+        "foster(?:s|ed|ing)",
+        "empower(?:s|ed|ing)?",
+        "facilitat(?:e|es|ed|ing)",
+        "operationaliz(?:e|es|ed|ing)"
+      ],
+      "suggestion": "Say what you actually did: led, used, built, ran, cut, set up. Then name the thing."
+    },
+    {
+      "id": "W-02",
+      "name": "strong LLM vocabulary",
+      "severity": "medium",
+      "terms": [
+        "delv(?:e|es|ed|ing)",
+        "tapestry",
+        "realms?",
+        "testament",
+        "multifaceted",
+        "ever-evolving",
+        "ever-changing",
+        "game[- ]changer",
+        "game[- ]changing",
+        "at the forefront",
+        "embark(?:s|ed|ing)? on"
+      ],
+      "suggestion": "Replace with the plain word, or cut the phrase and state the fact."
+    },
+    {
+      "id": "W-03",
+      "name": "common LLM vocabulary",
+      "severity": "low",
+      "terms": [
+        "intricate(?:ly)?",
+        "showcas(?:e|es|ed|ing)",
+        "pivotal",
+        "underscor(?:e|es|ed|ing)",
+        "nuanced",
+        "robust",
+        "seamless(?:ly)?",
+        "holistic(?:ally)?",
+        "paramount",
+        "vibrant",
+        "bustling",
+        "meticulous(?:ly)?",
+        "unlock(?:s|ed|ing)?",
+        "unleash(?:es|ed|ing)?",
+        "elevat(?:e|es|ed|ing)",
+        "harness(?:es|ed|ing)?",
+        "cutting[- ]edge",
+        "comprehensive",
+        "crucial",
+        "invaluable",
+        "noteworthy",
+        "commendable",
+        "meaningful(?:ly)?",
+        "impactful",
+        "resonat(?:e|es|ed|ing)",
+        "thoughtfully",
+        "elevated"
+      ],
+      "suggestion": "Use a plainer word or cut it. One is fine; a cluster reads as generated."
+    },
+    {
+      "id": "W-04",
+      "name": "figurative landscape / navigate",
+      "severity": "medium",
+      "patterns": [
+        "\\b(?:competitive|digital|business|regulatory|tech|technology|evolving|ever-changing|ever-evolving|media|modern|current|political|economic|security|AI|marketing|healthcare|financial|job|hiring) landscape\\b",
+        "\\blandscape of (?!the (?:park|valley|mountains?|river|coast))",
+        "\\bnavigat(?:e|es|ed|ing) (?:the )?(?:complexit|challeng|landscape|world|uncertaint|changes?|waters|intricacies|nuances)"
+      ],
+      "suggestion": "Name the actual market, field or problem."
+    },
+    {
+      "id": "W-05",
+      "name": "transition used as opener",
+      "severity": "low",
+      "patterns": [
+        "(?:^|[.!?]\\s+|\\n)((?:Moreover|Furthermore|Additionally|Notably|Importantly|In essence|Crucially|Consequently|Interestingly),)"
+      ],
+      "group": 1,
+      "suggestion": "Delete it. The next sentence usually works without it."
+    },
+    {
+      "id": "W-06",
+      "name": "resume cliches",
+      "severity": "medium",
+      "terms": [
+        "results[- ]driven",
+        "results[- ]oriented",
+        "detail[- ]oriented",
+        "team player",
+        "proven track record",
+        "passionate about",
+        "excellent communicator",
+        "strong communicator",
+        "self[- ]starter",
+        "go-getter",
+        "thinks? outside the box",
+        "dynamic (?:professional|leader|individual|self-starter|team player)",
+        "hard[- ]working professional",
+        "highly motivated",
+        "valuable addition",
+        "aligns? perfectly with",
+        "eager to (?:contribute|bring|apply)",
+        "i am confident that my",
+        "make a real difference",
+        "makes a real difference",
+        "unique blend of",
+        "wear many hats"
+      ],
+      "suggestion": "Cut it, or replace it with one piece of evidence (what you did, for whom, with what result)."
+    },
+    {
+      "id": "W-07",
+      "name": "empty intensifiers",
+      "severity": "low",
+      "terms": [
+        "truly",
+        "deeply",
+        "incredibly",
+        "highly",
+        "extremely",
+        "remarkably",
+        "profoundly",
+        "undeniably",
+        "absolutely"
+      ],
+      "suggestion": "Cut the intensifier. If the point needs weight, add a fact instead."
+    },
+    {
+      "id": "W-08",
+      "name": "size word with no number",
+      "severity": "medium",
+      "terms": [
+        "significantly",
+        "substantially",
+        "dramatically",
+        "drastically",
+        "vastly",
+        "exponentially",
+        "massively",
+        "greatly"
+      ],
+      "unless_number_in_sentence": true,
+      "suggestion": "Give the number, or flag it: [NEEDS SPECIFIC: by how much?]"
+    }
+  ],
+  "phrase_rules": [
+    {
+      "id": "P-01",
+      "name": "throat-clearing opener",
+      "severity": "medium",
+      "patterns": [
+        "\\bin today'?s (?:fast[- ]paced|digital|modern|ever[- ]changing|ever[- ]evolving|rapidly (?:changing|evolving)|competitive|interconnected) (?:world|age|landscape|era|environment|economy|market)",
+        "\\bin the (?:ever[- ]evolving|ever[- ]changing|rapidly evolving|fast[- ]paced) (?:world|landscape|field|realm) of\\b",
+        "\\bwhen it comes to\\b",
+        "\\bit'?s worth (?:noting|mentioning|highlighting) that\\b",
+        "\\bit is worth (?:noting|mentioning) that\\b",
+        "\\bit'?s important to (?:note|remember|understand|recognize) that\\b",
+        "\\bit is important to (?:note|remember|understand|recognize) that\\b",
+        "\\blet'?s dive (?:in|into|deeper)\\b",
+        "\\bhere'?s the thing\\b",
+        "\\bit goes without saying\\b",
+        "\\bneedless to say\\b",
+        "\\bin a world where\\b",
+        "\\bat the end of the day\\b",
+        "\\bimagine a world\\b"
+      ],
+      "suggestion": "Cut the opener and start with the point."
+    },
+    {
+      "id": "P-02",
+      "name": "chatbot artifact",
+      "severity": "high",
+      "patterns": [
+        "\\bgreat question\\b",
+        "\\bi hope (?:this|that) helps\\b",
+        "(?:^|\\n)\\s*(?:certainly|absolutely|of course|sure)! ",
+        "\\bas an ai\\b",
+        "\\bas a language model\\b",
+        "\\blet me know if you'?d like\\b",
+        "\\bhere'?s a (?:breakdown|quick breakdown|summary|quick overview|rundown) of\\b",
+        "\\bi'?d be (?:happy|glad) to help\\b",
+        "\\bas of my (?:last|latest) (?:update|knowledge)",
+        "\\bi hope this (?:email|message|note) finds you well\\b",
+        "\\bhappy to (?:help|assist) with (?:anything|any questions)",
+        "\\bwould you like me to\\b",
+        "\\bfeel free to (?:ask|let me know)\\b",
+        "(?:^|\\n)\\s*hey there!"
+      ],
+      "suggestion": "Delete it. It is a reply to a chat, not part of the text."
+    },
+    {
+      "id": "P-03",
+      "name": "inflated significance",
+      "severity": "medium",
+      "patterns": [
+        "\\bplay(?:s|ed|ing)? an? (?:vital|pivotal|crucial|key|critical|significant|instrumental|essential) role\\b",
+        "\\b(?:stands?|serves?) as a (?:testament|reminder|beacon|cornerstone)\\b",
+        "\\ba testament to\\b",
+        "\\ba pivotal moment\\b",
+        "\\bmark(?:s|ed|ing)? a (?:significant|major|pivotal|new) (?:shift|milestone|turning point|chapter|era)\\b",
+        "\\brich (?:cultural )?(?:heritage|history|tapestry|legacy)\\b",
+        "\\benduring legacy\\b",
+        "\\ba broader (?:movement|trend|shift)\\b",
+        "\\bcannot be overstated\\b",
+        "\\bindelible mark\\b",
+        "\\bleft a lasting (?:impact|impression|mark)\\b",
+        "\\bnestled (?:in|among|within|between)\\b",
+        "\\bin the heart of\\b",
+        "\\bthe (?:importance|significance) of [\\w ]{1,30} cannot\\b",
+        "\\bparadigm shift\\b"
+      ],
+      "suggestion": "Say what happened and let the reader judge how much it matters."
+    },
+    {
+      "id": "P-04",
+      "name": "summary closer",
+      "severity": "medium",
+      "patterns": [
+        "(?:^|[.!?]\\s+|\\n)((?:In conclusion|In summary|To sum up|To summarize|All in all|In short|Overall|Ultimately|In the end|At its core|Taken together),)"
+      ],
+      "group": 1,
+      "suggestion": "Cut the wrap-up. If the last line repeats the paragraph, delete it."
+    },
+    {
+      "id": "P-06",
+      "name": "vague impact phrase",
+      "severity": "medium",
+      "patterns": [
+        "\\bdriv(?:e|es|ing|ive|en)? (?:measurable |tangible |real |meaningful |significant )?(?:results|growth|impact|value|engagement|innovation|success|efficiency|outcomes|excellence)\\b",
+        "\\bdeliver(?:s|ed|ing)? (?:measurable |tangible |real |meaningful |exceptional )?(?:value|results|impact|outcomes)\\b",
+        "\\bmak(?:e|es|ing) an? (?:real |meaningful |lasting |significant )?impact\\b",
+        "\\bdata[- ]driven (?:results|insights|decisions|decision-making|strategies|approach)\\b",
+        "\\bcross[- ]functional (?:initiatives|collaboration|alignment|synergy)\\b",
+        "\\boptimiz(?:e|ed|es|ing) (?:workflows|processes|operations|performance)\\b",
+        "\\bactionable insights\\b",
+        "\\bbest[- ]in[- ]class\\b",
+        "\\bvalue[- ]add(?:ed)?\\b",
+        "\\bmove the needle\\b",
+        "\\bkey stakeholders\\b",
+        "\\bsynerg(?:y|ies)\\b",
+        "\\bstrategic initiatives\\b",
+        "\\benhanc(?:e|ed|es|ing) (?:efficiency|productivity|performance|collaboration|the user experience|customer satisfaction)\\b",
+        "\\bimprov(?:e|ed|es|ing) (?:efficiency|productivity|performance|collaboration|customer satisfaction)\\b"
+      ],
+      "suggestion": "Name the result: what changed, by how much, for whom. If you don't know, flag it with [NEEDS SPECIFIC]."
+    },
+    {
+      "id": "P-07",
+      "name": "hype word",
+      "severity": "low",
+      "patterns": [
+        "\\brevolutioniz(?:e|es|ed|ing)\\b",
+        "\\btransform(?:s|ed|ing)? (?:the way|how) (?:you|we|teams|businesses|people)\\b",
+        "\\btransformative\\b",
+        "\\bnext[- ]level\\b",
+        "\\bworld[- ]class\\b",
+        "\\bunparalleled\\b",
+        "\\bunmatched\\b",
+        "\\bsupercharg(?:e|es|ed|ing)\\b",
+        "\\bstate[- ]of[- ]the[- ]art\\b",
+        "\\bsecret sauce\\b",
+        "\\btake (?:it|your \\w+) to the next level\\b",
+        "\\bunlock (?:the )?(?:full )?(?:potential|power)\\b",
+        "\\bin just (?:a few|minutes|seconds)\\b",
+        "\\beffortless(?:ly)?\\b",
+        "\\bblazing(?:ly)?[- ]fast\\b",
+        "\\ba bold step\\b",
+        "\\bgame[- ]chang(?:er|ing)\\b"
+      ],
+      "suggestion": "Replace the claim with what the product does and a fact the reader can check."
+    },
+    {
+      "id": "P-08",
+      "name": "point-announcing scaffold",
+      "severity": "low",
+      "patterns": [
+        "\\bthe key (?:is|takeaway is|insight is|here is)\\b",
+        "\\bthis matters because\\b",
+        "\\bthe bottom line(?: is)?\\b",
+        "\\bwhat'?s (?:interesting|important|clear|remarkable) is\\b",
+        "\\bthe reality is\\b",
+        "\\bmake no mistake\\b",
+        "\\bthe truth is\\b",
+        "\\bit'?s (?:clear|evident) that\\b",
+        "\\bthe (?:real )?magic happens\\b",
+        "\\bthe good news is\\b",
+        "\\bkey (?:highlights|takeaways|insights) (?:include|are)\\b",
+        "\\bhere are (?:some|a few|the) (?:key )?(?:takeaways|highlights|lessons|tips)\\b"
+      ],
+      "suggestion": "Drop the announcement and state the point."
+    },
+    {
+      "id": "P-09",
+      "name": "announcement opener",
+      "severity": "medium",
+      "patterns": [
+        "(?:^|\\n)\\s*(?:i'?m |i am |we'?re |we are )?(?:so |super |really )?(?:excited|thrilled|delighted|proud|happy|pleased|humbled) (?:to (?:share|announce|be|submit|apply|join|introduce)|about)\\b"
+      ],
+      "suggestion": "Start with the news itself: what launched, what changed, what you want from the reader."
+    },
+    {
+      "id": "P-10",
+      "name": "unfilled placeholder",
+      "severity": "medium",
+      "patterns": [
+        "\\[(?:your|insert|add|company|client|x|n|number|name|metric|tool|date|feature|product|segment|topic|link|url|role|team|title)\\b[^\\]\\n]{0,40}\\]",
+        "\\[x[,.0-9]*%?\\]"
+      ],
+      "suggestion": "Leave it as is and list it under NEEDS YOUR INPUT so nobody ships the placeholder."
+    }
+  ],
+  "structure_rules": [
+    {
+      "id": "S-02",
+      "name": "negation / contrast frame",
+      "severity": "medium",
+      "patterns": [
+        "\\bnot (?:just|only|merely|simply) (?:about )?[^.;:!?\\n]{1,60}?,? but (?:also )?",
+        "\\b(?:it|this|that|the \\w+)(?: i|')s(?:n't| not) (?:just |only |merely )?(?:about )?[^.;:!?\\n]{1,50}?[.;,] (?:it|this|that)(?: i|')s\\b",
+        "\\b(?:isn't|aren't|wasn't|weren't|is not|are not) (?:just |only )?(?:about )?[^.;:!?\\n]{1,50}?\\. (?:It|They|This|That)(?:'s|'re| is| are| was| were)\\b",
+        "\\bnot because [^.;:!?\\n]{1,60}?,? but because\\b",
+        "\\b(?:it|this)(?:'s| is) less about [^.;:!?\\n]{1,50}? and more about\\b",
+        "\\bthe (?:question|problem|answer|point|goal) isn't [^.;:!?\\n]{1,50}?[.;,] (?:it|the \\w+)(?:'s| is)\\b"
+      ],
+      "suggestion": "State the second half directly. Drop the thing it is 'not'."
+    },
+    {
+      "id": "S-03",
+      "name": "binary framing",
+      "severity": "medium",
+      "patterns": [
+        "\\bon (?:the )?one hand\\b"
+      ],
+      "suggestion": "Say which side you land on, or list the trade-off plainly."
+    },
+    {
+      "id": "S-06",
+      "name": "'resulting in' tail",
+      "severity": "low",
+      "patterns": [
+        ",? (?:resulting in|leading to|which (?:resulted|led) in|ultimately (?:leading|resulting))\\b"
+      ],
+      "suggestion": "Give the result as its own fact with a number, or flag it with [NEEDS SPECIFIC]."
+    },
+    {
+      "id": "S-09",
+      "name": "section narration",
+      "severity": "medium",
+      "patterns": [
+        "\\bin this (?:section|article|post|guide|report|document|blog post|piece|essay)[, ]+(?:we|I)(?:'ll| will| are going to)\\b",
+        "\\blet'?s (?:take a (?:closer |quick |deeper )?look|explore|break (?:it|this|that) down|unpack|walk through|examine)\\b",
+        "\\bwe'?ll (?:explore|dive into|delve into|unpack|take a look at)\\b",
+        "\\bwithout further ado\\b",
+        "\\b(?:below|in what follows),? (?:we|I)(?:'ll| will) (?:explore|discuss|cover|outline)\\b"
+      ],
+      "suggestion": "Delete the narration and start the section with its content."
+    },
+    {
+      "id": "S-10",
+      "name": "rhetorical question then answer",
+      "severity": "medium",
+      "patterns": [
+        "\\b(?:the|my|your|our|their) (?:result|answer|catch|kicker|truth|problem|twist|best part|secret|takeaway|lesson|outcome|fix|reason|difference)\\?(?=\\s+\\S)",
+        "\\b(?:So|And) (?:what|why|how)\\?(?=\\s+\\S)"
+      ],
+      "suggestion": "Write it as a plain statement: 'The result was faster deploys.'"
+    },
+    {
+      "id": "S-11",
+      "name": "colon reveal / punchy fragment",
+      "severity": "medium",
+      "patterns": [
+        "\\bhere'?s (?:what|why|how|the (?:kicker|catch|deal|twist|truth|secret))[^.:\\n]{0,40}:",
+        "(?:^|[.!?]\\s+)((?:That's it|Simple|Full stop|Period|Game over|Mic drop|Let that sink in|Every single time|No exceptions|Think about that)[.!])"
+      ],
+      "suggestion": "Make the point in a complete sentence without the drum roll."
+    },
+    {
+      "id": "S-12",
+      "name": "false agency",
+      "severity": "low",
+      "patterns": [
+        "\\bthe (?:data|numbers|results|research|evidence|market|metrics) (?:tells?|speaks?|rewards?|punishes|wants|knows|decides?|shows us|tells us|tell a story)\\b",
+        "\\b(?:data|numbers) (?:tell|tells) (?:a|the) story\\b",
+        "\\bthe (?:decision|answer|solution|culture) (?:emerges|emerged)\\b"
+      ],
+      "suggestion": "Name who did it: 'Our analysts found...', 'Buyers paid more for...'."
+    },
+    {
+      "id": "S-15",
+      "name": "negative listing",
+      "severity": "medium",
+      "patterns": [
+        "(?:^|[.!?]\\s+)Not (?:a |an |the )?\\w[^.!?\\n]{0,35}\\. Not (?:a |an |the )?\\w[^.!?\\n]{0,35}\\."
+      ],
+      "suggestion": "Say what it is. Skip the list of what it isn't."
+    }
+  ],
+  "checks": {
+    "S-01": {
+      "name": "rule of three",
+      "severity": "low",
+      "escalate_per_500_words": 4,
+      "escalated_severity": "medium",
+      "suggestion": "Keep the one or two items that matter. Triples everywhere read as a habit."
+    },
+    "S-04": {
+      "name": "uniform sentence rhythm",
+      "severity": "medium",
+      "min_sentences": 6,
+      "cv_below": 0.3,
+      "high_cv_below": 0.2,
+      "run_length": 5,
+      "run_tolerance_words": 3,
+      "suggestion": "Vary sentence length: join two short ones, split a long one, let one be very short."
+    },
+    "S-05": {
+      "name": "same-shape bullets",
+      "severity": "medium",
+      "min_run": 3,
+      "suggestion": "Vary how bullets open. Lead some with the object or the result."
+    },
+    "S-08": {
+      "name": "summary sentence ends the paragraph",
+      "severity": "medium",
+      "starts": [
+        "Overall",
+        "In summary",
+        "In conclusion",
+        "Ultimately",
+        "In short",
+        "All in all",
+        "To sum up",
+        "In the end",
+        "Taken together",
+        "Together, these",
+        "This shows",
+        "This demonstrates",
+        "This highlights",
+        "This underscores",
+        "This illustrates",
+        "These (?:changes|efforts|results|steps|improvements) (?:show|demonstrate|highlight|underscore)",
+        "These results (?:point|suggest|show|indicate)",
+        "This (?:experience|journey|project|initiative) (?:taught|showed|reminded)"
+      ],
+      "suggestion": "Cut the last sentence if it only repeats the paragraph."
+    },
+    "S-13": {
+      "name": "one-line paragraph drama",
+      "severity": "medium",
+      "min_run": 4,
+      "max_words": 14,
+      "suggestion": "Join the one-liners into real paragraphs.",
+      "default": "off"
+    },
+    "S-14": {
+      "name": "first person in a resume",
+      "severity": "medium",
+      "suggestion": "Resumes drop 'I' and 'my'. Start with the verb.",
+      "default": "off"
+    },
+    "P-05": {
+      "name": "hedge stack",
+      "severity": "medium",
+      "window_words": 6,
+      "min_hedges": 2,
+      "hedges": [
+        "may",
+        "might",
+        "could",
+        "potentially",
+        "possibly",
+        "perhaps",
+        "somewhat",
+        "arguably",
+        "likely",
+        "generally",
+        "tend to",
+        "to some extent",
+        "relatively",
+        "in some cases",
+        "it seems",
+        "appears to",
+        "slightly"
+      ],
+      "suggestion": "Keep one hedge, or none if you know it's true."
+    },
+    "F-01": {
+      "name": "em dash",
+      "severity": "low",
+      "escalate_per_300_words": 2,
+      "escalated_severity": "medium",
+      "suggestion": "Use a comma, period, colon or parentheses."
+    },
+    "F-02": {
+      "name": "mixed quote styles",
+      "severity": "low",
+      "suggestion": "Pick straight or curly quotes and use one style throughout."
+    },
+    "F-03": {
+      "name": "emoji",
+      "severity": "medium",
+      "bullet_severity": "high",
+      "suggestion": "Remove emoji from professional text, and never use them as bullets or heading icons."
+    },
+    "F-04": {
+      "name": "bold mid-sentence",
+      "severity": "low",
+      "escalate_at": 4,
+      "escalated_severity": "medium",
+      "suggestion": "Bold one thing at most, or none."
+    },
+    "F-05": {
+      "name": "Title Case headings",
+      "severity": "low",
+      "min_headings": 2,
+      "suggestion": "Use sentence case for headings."
+    },
+    "F-06": {
+      "name": "too many headings",
+      "severity": "low",
+      "words_per_heading_below": 60,
+      "max_words": 600,
+      "suggestion": "Short text rarely needs headings. Cut most of them."
+    },
+    "F-07": {
+      "name": "'Label: explanation' bullets",
+      "severity": "medium",
+      "min_run": 3,
+      "suggestion": "Turn label bullets into plain sentences, or a table if it is really a reference."
+    },
+    "F-08": {
+      "name": "markdown in plain text",
+      "severity": "high",
+      "suggestion": "Remove markdown symbols; this context renders as plain text.",
+      "default": "off"
+    },
+    "F-09": {
+      "name": "hashtag wall",
+      "severity": "medium",
+      "min_hashtags": 4,
+      "suggestion": "Keep two or three relevant hashtags at most, or none.",
+      "default": "off"
+    },
+    "F-10": {
+      "name": "exclamation marks in professional text",
+      "severity": "low",
+      "escalate_at": 2,
+      "escalated_severity": "medium",
+      "default": "off",
+      "suggestion": "Cut the exclamation marks. Let the facts carry the energy."
+    },
+    "F-11": {
+      "name": "long title or subtitle",
+      "severity": "medium",
+      "max_words": 8,
+      "suggestion": "Use a short title: a few plain words, no 'Title: subtitle' and no subtitle line."
+    }
+  },
+  "contexts": {
+    "general": {
+      "about": "Default weights.",
+      "overrides": {},
+      "enable": [
+        "F-10"
+      ]
+    },
+    "resume": {
+      "about": "Action verbs are fine on their own; flag runs of stock verbs, cliches and vague impact. No first person. Exact tool names stay untouched.",
+      "overrides": {
+        "W-06": "high",
+        "P-06": "high",
+        "S-06": "medium",
+        "S-05": "high",
+        "F-06": "off",
+        "F-05": "off",
+        "F-07": "low",
+        "S-04": "low",
+        "S-01": "low",
+        "W-01": "low"
+      },
+      "enable": [
+        "S-14",
+        "F-10"
+      ]
+    },
+    "report": {
+      "about": "Lists and headings are fine. Summary closers and inflated significance are flagged hard. Lead with the conclusion.",
+      "overrides": {
+        "P-04": "high",
+        "S-08": "high",
+        "P-03": "high",
+        "F-06": "off",
+        "F-05": "off",
+        "F-07": "low",
+        "S-09": "high"
+      },
+      "enable": [
+        "F-10"
+      ]
+    },
+    "email": {
+      "about": "Strict on chatbot leftovers and openers. No markdown. Short.",
+      "overrides": {
+        "P-01": "high",
+        "P-02": "high",
+        "F-03": "high",
+        "F-04": "medium",
+        "F-06": "medium"
+      },
+      "enable": [
+        "F-08",
+        "F-10"
+      ]
+    },
+    "social": {
+      "about": "Strict on hype, emoji, hashtag walls, staged openers and one-line-paragraph drama.",
+      "overrides": {
+        "P-07": "high",
+        "F-03": "high",
+        "F-09": "high",
+        "S-13": "high",
+        "S-10": "high",
+        "S-11": "high",
+        "P-01": "high",
+        "S-02": "high",
+        "P-08": "medium"
+      },
+      "enable": [
+        "S-13",
+        "F-09"
+      ]
+    },
+    "docs": {
+      "about": "Never touch code, commands, API or product names, or versions. Flag marketing tone. Headings and lists are fine.",
+      "overrides": {
+        "P-07": "high",
+        "W-03": "low",
+        "F-06": "off",
+        "F-05": "off",
+        "F-07": "low",
+        "S-04": "low",
+        "S-01": "low",
+        "S-09": "medium"
+      },
+      "enable": [
+        "F-10"
+      ]
+    },
+    "web": {
+      "about": "Hype is high severity. Demand specifics about the product.",
+      "overrides": {
+        "P-07": "high",
+        "P-06": "high",
+        "W-02": "high",
+        "W-03": "medium",
+        "F-06": "off",
+        "F-05": "off"
+      },
+      "enable": [
+        "F-09",
+        "F-10"
+      ]
+    }
+  }
+}

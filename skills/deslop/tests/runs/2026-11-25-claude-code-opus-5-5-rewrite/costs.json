@@ -1,0 +1,449 @@
+{
+ "a01-resume-pm/baseline": {
+  "seconds": 8.4,
+  "tokens": 40662
+ },
+ "a01-resume-pm/deslop": {
+  "seconds": 29.3,
+  "tokens": 277663,
+  "usd": null
+ },
+ "a01-resume-pm/review": {
+  "seconds": 53.6,
+  "tokens": 304483,
+  "usd": 0.41307099999999997
+ },
+ "a01-resume-pm/review2": {
+  "seconds": 59.6,
+  "tokens": 449173,
+  "usd": 0.44321259999999996
+ },
+ "a02-resume-data/baseline": {
+  "seconds": 9.2,
+  "tokens": 40578
+ },
+ "a02-resume-data/deslop": {
+  "seconds": 26.5,
+  "tokens": 226574,
+  "usd": null
+ },
+ "a02-resume-data/review": {
+  "seconds": 29.2,
+  "tokens": 241890,
+  "usd": 0.25152
+ },
+ "a02-resume-data/review2": {
+  "seconds": 55.9,
+  "tokens": 109448,
+  "usd": 0.47962280000000007
+ },
+ "a03-email-coverletter-ux/baseline": {
+  "seconds": 12.0,
+  "tokens": 41133
+ },
+ "a03-email-coverletter-ux/deslop": {
+  "seconds": 32.4,
+  "tokens": 227321,
+  "usd": null
+ },
+ "a03-email-coverletter-ux/review": {
+  "seconds": 51.2,
+  "tokens": 349005,
+  "usd": 0.4256987
+ },
+ "a03-email-coverletter-ux/review2": {
+  "seconds": 88.5,
+  "tokens": 114402,
+  "usd": 0.58868
+ },
+ "a03-email-coverletter-ux/workloop": {
+  "seconds": 226.7,
+  "tokens": 1120037,
+  "usd": 1.2858895999999997
+ },
+ "a04-social-launch/baseline": {
+  "seconds": 7.8,
+  "tokens": 40227
+ },
+ "a04-social-launch/deslop": {
+  "seconds": 19.0,
+  "tokens": 176498,
+  "usd": null
+ },
+ "a04-social-launch/review": {
+  "seconds": 16.4,
+  "tokens": 136531,
+  "usd": 0.168759
+ },
+ "a04-social-launch/review2": {
+  "seconds": 35.3,
+  "tokens": 283656,
+  "usd": 0.3240292
+ },
+ "a05-social-lesson/baseline": {
+  "seconds": 8.6,
+  "tokens": 40850
+ },
+ "a05-social-lesson/deslop": {
+  "seconds": 17.5,
+  "tokens": 131743,
+  "usd": null
+ },
+ "a05-social-lesson/review": {
+  "seconds": 40.0,
+  "tokens": 283787,
+  "usd": 0.46065419999999996
+ },
+ "a05-social-lesson/review2": {
+  "seconds": 50.1,
+  "tokens": 342855,
+  "usd": 0.3798976
+ },
+ "a06-report-support-q3/baseline": {
+  "seconds": 4.9,
+  "tokens": 39995
+ },
+ "a06-report-support-q3/deslop": {
+  "seconds": 14.3,
+  "tokens": 131070,
+  "usd": null
+ },
+ "a06-report-support-q3/review": {
+  "seconds": 20.5,
+  "tokens": 182414,
+  "usd": 0.1885044
+ },
+ "a06-report-support-q3/review2": {
+  "seconds": 37.5,
+  "tokens": 288906,
+  "usd": 0.32378899999999994
+ },
+ "a06-report-support-q3/workloop": {
+  "seconds": 76.7,
+  "tokens": 695601,
+  "usd": 0.6513590000000002
+ },
+ "a07-report-billing-status/baseline": {
+  "seconds": 10.8,
+  "tokens": 40871
+ },
+ "a07-report-billing-status/deslop": {
+  "seconds": 21.3,
+  "tokens": 132957,
+  "usd": null
+ },
+ "a07-report-billing-status/review": {
+  "seconds": 28.2,
+  "tokens": 234819,
+  "usd": 0.2323836
+ },
+ "a07-report-billing-status/review2": {
+  "seconds": 66.1,
+  "tokens": 459824,
+  "usd": 0.46859999999999996
+ },
+ "a07-report-billing-status/workloop": {
+  "seconds": 54.1,
+  "tokens": 454764,
+  "usd": 0.5191086
+ },
+ "a08-email-kickoff-followup/baseline": {
+  "seconds": 11.7,
+  "tokens": 40438
+ },
+ "a08-email-kickoff-followup/deslop": {
+  "seconds": 25.6,
+  "tokens": 182344,
+  "usd": null
+ },
+ "a08-email-kickoff-followup/review": {
+  "seconds": 25.1,
+  "tokens": 190851,
+  "usd": 0.22888040000000004
+ },
+ "a08-email-kickoff-followup/review2": {
+  "seconds": 47.4,
+  "tokens": 348545,
+  "usd": 0.38733
+ },
+ "a09-email-dashboard-delay/baseline": {
+  "seconds": 6.2,
+  "tokens": 40101
+ },
+ "a09-email-dashboard-delay/deslop": {
+  "seconds": 13.5,
+  "tokens": 174795,
+  "usd": null
+ },
+ "a09-email-dashboard-delay/review": {
+  "seconds": 25.4,
+  "tokens": 373552,
+  "usd": 0.25208600000000003
+ },
+ "a09-email-dashboard-delay/review2": {
+  "seconds": 38.8,
+  "tokens": 335332,
+  "usd": 0.3000708
+ },
+ "a10-docs-tidycsv-readme/baseline": {
+  "seconds": 11.1,
+  "tokens": 41825
+ },
+ "a10-docs-tidycsv-readme/deslop": {
+  "seconds": 13.8,
+  "tokens": 87765,
+  "usd": null
+ },
+ "a10-docs-tidycsv-readme/review": {
+  "seconds": 19.1,
+  "tokens": 139312,
+  "usd": 0.19025579999999997
+ },
+ "a10-docs-tidycsv-readme/review2": {
+  "seconds": 16.9,
+  "tokens": 91534,
+  "usd": 0.160277
+ },
+ "a11-web-notewise-landing/baseline": {
+  "seconds": 10.8,
+  "tokens": 40981
+ },
+ "a11-web-notewise-landing/deslop": {
+  "seconds": 25.8,
+  "tokens": 179446,
+  "usd": null
+ },
+ "a11-web-notewise-landing/review": {
+  "seconds": 30.2,
+  "tokens": 236729,
+  "usd": 0.24865179999999998
+ },
+ "a11-web-notewise-landing/review2": {
+  "seconds": 53.2,
+  "tokens": 295364,
+  "usd": 0.39052280000000006
+ },
+ "a11-web-notewise-landing/workloop": {
+  "seconds": 72.5,
+  "tokens": 834896,
+  "usd": 0.6867310000000001
+ },
+ "a12-web-bakery-about/baseline": {
+  "seconds": 8.8,
+  "tokens": 40653
+ },
+ "a12-web-bakery-about/deslop": {
+  "seconds": 11.8,
+  "tokens": 86682,
+  "usd": null
+ },
+ "a12-web-bakery-about/review": {
+  "seconds": 31.6,
+  "tokens": 187710,
+  "usd": 0.23054960000000002
+ },
+ "a12-web-bakery-about/review2": {
+  "seconds": 55.4,
+  "tokens": 347493,
+  "usd": 0.4124436000000001
+ },
+ "a13-general-security-blog/baseline": {
+  "seconds": 8.2,
+  "tokens": 40473
+ },
+ "a13-general-security-blog/deslop": {
+  "seconds": 17.4,
+  "tokens": 131345,
+  "usd": null
+ },
+ "a13-general-security-blog/review": {
+  "seconds": 22.8,
+  "tokens": 138365,
+  "usd": 0.1895426
+ },
+ "a13-general-security-blog/review2": {
+  "seconds": 63.6,
+  "tokens": 403954,
+  "usd": 0.5038366
+ },
+ "a14-resume-marketing-classic/baseline": {
+  "seconds": 9.3,
+  "tokens": 40593
+ },
+ "a14-resume-marketing-classic/deslop": {
+  "seconds": 25.3,
+  "tokens": 228031,
+  "usd": null
+ },
+ "a14-resume-marketing-classic/review": {
+  "seconds": 50.9,
+  "tokens": 398366,
+  "usd": 0.3686298
+ },
+ "a14-resume-marketing-classic/review2": {
+  "seconds": 65.9,
+  "tokens": 54572,
+  "usd": 0.4826062
+ },
+ "a15-social-manager-classic/baseline": {
+  "seconds": 10.0,
+  "tokens": 40595
+ },
+ "a15-social-manager-classic/deslop": {
+  "seconds": 23.5,
+  "tokens": 140185,
+  "usd": null
+ },
+ "a15-social-manager-classic/review": {
+  "seconds": 29.9,
+  "tokens": 289571,
+  "usd": 0.2580884
+ },
+ "a15-social-manager-classic/review2": {
+  "seconds": 53.5,
+  "tokens": 354612,
+  "usd": 0.40621779999999996
+ },
+ "a16-report-fourday-classic/baseline": {
+  "seconds": 6.4,
+  "tokens": 40301
+ },
+ "a16-report-fourday-classic/deslop": {
+  "seconds": 26.8,
+  "tokens": 270632,
+  "usd": null
+ },
+ "a16-report-fourday-classic/review": {
+  "seconds": 22.5,
+  "tokens": 188265,
+  "usd": 0.21293900000000002
+ },
+ "a16-report-fourday-classic/review2": {
+  "seconds": 40.7,
+  "tokens": 244144,
+  "usd": 0.3396108
+ },
+ "a16-report-fourday-classic/workloop": {
+  "seconds": 97.0,
+  "tokens": 723199,
+  "usd": 0.7356542
+ },
+ "a17-email-coverletter-classic/baseline": {
+  "seconds": 9.1,
+  "tokens": 40737
+ },
+ "a17-email-coverletter-classic/deslop": {
+  "seconds": 24.9,
+  "tokens": 226423,
+  "usd": null
+ },
+ "a17-email-coverletter-classic/review": {
+  "seconds": 47.2,
+  "tokens": 298456,
+  "usd": 0.3882558
+ },
+ "a17-email-coverletter-classic/review2": {
+  "seconds": 55.6,
+  "tokens": 56083,
+  "usd": 0.48298599999999997
+ },
+ "a18-web-ledgerline-classic/baseline": {
+  "seconds": 11.5,
+  "tokens": 40995
+ },
+ "a18-web-ledgerline-classic/deslop": {
+  "seconds": 35.0,
+  "tokens": 227704,
+  "usd": null
+ },
+ "a18-web-ledgerline-classic/review": {
+  "seconds": 68.2,
+  "tokens": 509549,
+  "usd": 0.49321420000000005
+ },
+ "a18-web-ledgerline-classic/review2": {
+  "seconds": 64.7,
+  "tokens": 565102,
+  "usd": 0.5114441999999999
+ },
+ "a19-report-freight-facts/baseline": {
+  "seconds": 7.6,
+  "tokens": 40549
+ },
+ "a19-report-freight-facts/deslop": {
+  "seconds": 18.4,
+  "tokens": 131428,
+  "usd": null
+ },
+ "a19-report-freight-facts/review": {
+  "seconds": 23.8,
+  "tokens": 238499,
+  "usd": 0.24194140000000003
+ },
+ "a19-report-freight-facts/review2": {
+  "seconds": 41.9,
+  "tokens": 295522,
+  "usd": 0.36348400000000003
+ },
+ "a19-report-freight-facts/workloop": {
+  "seconds": 81.2,
+  "tokens": 643590,
+  "usd": 0.6459641999999999
+ },
+ "h01-report-onboarding/baseline": {
+  "seconds": 9.4,
+  "tokens": 41396
+ },
+ "h02-docs-site-tests/baseline": {
+  "seconds": 11.0,
+  "tokens": 41609
+ },
+ "h03-web-cloudgov-faq/baseline": {
+  "seconds": 12.5,
+  "tokens": 41509
+ },
+ "h04-docs-oauth-proxy/baseline": {
+  "seconds": 18.3,
+  "tokens": 43224
+ },
+ "h05-general-new-ten/baseline": {
+  "seconds": 12.0,
+  "tokens": 41365
+ },
+ "h06-report-https/baseline": {
+  "seconds": 13.9,
+  "tokens": 41530
+ },
+ "h07-email-va-enrollment/baseline": {
+  "seconds": 9.1,
+  "tokens": 40949
+ },
+ "h08-email-va-claim/baseline": {
+  "seconds": 8.0,
+  "tokens": 40248
+ },
+ "h09-social-parks-day/baseline": {
+  "seconds": 9.4,
+  "tokens": 40615
+ },
+ "h10-docs-express-readme/baseline": {
+  "seconds": 11.4,
+  "tokens": 41784
+ },
+ "h11-report-gao-review/baseline": {
+  "seconds": 7.9,
+  "tokens": 40457
+ },
+ "h12-general-emoji-docs/baseline": {
+  "seconds": 7.9,
+  "tokens": 40703
+ },
+ "h13-general-estonia/baseline": {
+  "seconds": 16.1,
+  "tokens": 41902
+ },
+ "h14-resume-sample/baseline": {
+  "seconds": 10.1,
+  "tokens": 41053
+ }
+}

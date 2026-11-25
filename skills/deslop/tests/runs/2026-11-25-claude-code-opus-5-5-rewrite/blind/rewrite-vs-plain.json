@@ -1,0 +1,764 @@
+{
+ "arm": "deslop",
+ "vs": "baseline",
+ "summary": {
+  "deslop": 11,
+  "plain": 6,
+  "split_or_tie": 2
+ },
+ "means": {
+  "deslop_human": 7.2,
+  "deslop_variety": 6.5,
+  "deslop_lean": 8.1,
+  "deslop_specific": 8.0,
+  "deslop_faithful": 8.4,
+  "plain_human": 8.1,
+  "plain_variety": 7.5,
+  "plain_lean": 7.6,
+  "plain_specific": 6.8,
+  "plain_faithful": 7.8
+ },
+ "verdicts": {
+  "a02-resume-data": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 6,
+     "specific": 5,
+     "faithful": 9
+    },
+    "why": "A is tighter and uses placeholders to mark where the author needs to add real metrics, hours saved and stakeholder questions, while B reads naturally but keeps vague claims like 'saved hours of prep' and is a little wordier."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 7,
+     "specific": 5,
+     "faithful": 10
+    },
+    "why": "B marks the missing metrics, hours and example question for the author instead of leaving vague claims, which matters most on a resume, though it drops small details like 'accurate' and 'trust' that A keeps."
+   },
+   "result": "deslop"
+  },
+  "a01-resume-pm": {
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 7
+    },
+    "why": "A reads a little more naturally, but it adds 'to fund' and changes 'established' to 'wrote the team's', while B stays closer to the original facts, with only small losses like dropping 'prioritizing' and one awkward agentless sentence."
+   },
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 7
+    },
+    "why": "B reads a little more naturally, but it adds claims the original doesn't make (\"picked [N] initiatives to fund\", \"the team's\" templates, findings that \"changed\" the roadmap rather than shaped it), while A stays faithful and is just as lean."
+   },
+   "result": "deslop"
+  },
+  "a03-email-coverletter-ux": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 6,
+     "lean": 8,
+     "specific": 5,
+     "faithful": 8
+    },
+    "why": "Both edits read cleanly and each drops one small detail, but A also marks where the author needs a real workflow and a measured result, while B leaves the vague claims as they are."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 5,
+     "faithful": 8
+    },
+    "why": "B is about as clean as A and keeps the 'not a visual layer' contrast, and it adds placeholders asking the author for a real workflow and a measured result, which fixes the letter's biggest weakness without inventing anything."
+   },
+   "result": "deslop"
+  },
+  "a04-social-launch": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 5
+    },
+    "why": "B reads more human but makes up details that aren't in the original (that it launched 'today', the personal 'I kept losing afternoons' backstory, 'small', 'one command'), while A only drops two hashtags and 'try it out'."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 7,
+     "lean": 9,
+     "specific": 7,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 6
+    },
+    "why": "A reads more naturally but adds facts the original never states (the author's own lost afternoons, 'today', 'one command'), while B only cuts two hashtags and 'try it out' and invents nothing."
+   },
+   "result": "deslop"
+  },
+  "a05-social-lesson": {
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 7,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 9
+    },
+    "why": "A keeps every fact and reads more naturally, with varied sentences and the timeline tightened up front. B is nearly the original word for word, and its only real change is a placeholder in a social post where \"cost us a lot\" was arguably fine."
+   },
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 9
+    },
+    "why": "B keeps every fact and reads more naturally with varied rhythm, while A barely changes the draft and adds a clunky placeholder to a line that didn't need a hard number."
+   },
+   "result": "plain"
+  },
+  "a06-report-support-q3": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 8
+    },
+    "why": "B reads more like a person wrote it and keeps every number and name, though 'Even with the extra volume' adds a small bit of framing and it drops the spelled-out 'Customer satisfaction' label, while A is fully faithful but reads stiffer."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "why": "A reads more naturally and links volume to response time in a way a person would, though its 'even with the extra volume' framing and dropped 'Customer satisfaction' spell-out cost a little faithfulness compared with B's more mechanical but exact version."
+   },
+   "result": "plain"
+  },
+  "a07-report-billing-status": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 6,
+     "variety": 5,
+     "lean": 5,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 9
+    },
+    "why": "B keeps every fact and number but drops the summary and table that repeated each other, and its prose reads like a person wrote it; A's only real edge is marking which stakeholders need to sign off."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 6,
+     "variety": 5,
+     "lean": 5,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 9,
+     "specific": 7,
+     "faithful": 9
+    },
+    "why": "A cuts the repeated summary, table and progress sections into one clear passage, keeps every number and date, and keeps the original's hedge on the launch risk; B repeats the same figures three times and turns 'could push back' into a firm claim, though its marker asking who must sign off is a good touch."
+   },
+   "result": "plain"
+  },
+  "a08-email-kickoff-followup": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 7,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 8,
+     "variety": 6,
+     "lean": 7,
+     "specific": 9,
+     "faithful": 9
+    },
+    "why": "B keeps every item label, the 'structure and layout' detail and the invitation to send questions while still reading naturally; A is leaner but drops those details and adds 'the goals and audience we heard', which isn't in the original."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 5,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 9
+    },
+    "why": "A keeps the step names and every detail with natural wording, while B drops the 'content inventory', 'access and assets' and 'stakeholder interviews' labels, starts four of the five items with 'By [date],' and adds the small new claim 'the goals and audience we heard'."
+   },
+   "result": "plain"
+  },
+  "a09-email-dashboard-delay": {
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "B keeps every fact and placeholder with less padding, and A's added 'Quick heads-up' and 'Thanks for bearing with me' make it chattier and shift the tone a little."
+   },
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "A is tighter and keeps the original exactly, while B adds a filler opener (\"Quick heads-up\") and changes \"than expected\" to \"than I expected,\" which shifts the meaning slightly without making the email any clearer."
+   },
+   "result": "deslop"
+  },
+  "a10-docs-tidycsv-readme": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 8
+    },
+    "why": "The original was already clean, so A's unchanged copy was the right call, while B's edits are mostly cosmetic and add a claim the original never made: that unknown delimiters and encodings are common with Excel exports."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 8
+    },
+    "why": "The original was already clean, and B leaves it unchanged; A's rewording barely helps and adds an unsupported claim that mixed delimiters and encodings are common with Excel exports."
+   },
+   "result": "deslop"
+  },
+  "a11-web-notewise-landing": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 7,
+     "lean": 7,
+     "specific": 7,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 7,
+     "specific": 8,
+     "faithful": 6
+    },
+    "why": "B reads more naturally, but it adds facts that aren't in the original: notes arrive 'after you hang up' and Notewise 'records' in-person meetings; it also drops the headline. A stays faithful and still tightens the copy."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 6,
+     "variety": 7,
+     "lean": 6,
+     "specific": 7,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 8
+    },
+    "why": "A swaps the slogan headlines for plain, specific ones and reads like a careful person wrote it, but it adds one small detail the original doesn't have ('after you hang up'), while B keeps the facts exactly but leaves most of the marketing fluff in place."
+   },
+   "result": "split_or_tie"
+  },
+  "a12-web-bakery-about": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 7,
+     "lean": 7,
+     "specific": 7,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 7
+    },
+    "why": "B reads more naturally and cuts filler like \"we mean that literally,\" but it adds small details the original doesn't have (\"overnight,\" \"in the morning\") and changes \"Bread comes first\" to \"Mostly bread,\" so its edge over A, which is unchanged from the original, is narrow."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 6,
+     "variety": 6,
+     "lean": 6,
+     "specific": 7,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 7
+    },
+    "why": "A cuts the filler (like 'and we mean that literally') and reads more naturally, but it adds 'overnight', changes 'Bread comes first' to 'Mostly bread', and softens 'sell out before noon' to 'usually gone by noon'; B is the original, unchanged."
+   },
+   "result": "plain"
+  },
+  "a13-general-security-blog": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 6,
+     "specific": 7,
+     "faithful": 7
+    },
+    "why": "A is tighter and cuts the original's fluff without losing facts, and it flags the unsupported 'most' claim; B pads the ending, changes 'little more than an afternoon' to 'about an afternoon', and adds 'without worrying about the next breach'."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 7,
+     "specific": 7,
+     "faithful": 8
+    },
+    "why": "A keeps every point from the original, including the relationships framing and the payoff of serving customers, and its list makes the four steps easy to scan, while B is tighter but drops that payoff and merges 'unpatched software' into 'unpatched systems'."
+   },
+   "result": "split_or_tie"
+  },
+  "a14-resume-marketing-classic": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 7,
+     "specific": 6,
+     "faithful": 5
+    },
+    "why": "A keeps the original facts and flags the missing details for the author, while B adds claims the original never made, such as sign-up offers, writing and designing the emails, testing on every campaign, and content people kept opening."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 7,
+     "specific": 6,
+     "faithful": 6
+    },
+    "why": "Edit A reads warmly, but it adds facts the original never stated: it says the person wrote and designed the emails, that people 'kept opening' the content, and that tests ran on 'every campaign'. Edit B stays lean and marks the missing numbers and channels for the author to fill in, though it drops 'stronger customer relationships' and changes 'broader business goals' to the other teams' goals."
+   },
+   "result": "deslop"
+  },
+  "a16-report-fourday-classic": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 7,
+     "variety": 6,
+     "lean": 6,
+     "specific": 6,
+     "faithful": 9
+    },
+    "why": "A is tighter and flags the missing next step for the author, while B repeats its bullets in a closing summary and ends on a vague plan to \"look at whether the model can keep working\"."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 7,
+     "variety": 6,
+     "lean": 6,
+     "specific": 6,
+     "faithful": 9
+    },
+    "why": "B states the facts once without the recap paragraph or vague 'next we'll look at' line, and it flags the missing next step for the author instead of papering over it."
+   },
+   "result": "deslop"
+  },
+  "a15-social-manager-classic": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 6
+    },
+    "why": "B reads more naturally, but it adds claims the original never made (\"faster than anything else I tried\", \"more for my growth than almost anything else\", \"one of the best parts of the job\"), while A stays faithful and marks the missing result for the author to fill in."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 7,
+     "specific": 8,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 6
+    },
+    "why": "A reads more naturally, but it adds claims the original never made ('faster than anything else I tried', 'done more for my growth than almost anything else'), while B marks the missing detail for the author; B's flaws are its repeated bold-style titles and three dropped hashtags."
+   },
+   "result": "deslop"
+  },
+  "a17-email-coverletter-classic": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 7,
+     "variety": 7,
+     "lean": 6,
+     "specific": 5,
+     "faithful": 9
+    },
+    "why": "A cuts the generic enthusiasm and marks the two gaps a hiring manager would notice (why Fieldstone, what the app did), while B keeps nearly all of the original's vague filler with only lighter wording."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 7,
+     "specific": 5,
+     "faithful": 9
+    },
+    "why": "B removes the generic filler and marks the two spots where the letter needs real detail (why Fieldstone, and what the app did), though it drops a few small points such as coursework, clear communication and taking on new challenges."
+   },
+   "result": "deslop"
+  },
+  "a18-web-ledgerline-classic": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 7
+    },
+    "why": "B has the more natural voice, but it adds small claims the original doesn't make, like the spring tax scramble and reports showing \"where the money went\"; A keeps every fact and flags the vague tax, integration and customer-count claims for the author."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 8
+    },
+    "why": "B cuts the fluff just as well, adds no claims of its own, and flags the gaps the author needs to fill (tax role, which POS and payroll systems, the real customer count); A reads more naturally but adds small details like 'a real person on your account' and leaves those vague claims unmarked."
+   },
+   "result": "deslop"
+  },
+  "a19-report-freight-facts": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 6,
+     "variety": 4,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 8
+    },
+    "why": "B reads more naturally and keeps the original meaning more closely. A's short, choppy sentences sound mechanical, and 'reports to' and 'newest' slightly change what the original says, though A does usefully flag that the 'faster deliveries' claim needs specifics."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 9
+    },
+    "why": "B rightly flags the vague delivery claim for the author, but it adds two small unsupported claims (the 'newest' site and the team 'reports to' the CEO) and drops 'across the supply chain', while A keeps every fact and reads smoothly."
+   },
+   "result": "plain"
+  }
+ }
+}

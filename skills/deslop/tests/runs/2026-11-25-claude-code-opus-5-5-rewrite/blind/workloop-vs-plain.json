@@ -1,0 +1,257 @@
+{
+ "arm": "workloop",
+ "vs": "baseline",
+ "summary": {
+  "deslop": 4,
+  "plain": 2,
+  "split_or_tie": 0
+ },
+ "means": {
+  "deslop_human": 7.7,
+  "deslop_variety": 7.0,
+  "deslop_lean": 8.2,
+  "deslop_specific": 8.3,
+  "deslop_faithful": 8.8,
+  "plain_human": 7.8,
+  "plain_variety": 7.2,
+  "plain_lean": 7.7,
+  "plain_specific": 6.9,
+  "plain_faithful": 8.3
+ },
+ "verdicts": {
+  "a03-email-coverletter-ux": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 5,
+     "faithful": 8
+    },
+    "why": "Both keep the facts and read cleanly, but A marks the vague claims (years, company, Calder project, measured result) for the author to fill in, while B leaves them generic."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 7,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 5,
+     "faithful": 9
+    },
+    "why": "Both edits read cleanly and keep the original's facts, but B marks the missing years, company, Calder project and measured result for the author to fill in, while A leaves those claims vague."
+   },
+   "result": "deslop"
+  },
+  "a06-report-support-q3": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 8
+    },
+    "why": "B reads more like a person wrote it and keeps every fact, though 'Even with the extra volume' adds a small bit of framing the original didn't have, while A is fully faithful but flatter."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 8
+    },
+    "why": "A reads more naturally and varies its sentences better, though \"even with the extra volume\" adds a mild causal framing and it drops the \"new hires\" label, while B keeps every fact exactly but reads like the original bullets turned into sentences."
+   },
+   "result": "plain"
+  },
+  "a07-report-billing-status": {
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 7,
+     "lean": 6,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "Both edits keep every fact, but A puts the numbers into clear prose once, while B repeats them in a table right after its summary paragraph."
+   },
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 6,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "B keeps every fact and number but drops the table that only repeated the summary, and its risk section is tighter and sounds more natural ('If this slips, phases 4 and 5 slip with it'), while A says the same figures twice."
+   },
+   "result": "plain"
+  },
+  "a11-web-notewise-landing": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 6,
+     "specific": 7,
+     "faithful": 7
+    },
+    "why": "A is tighter and sticks closely to the original's facts, with a fair flag about the unnamed customers, while B adds a subtitle and wordier headings and slips in details the original doesn't state, like notes arriving 'after you hang up' and links into 'the recording'."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 7,
+     "specific": 8,
+     "faithful": 7
+    },
+    "why": "B is leaner, keeps every fact without adding the unsupported 'after you hang up', and marks the anonymous testimonials for the author to check instead of guessing, though its one-word headings are a bit bare."
+   },
+   "result": "deslop"
+  },
+  "a16-report-fourday-classic": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 7,
+     "variety": 6,
+     "lean": 6,
+     "specific": 6,
+     "faithful": 9
+    },
+    "why": "A keeps every number, cuts the summary paragraph that repeats the bullets, and marks the vague next step for the author to fill in, while B ends on the same kind of empty line the original had."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 7,
+     "variety": 6,
+     "lean": 6,
+     "specific": 6,
+     "faithful": 9
+    },
+    "why": "B keeps every number and flags the vague next step for the author to fill in, while A adds a recap paragraph and ends on a vague next step; B's only loss is the original's point that people were healthier and better rested."
+   },
+   "result": "deslop"
+  },
+  "a19-report-freight-facts": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 7,
+     "variety": 7,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 8
+    },
+    "why": "A is leaner and marks the vague 'faster and more reliable' claim for the author to fill in, while B keeps it unmarked and adds a loose 'driving much of our current growth' line; A's only slip is making the CEO sound like she leads just the Rotterdam team."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 9
+    },
+    "why": "B reads more naturally and flags the vague 'faster deliveries' claim for the author instead of repeating it, though it drops 'across the supply chain' and turns the CEO into the head of the Rotterdam team, which A avoids."
+   },
+   "result": "deslop"
+  }
+ }
+}

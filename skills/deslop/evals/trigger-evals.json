@@ -1,0 +1,15 @@
+[
+  {"query": "can you de-slop this paragraph before I post it", "should_trigger": true},
+  {"query": "humanize this cover letter, it sounds like ChatGPT wrote it", "should_trigger": true},
+  {"query": "make this README sound less AI-written", "should_trigger": true},
+  {"query": "clean up this landing page copy, it reads like generic AI marketing", "should_trigger": true},
+  {"query": "this report you wrote is full of 'pivotal' and 'delve', fix the wording", "should_trigger": true},
+  {"query": "my resume bullets all start with spearheaded and leveraged, can you fix them", "should_trigger": true},
+  {"query": "check this email for AI tells before I send it", "should_trigger": true},
+  {"query": "write me a LinkedIn post about our launch", "should_trigger": false},
+  {"query": "is this essay AI-generated? give me a probability", "should_trigger": false},
+  {"query": "translate this paragraph into Spanish", "should_trigger": false},
+  {"query": "fix the typos in this config file", "should_trigger": false},
+  {"query": "summarize this report in three bullets", "should_trigger": false},
+  {"query": "rewrite this so it passes GPTZero", "should_trigger": false}
+]

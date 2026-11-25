@@ -1,0 +1,91 @@
+{
+ "skill_name": "deslop",
+ "notes": "Most testing is automated: tests/run_live.py runs every fixture with deslop, deslop twice, and plain Claude; tests/run_tests.py scores them (lint score, high hits, facts.py, similarity to the human originals). These prompts are the hand-graded cases on top of that, in skill-creator format.",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "/deslop resume\n\nThe text is in tests/fixtures/ai/a14-resume-marketing-classic.md",
+   "expected_output": "SCORE before and after, NEEDS YOUR INPUT list, CLEAN TEXT, grouped CHANGES, FACTS line.",
+   "files": [
+    "tests/fixtures/ai/a14-resume-marketing-classic.md"
+   ],
+   "expectations": [
+    "lint.py on the clean text reports 0 high hits",
+    "8,000, 21,000, 162%, HubSpot, Acme Retail and 2020 \u2013 2024 all appear unchanged",
+    "No new number, tool or employer appears that was not in the input",
+    "Cliches (results-driven, proven track record, passionate about) are gone",
+    "At least one [NEEDS SPECIFIC: ...] marker where a result was vague",
+    "Output follows the format in SKILL.md, score line first"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "/deslop\n\nThe text is in tests/fixtures/human/h06-report-https.md",
+   "expected_output": "Context guessed as report; very few changes; at most em dashes replaced.",
+   "files": [
+    "tests/fixtures/human/h06-report-https.md"
+   ],
+   "expectations": [
+    "States the guessed context in one line",
+    "At least 85% of words unchanged (word-level similarity)",
+    "No [NEEDS SPECIFIC] markers, or at most one",
+    "The three-item lists and bold labels are kept or changed only lightly"
+   ]
+  },
+  {
+   "id": 3,
+   "prompt": "/deslop docs\n\nClean tests/fixtures/ai/a10-docs-tidycsv-readme.md",
+   "expected_output": "Prose cleaned, every code block identical.",
+   "files": [
+    "tests/fixtures/ai/a10-docs-tidycsv-readme.md"
+   ],
+   "expectations": [
+    "facts.py reports code_blocks.changed = false",
+    "Every inline code span and command is unchanged",
+    "Package and function names are unchanged"
+   ]
+  },
+  {
+   "id": 4,
+   "prompt": "deslop context=social mode=embedded\n\nThe text is in tests/fixtures/ai/a15-social-manager-classic.md",
+   "expected_output": "Only the CLEAN TEXT and NEEDS YOUR INPUT blocks.",
+   "files": [
+    "tests/fixtures/ai/a15-social-manager-classic.md"
+   ],
+   "expectations": [
+    "Reply contains only the two blocks, nothing before or after",
+    "No emoji, at most 3 hashtags",
+    "First person and the author's opinions are kept"
+   ]
+  },
+  {
+   "id": 5,
+   "prompt": "/deslop report keep em dashes\n\nThe text is in tests/fixtures/ai/a19-report-freight-facts.md",
+   "expected_output": "Corporate filler removed, every fact identical, em dashes untouched.",
+   "files": [
+    "tests/fixtures/ai/a19-report-freight-facts.md"
+   ],
+   "expectations": [
+    "facts.py: no lost or added numbers or URLs",
+    "Marta Lindqvist, Maersk, DB Schenker, Rotterdam and Antwerp all appear",
+    "'state-of-the-art', 'marks an exciting new chapter' and the thank-you closer are gone",
+    "Any em dash in the input is still there"
+   ]
+  },
+  {
+   "id": 6,
+   "prompt": "/deslop mode=rewrite report\n\nThis was written by AI. Make it read like a person wrote it. The text is in tests/fixtures/ai/a19-report-freight-facts.md",
+   "expected_output": "Full output format. Stiff sentences rewritten whole in plain words, every fact kept.",
+   "files": [
+    "tests/fixtures/ai/a19-report-freight-facts.md"
+   ],
+   "expectations": [
+    "facts.py reports no lost or added number, URL or code",
+    "No new number, name or tool appears that was not in the input",
+    "Most paragraphs are reworded, not just trimmed",
+    "Section order is unchanged",
+    "Vague claims get a [NEEDS SPECIFIC: ...] marker or are cut, never filled with a guess"
+   ]
+  }
+ ]
+}

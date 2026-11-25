@@ -1,0 +1,5 @@
+Many small business owners think cybersecurity is a big-company problem. Attackers don't. They run automated tools that scan the internet for weak passwords, unpatched software and exposed systems, and they don't care whether the target is a Fortune 500 firm or a five-person bakery. One breach can cost you customer data or the money in your bank account. It can also lock up your point-of-sale system and stop sales for days.
+
+Most attacks get in through basic gaps, and closing them doesn't take a big budget. Turn on multi-factor authentication and use a password manager. Keep software updated. Back up files to a place that isn't always connected to the network. Those steps block most common threats [NEEDS SPECIFIC: source for "most common threats"?]. Phishing emails are still the most frequent way attackers get in, so spend an afternoon teaching staff to spot them.
+
+Customers, partners and payment processors increasingly expect reasonable security, and one incident can undo trust that took years to build. Treat security as a routine part of running the business, not an emergency to deal with later.

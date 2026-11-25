@@ -1,0 +1,257 @@
+{
+ "arm": "workloop",
+ "vs": "tests/runs/2026-11-25-claude-code-opus-5-5-rewrite/review2",
+ "summary": {
+  "deslop": 2,
+  "plain": 3,
+  "split_or_tie": 1
+ },
+ "means": {
+  "deslop_human": 7.8,
+  "deslop_variety": 7.2,
+  "deslop_lean": 8.0,
+  "deslop_specific": 7.8,
+  "deslop_faithful": 8.6,
+  "plain_human": 7.9,
+  "plain_variety": 7.4,
+  "plain_lean": 8.0,
+  "plain_specific": 8.2,
+  "plain_faithful": 8.3
+ },
+ "verdicts": {
+  "a06-report-support-q3": {
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "Both keep every fact, but B is ready to send as is, while A adds a placeholder asking for Q2 CSAT, a comparison the original never made."
+   },
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 9
+    },
+    "why": "A keeps every fact cleanly without extra clutter, while B adds a needless placeholder for a Q2 CSAT figure the summary never needed and drops the explicit 'in Q2' label on the 5.1-hour baseline."
+   },
+   "result": "deslop"
+  },
+  "a03-email-coverletter-ux": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 8
+    },
+    "why": "Both read naturally and mark what's missing, but A drops the line that Calder's work is 'not just a visual layer on top of a product', while B keeps that and almost everything else, losing only the 'build the judgment' wording."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 7
+    },
+    "why": "B flags more of the missing facts (years, employer, a measured result) and keeps 'end-to-end' and 'build the judgment', and its sentences vary more, though it drops the 'not just a visual layer' line and A keeps it."
+   },
+   "result": "split_or_tie"
+  },
+  "a07-report-billing-status": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 6,
+     "specific": 7,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "B keeps every fact and number, doesn't repeat the table's figures in the opening paragraph, puts the start date in the table, and marks the stakeholders as a gap for the author to fill instead of leaving it vague."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 6,
+     "specific": 7,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "Edit A keeps every fact, flags the unnamed stakeholders instead of leaving them vague, and folds the status header and decisions section into the opening so nothing is repeated, while Edit B gives the same numbers in both the summary and the table."
+   },
+   "result": "plain"
+  },
+  "a11-web-notewise-landing": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 7
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 7,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "B keeps the headline and the informative section titles, so it loses no meaning and still cuts the filler, while A's one-word headers and bare 'Notewise' title strip useful context from a landing page."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "A cuts the filler and keeps every fact and the useful headline; B cuts its titles down to bare labels like \"Notes\" and \"Search\", drops the core message, and changes \"and\" to \"or\" in the integrations list."
+   },
+   "result": "plain"
+  },
+  "a16-report-fourday-classic": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 9,
+     "variety": 8,
+     "lean": 7,
+     "specific": 9,
+     "faithful": 9
+    },
+    "why": "B flags a real gap in the data (what period the sick-day drop is measured against) and cuts the vague closing, while A keeps a filler next-steps line; B's opening summary does repeat the details that follow."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 8,
+     "lean": 7,
+     "specific": 9,
+     "faithful": 9
+    },
+    "why": "A flags the real gap the original hides (what period the 61 sick days are compared with) and reads more naturally, even though its opening summary repeats the details that follow, while B's placeholder only asks about a next step the original never committed to."
+   },
+   "result": "plain"
+  },
+  "a19-report-freight-facts": {
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 7,
+     "variety": 5,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 6
+    },
+    "why": "B keeps the European-network context, the faster-and-more-reliable delivery claim (marked for numbers) and the thank-you, and its sentences vary more, while A cuts real content and reads choppy."
+   },
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 7
+    },
+    "why": "A keeps the claim that the partnerships bring faster, more reliable deliveries and marks it for a figure, while B is leaner but drops that claim and replaces it with a placeholder."
+   },
+   "result": "deslop"
+  }
+ }
+}

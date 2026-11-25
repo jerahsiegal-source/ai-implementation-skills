@@ -1,0 +1,13 @@
+{
+ "runner": "claude",
+ "model": "default",
+ "date": "2026-11-25",
+ "mode": "rewrite",
+ "arms": {
+  "baseline": "plain Claude (copied from v3)",
+  "deslop": "mode=rewrite, before the reader check",
+  "review": "mode=rewrite + reader check, first version",
+  "review2": "mode=rewrite + reader check, shipped version",
+  "workloop": "work-loop skill driving deslop mode=rewrite, 6 samples"
+ }
+}
