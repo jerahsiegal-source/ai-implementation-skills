@@ -20,7 +20,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 FIX = os.path.join(HERE, "fixtures")
 
-PROMPT = """You are judging two edits of the same draft. The goal of each edit was: make the text read like a careful human wrote it (specific, plain, honest), keep every fact, and never invent facts. Marking a missing detail for the author to fill in is allowed and is better than guessing.
+PROMPT = """You are judging two edits of the same AI-written draft. The goal of each edit was: make it read clearly like a careful person wrote it, cut the fluff, and keep the same detail and information quality. It must never invent facts. Marking a missing detail for the author to fill in is allowed and is better than guessing.
 
 ORIGINAL ({context}):
 <original>
@@ -39,11 +39,13 @@ EDIT B:
 
 Score each edit 1 to 10 on:
 - human: reads like a careful person wrote it, not a model
+- variety: sentence length and structure vary naturally, no repeated templates
+- lean: no fluff, filler, restating or long titles and subtitles
 - specific: says concrete things, or clearly marks what is missing, instead of vague claims
-- faithful: keeps every fact, number and name from the original and adds none
-Then pick the better edit overall, or "tie".
+- faithful: keeps every fact, number, name and useful detail from the original and adds none
+Then pick the edit you would rather send, or "tie".
 
-Reply with only JSON: {{"a": {{"human": n, "specific": n, "faithful": n}}, "b": {{"human": n, "specific": n, "faithful": n}}, "winner": "A" | "B" | "tie", "why": "one sentence"}}"""
+Reply with only JSON: {{"a": {{"human": n, "variety": n, "lean": n, "specific": n, "faithful": n}}, "b": {{"human": n, "variety": n, "lean": n, "specific": n, "faithful": n}}, "winner": "A" | "B" | "tie", "why": "one sentence"}}"""
 
 
 def ask(prompt, model):
@@ -61,11 +63,15 @@ def main():
     ap.add_argument("--runs", required=True)
     ap.add_argument("--model", default="")
     ap.add_argument("--jobs", type=int, default=6)
+    ap.add_argument("--arm", default="deslop", help="skill arm folder inside --runs")
+    ap.add_argument("--vs", default="", help="folder to compare against (default <runs>/baseline)")
+    ap.add_argument("--out", default="verdicts.json", help="file name under <runs>/blind/")
     a = ap.parse_args()
     items = []
     for name in sorted(os.listdir(os.path.join(FIX, "ai"))):
         fid = name[:-3]
-        d, b = (os.path.join(a.runs, arm, name) for arm in ("deslop", "baseline"))
+        d = os.path.join(a.runs, a.arm, name)
+        b = os.path.join(a.vs or os.path.join(a.runs, "baseline"), name)
         if os.path.exists(d) and os.path.exists(b):
             items.append((fid, fid.split("-")[1], open(os.path.join(FIX, "ai", name), encoding="utf-8").read(),
                           open(d, encoding="utf-8").read(), open(b, encoding="utf-8").read()))
@@ -94,12 +100,12 @@ def main():
         summary[r["result"] if r["result"] in summary else "split_or_tie"] += 1
     means = {}
     for arm in ("deslop", "plain"):
-        for k in ("human", "specific", "faithful"):
-            xs = [r[o][arm][k] for r in res.values() for o in ("order1", "order2") if o in r]
+        for k in ("human", "variety", "lean", "specific", "faithful"):
+            xs = [r[o][arm][k] for r in res.values() for o in ("order1", "order2") if o in r and k in r[o][arm]]
             means["%s_%s" % (arm, k)] = round(sum(xs) / len(xs), 1) if xs else None
     os.makedirs(os.path.join(a.runs, "blind"), exist_ok=True)
-    with open(os.path.join(a.runs, "blind", "verdicts.json"), "w") as f:
-        json.dump({"summary": summary, "means": means, "verdicts": res}, f, indent=1)
+    with open(os.path.join(a.runs, "blind", a.out), "w") as f:
+        json.dump({"arm": a.arm, "vs": a.vs or "baseline", "summary": summary, "means": means, "verdicts": res}, f, indent=1)
     print(json.dumps({"summary": summary, "means": means}, indent=1))
 
 

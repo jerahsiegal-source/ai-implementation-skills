@@ -85,6 +85,8 @@ def unit_tests():
     check("linter: flags em dashes", ids(r1).count("F-01") == 2)
     check("linter: --allow-em-dash turns them off", "F-01" not in ids(r2))
     check("linter: date ranges are not em dashes", "F-01" not in ids(L("Manager, 2020 – 2024")))
+    check("linter: flags long titles and subtitles", "F-11" in ids(L("# Building Resilience: How Our Team Navigated a Hard Quarter\n\nText.\n")))
+    check("linter: short titles and FAQ questions pass", "F-11" not in ids(L("# Q3 recap\n\n## Why would an agency want to use cloud.gov?\n\nText.\n")))
 
     t = "- Spearheaded the launch\n- Leveraged analytics\n- Orchestrated the migration\n- Championed testing\n"
     rr, rg = L(t, context="resume"), L(t, context="general")
@@ -258,8 +260,8 @@ def write_md(run_dir, s, rows):
         L += ["", "## Blind judge (AI samples, both orders)", "",
               "Wins that held in both orders: deslop %d, plain Claude %d, split or tie %d." % (sm["deslop"], sm["plain"], sm["split_or_tie"]),
               "", "| Mean score (1-10) | deslop | plain Claude |", "|---|---|---|"]
-        for k in ("human", "specific", "faithful"):
-            L.append("| %s | %s | %s |" % (k, mn["deslop_" + k], mn["plain_" + k]))
+        for k in ("human", "variety", "lean", "specific", "faithful"):
+            L.append("| %s | %s | %s |" % (k, mn.get("deslop_" + k, "-"), mn.get("plain_" + k, "-")))
     with open(os.path.join(run_dir, "report.md"), "w") as f:
         f.write("\n".join(L) + "\n")
 

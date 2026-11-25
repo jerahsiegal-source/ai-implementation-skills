@@ -1,0 +1,9 @@
+I'd only been at 18F Consulting a short while when a Department of the Treasury project came my way. When I heard what it was, I grinned for about an hour (maybe three): Treasury was putting a woman on the $10 bill. Over a quick round of emails and phone calls, the Treasury team walked us through the logistics. The new bill would feature a woman, have better security, and include a tactile feature.
+
+We agreed to help with the digital strategy for the redesign. That meant advising on content and visual design for the website and helping plan the social media rollout. We wrote our statement of work (SOW) and completed the Interagency Agreement (IAA). 18F runs on a cost-recoverable model, so the IAA is what lets us work with another agency.
+
+Then the fun started.
+
+We held a series of creative reviews between 18F Consulting and Treasury's design team. My colleague Jesse Taggert and I worked closely with Clare Kim, Jonathan Webb, and the rest of the Treasury team. First we read up on the project's history. Then we asked who would visit the site and what they'd want from it, so we could understand the people using it. That's how we approach digital work: human-centered design starts with the people you're designing for and ends with solutions built around their needs.
+
+We wanted [#TheNew10 website](https://thenew10.treasury.gov/) to do three things: help people get the news quickly, send them straight to the information they were looking for, and make it obvious how to share their thoughts on "the new 10." Treasury wanted the public to weigh in on who should appear on the bill and on what democracy means to them. Democracy was the theme of this bill and the next set of bills, so we also advised on ways to get as many people as possible involved in the campaign. Our creative reviews also covered information architecture, search engine optimization, visual design, interaction design, and how to handle feedback from the public and stakeholders.

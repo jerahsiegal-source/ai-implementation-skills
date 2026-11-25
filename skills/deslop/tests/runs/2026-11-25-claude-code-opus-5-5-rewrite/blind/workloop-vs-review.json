@@ -1,0 +1,257 @@
+{
+ "arm": "workloop",
+ "vs": "tests/runs/2026-11-25-claude-code-opus-5-5-rewrite/review",
+ "summary": {
+  "deslop": 3,
+  "plain": 2,
+  "split_or_tie": 1
+ },
+ "means": {
+  "deslop_human": 8.1,
+  "deslop_variety": 7.4,
+  "deslop_lean": 8.3,
+  "deslop_specific": 7.9,
+  "deslop_faithful": 8.8,
+  "plain_human": 7.4,
+  "plain_variety": 6.1,
+  "plain_lean": 8.2,
+  "plain_specific": 7.8,
+  "plain_faithful": 8.4
+ },
+ "verdicts": {
+  "a06-report-support-q3": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 7,
+     "variety": 5,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 10
+    },
+    "why": "Both keep every fact, but B keeps the scannable bullet list, which suits a quarterly metrics report and an audience that skims; it only drops the 'Welcomed' filler and shortens the title."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 10
+    },
+    "plain": {
+     "human": 7,
+     "variety": 5,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 10
+    },
+    "why": "Both keep every fact, but A only trims the filler (\"Quarterly\", \"Welcomed\") and keeps the bullet format, which is easier to scan for a metrics report than B's prose."
+   },
+   "result": "plain"
+  },
+  "a03-email-coverletter-ux": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 7,
+     "variety": 7,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 9
+    },
+    "why": "A marks more of the gaps that matter, like the current company, a Calder project and a measured result, and its research-led paragraph reads more naturally, though it drops the original's 'not just a visual layer' contrast, which B keeps."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 9,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 6,
+     "faithful": 9
+    },
+    "why": "B adds placeholders where a cover letter most needs specifics (the current company and which Calder project drew you in), while A keeps the 'not just a visual layer' line that B dropped but leaves the generic praise of Calder unmarked."
+   },
+   "result": "deslop"
+  },
+  "a07-report-billing-status": {
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 9,
+     "variety": 8,
+     "lean": 9,
+     "specific": 7,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 7,
+     "variety": 6,
+     "lean": 7,
+     "specific": 8,
+     "faithful": 9
+    },
+    "why": "B keeps every fact and reads more naturally because it merges the summary and progress sections and writes the risk as prose instead of template bullets, though A's [NEEDS SPECIFIC] marker for which teams sign off is a useful touch."
+   },
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 9,
+     "variety": 8,
+     "lean": 9,
+     "specific": 7,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 7,
+     "variety": 6,
+     "lean": 7,
+     "specific": 8,
+     "faithful": 8
+    },
+    "why": "A keeps every fact and reads more like a person wrote it: it folds the duplicate Summary and Progress sections into one paragraph and writes the risk as plain prose, while B keeps the template structure and repetition, and its one useful [NEEDS SPECIFIC] marker doesn't make up for that."
+   },
+   "result": "deslop"
+  },
+  "a11-web-notewise-landing": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 7,
+     "specific": 8,
+     "faithful": 8
+    },
+    "why": "A cuts more of the marketing fluff with short, plain headers and keeps every fact, while B keeps padded headers like \"Search every meeting you've ever had\", repeats the quote flag twice, and slightly changes \"open questions\" to \"questions nobody answered\"."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 7,
+     "variety": 6,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 8
+    },
+    "why": "A reads more naturally and its headings still carry details like searching every past meeting, while B has the awkward 'talk instead of scribble' and one-word headings that drop that scope; A's 'questions nobody answered' is a small change from 'open questions'."
+   },
+   "result": "split_or_tie"
+  },
+  "a16-report-fourday-classic": {
+   "order1": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 8,
+     "specific": 7,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 8,
+     "variety": 6,
+     "lean": 9,
+     "specific": 9,
+     "faithful": 8
+    },
+    "why": "B is tighter and flags a real gap in the data (what period the 61 sick days are compared against), while A's 'Next, we'll look at\u2026' line mostly carries over the original's vague ending and adds a placeholder for it."
+   },
+   "order2": {
+    "winner": "plain",
+    "deslop": {
+     "human": 8,
+     "variety": 8,
+     "lean": 7,
+     "specific": 7,
+     "faithful": 8
+    },
+    "plain": {
+     "human": 8,
+     "variety": 6,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 8
+    },
+    "why": "A keeps every number in a tight, scannable list and flags the missing comparison period for sick days, while B's closing line is still vague and leans on a placeholder for a next step the original never actually stated."
+   },
+   "result": "plain"
+  },
+  "a19-report-freight-facts": {
+   "order1": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 7,
+     "variety": 6,
+     "lean": 9,
+     "specific": 7,
+     "faithful": 7
+    },
+    "why": "A keeps the original's claim of faster, more reliable deliveries and marks only the missing number, while B drops that claim and leaves a sentence that reads as broken until the placeholder is filled."
+   },
+   "order2": {
+    "winner": "deslop",
+    "deslop": {
+     "human": 8,
+     "variety": 7,
+     "lean": 8,
+     "specific": 8,
+     "faithful": 9
+    },
+    "plain": {
+     "human": 7,
+     "variety": 5,
+     "lean": 9,
+     "specific": 8,
+     "faithful": 7
+    },
+    "why": "B keeps the 'European network' detail and the original claim of faster, more reliable deliveries while flagging the missing figure, and its sentences vary more; A swaps that claim for a placeholder and reads choppier."
+   },
+   "result": "deslop"
+  }
+ }
+}

@@ -588,6 +588,12 @@
       "escalated_severity": "medium",
       "default": "off",
       "suggestion": "Cut the exclamation marks. Let the facts carry the energy."
+    },
+    "F-11": {
+      "name": "long title or subtitle",
+      "severity": "medium",
+      "max_words": 8,
+      "suggestion": "Use a short title: a few plain words, no 'Title: subtitle' and no subtitle line."
     }
   },
   "contexts": {

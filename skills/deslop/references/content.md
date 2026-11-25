@@ -48,7 +48,7 @@ Sentences that are grammatical and free of obvious tells but still sound like a 
 > Before: This initiative was designed to test whether a compressed schedule could enhance work-life balance without compromising output.
 > After: We wanted to know if people could work four days without getting less done.
 
-Use it only when the linter score is below 85 or the user says the text is AI-written, and only on sentences that read like a form. Never apply it to text that sounds like a person: jokes, asides, opinions, enthusiasm and odd specific details ("Go Sooners!", "ancient forests") are voice, not stiffness. Legal and regulatory wording stays too.
+Use it only when the linter score is below 85, the user says the text is AI-written, or `mode=rewrite` is set, and only on sentences that read like a form. Never apply it to text that sounds like a person: jokes, asides, opinions, enthusiasm and odd specific details ("Go Sooners!", "ancient forests") are voice, not stiffness. Legal and regulatory wording stays too.
 
 ## How many markers
 

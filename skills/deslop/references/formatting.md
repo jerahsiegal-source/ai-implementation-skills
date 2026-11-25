@@ -55,3 +55,11 @@ Four or more hashtags, usually stacked at the end. Keep two or three that people
 ## F-10 Exclamation marks in professional text (low; medium at 2+)
 
 Off in social. Cut them; let the facts carry the energy.
+
+## F-11 Long title or subtitle (medium)
+
+A heading over 8 words, a "Title: subtitle" heading, or an italic subtitle line under the title. People write short titles: "Q3 support report", not "Q3 Support Report: Driving Customer Satisfaction Through Faster Resolution". Keep the noun, cut the pitch, and drop the subtitle line.
+
+> Before: ## Building Resilience: How Our Team Navigated a Challenging Quarter
+> After: ## Q3 recap
+

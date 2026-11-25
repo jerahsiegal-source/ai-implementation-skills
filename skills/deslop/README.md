@@ -59,6 +59,7 @@ From the repo root, `./install.sh` (Mac/Linux) or `.\install.ps1` (Windows) link
 | Set the context | `/deslop email`, `/deslop web` ... |
 | Keep em dashes | `/deslop keep em dashes` |
 | Only see the problems | `/deslop mode=check` |
+| Rewrite text you know is AI-written, more freely | `/deslop mode=rewrite` |
 | Clean a file in place | `/deslop docs README.md` |
 | Lint without the model | `python3 scripts/lint.py draft.md --context report --text` |
 | Fail CI on slop | `python3 scripts/lint.py README.md --context docs --max-high 0` (exit 1 on any high hit) |
@@ -105,6 +106,19 @@ Results of each run are saved in `tests/runs/<date>-<runner>-<model>/report.md`.
 | Tokens per run | about 147k | about 41k |
 
 Where it wins: no rewrite lost or changed a number, URL or code; it leaves human writing alone; and it marks missing details instead of making them up. The judge noted plain Claude adding details the original never gave on 8 of 19 samples. Where it doesn't: plain Claude's freer rewrites read more natural; on clean-looking modern model output deslop often changes nothing; and the judge noted deslop dropping a non-numeric point from the original on 5 samples, which `facts.py` can't catch. Earlier runs (v1, v2) are kept next to v3 for comparison.
+
+### Rewrite mode (`mode=rewrite`, with the reader check)
+
+For text you know is AI-written. Same 19 AI samples, judged blind in both orders on reads human, sentence variety, no fluff, specific, and faithful. Full results: [tests/runs/2026-11-25-claude-code-opus-5-5-rewrite/](tests/runs/2026-11-25-claude-code-opus-5-5-rewrite/blind/).
+
+| Version (vs plain Claude) | Wins | Losses | Reads human | Variety | No fluff | Faithful | Cost per text |
+|---|---|---|---|---|---|---|---|
+| Default deslop | 5 | 8 | 6.5 vs 8.1 | 5.7 vs 7.5 | 7.4 vs 7.6 | 8.6 vs 7.8 | ~$0.15 |
+| `mode=rewrite`, no reader check | 11 | 6 | 7.2 vs 8.1 | 6.5 vs 7.5 | 8.1 vs 7.6 | 8.4 vs 7.8 | ~$0.20 |
+| `mode=rewrite` + reader check (shipped) | 13 | 4 | 7.7 vs 7.8 | 7.1 vs 7.3 | 8.5 vs 7.3 | 8.5 vs 7.6 | ~$0.41 |
+| Driven by the Work Loop skill (6 samples) | 4 | 2 | 7.7 vs 7.8 | 7.0 vs 7.2 | 8.2 vs 7.7 | 8.8 vs 8.3 | ~$0.75 |
+
+The reader check closed most of the gap on how human the text reads, and the judge picked deslop over plain Claude on 13 of 19. Head to head on 6 samples, the shipped version and the Work Loop split 3 to 2 (one tie), so the Work Loop isn't worth twice the cost for a single document. No rewrite lost or changed a real number, URL or code (`facts.py` flags one social post where "Lesson 1–5" labels and three hashtags were dropped).
 
 ## Limits
 

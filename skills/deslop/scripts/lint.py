@@ -207,6 +207,7 @@ class Linter:
         self.check_emoji()
         self.check_bold()
         self.check_headings()
+        self.check_long_titles()
         self.check_label_bullets()
         self.check_markdown_plain()
         self.check_hashtags()
@@ -557,6 +558,29 @@ class Linter:
             o = heads[0][0]
             self.add("F-06", cfg6["name"], sev6, o, o + 1, cfg6["suggestion"],
                      raw="%d headings in %d words" % (len(heads), self.n_words))
+
+    # -- F-11 long titles and subtitles
+    def check_long_titles(self):
+        cfg = self.rules["checks"]["F-11"]
+        sev = self.sev("F-11", cfg["severity"])
+        if sev is None:
+            return
+        lines = list(re.finditer(r"[^\n]+", self.masked))
+        for i, m in enumerate(lines):
+            line = m.group()
+            h = HEADING_RE.match(line)
+            b = re.match(r"^\s*\*\*([^*\n]+?)\*\*\s*$", line)
+            t = (h.group(2) if h else b.group(1) if b else "").strip()
+            if not t or t.endswith("?"):  # FAQ questions are fine
+                continue
+            n = len(re.findall(r"[A-Za-z0-9][\w'-]*", t))
+            sub = re.search(r"[A-Za-z]: [A-Za-z]|[A-Za-z] (?:\u2014|\u2013|--) [A-Za-z]", t)
+            # an italic line right under a title is a subtitle
+            nxt = lines[i + 1].group().strip() if i + 1 < len(lines) and lines[i + 1].start() == m.end() + 1 else ""
+            sub_line = h and h.group(1) == "#" and re.match(r"^[*_][^*_\n]{12,}[*_]$", nxt)
+            if n > cfg["max_words"] or sub or sub_line:
+                why = "%d words" % n if n > cfg["max_words"] else "title with a subtitle"
+                self.add("F-11", cfg["name"], sev, m.start(), m.end(), cfg["suggestion"], raw="%s (%s)" % (t, why))
 
     # -- F-07 label: explanation bullets
     def check_label_bullets(self):

@@ -1,0 +1,1214 @@
+{
+ "summary": {
+  "meta": {
+   "runner": "claude",
+   "model": "default",
+   "date": "2026-11-25",
+   "mode": "rewrite",
+   "arms": {
+    "baseline": "plain Claude (copied from v3)",
+    "deslop": "mode=rewrite, before the reader check",
+    "review": "mode=rewrite + reader check, first version",
+    "review2": "mode=rewrite + reader check, shipped version",
+    "workloop": "work-loop skill driving deslop mode=rewrite, 6 samples"
+   }
+  },
+  "deslop": {
+   "ai_score_before": 48.74,
+   "ai_score_after": 80.89,
+   "ai_high_left": 0,
+   "human_score_after": null,
+   "human_similarity": null,
+   "facts_broken": 0,
+   "numbers_added": 0,
+   "numbers_lost": 0,
+   "markers_ai": 18,
+   "markers_human": 0,
+   "tokens_mean": 177400.32,
+   "seconds_mean": 22.22
+  },
+  "baseline": {
+   "ai_score_before": 48.74,
+   "ai_score_after": 68.58,
+   "ai_high_left": 2,
+   "human_score_after": null,
+   "human_similarity": null,
+   "facts_broken": 2,
+   "numbers_added": 1,
+   "numbers_lost": 5,
+   "markers_ai": 0,
+   "markers_human": 0,
+   "tokens_mean": 40660.89,
+   "seconds_mean": 9.07
+  }
+ },
+ "rows": [
+  {
+   "fixture": "a01-resume-pm",
+   "kind": "ai",
+   "context": "resume",
+   "before": 2,
+   "deslop": {
+    "score": 2,
+    "high": 0,
+    "similarity": 0.762,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Ran"
+    ],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 277663,
+    "seconds": 29.3
+   },
+   "baseline": {
+    "score": 3,
+    "high": 0,
+    "similarity": 0.655,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Ran"
+    ],
+    "added_names": [
+     "Mentored",
+     "PMs"
+    ],
+    "code_changed": false,
+    "tokens": 40662,
+    "seconds": 8.4
+   }
+  },
+  {
+   "fixture": "a02-resume-data",
+   "kind": "ai",
+   "context": "resume",
+   "before": 57,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.682,
+    "markers": 3,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "Builds",
+     "Works"
+    ],
+    "code_changed": false,
+    "tokens": 226574,
+    "seconds": 26.5
+   },
+   "baseline": {
+    "score": 40,
+    "high": 0,
+    "similarity": 0.579,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "Wrote"
+    ],
+    "code_changed": false,
+    "tokens": 40578,
+    "seconds": 9.2
+   }
+  },
+  {
+   "fixture": "a03-email-coverletter-ux",
+   "kind": "ai",
+   "context": "email",
+   "before": 33,
+   "deslop": {
+    "score": 88,
+    "high": 0,
+    "similarity": 0.622,
+    "markers": 2,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "I've"
+    ],
+    "code_changed": false,
+    "tokens": 227321,
+    "seconds": 32.4
+   },
+   "baseline": {
+    "score": 88,
+    "high": 0,
+    "similarity": 0.588,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Hiring",
+     "I'd",
+     "Team"
+    ],
+    "added_names": [
+     "I've"
+    ],
+    "code_changed": false,
+    "tokens": 41133,
+    "seconds": 12.0
+   }
+  },
+  {
+   "fixture": "a04-social-launch",
+   "kind": "ai",
+   "context": "social",
+   "before": 38,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.721,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "BuildInPublic"
+    ],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 176498,
+    "seconds": 19.0
+   },
+   "baseline": {
+    "score": 62,
+    "high": 1,
+    "similarity": 0.335,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "I'd"
+    ],
+    "added_names": [
+     "CSVs",
+     "It's"
+    ],
+    "code_changed": false,
+    "tokens": 40227,
+    "seconds": 7.8
+   }
+  },
+  {
+   "fixture": "a05-social-lesson",
+   "kind": "ai",
+   "context": "social",
+   "before": 73,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.962,
+    "markers": 1,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 131743,
+    "seconds": 17.5
+   },
+   "baseline": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.554,
+    "markers": 0,
+    "facts_hard_fail": true,
+    "lost_numbers": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "added_numbers": [],
+    "lost_names": [
+     "I'd"
+    ],
+    "added_names": [
+     "Ask",
+     "Launch"
+    ],
+    "code_changed": false,
+    "tokens": 40850,
+    "seconds": 8.6
+   }
+  },
+  {
+   "fixture": "a06-report-support-q3",
+   "kind": "ai",
+   "context": "report",
+   "before": 92,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.5,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Quarterly"
+    ],
+    "added_names": [
+     "Median"
+    ],
+    "code_changed": false,
+    "tokens": 131070,
+    "seconds": 14.3
+   },
+   "baseline": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.34,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Quarterly"
+    ],
+    "added_names": [
+     "Even"
+    ],
+    "code_changed": false,
+    "tokens": 39995,
+    "seconds": 4.9
+   }
+  },
+  {
+   "fixture": "a07-report-billing-status",
+   "kind": "ai",
+   "context": "report",
+   "before": 85,
+   "deslop": {
+    "score": 85,
+    "high": 0,
+    "similarity": 0.763,
+    "markers": 1,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 132957,
+    "seconds": 21.3
+   },
+   "baseline": {
+    "score": 69,
+    "high": 0,
+    "similarity": 0.405,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Decisions",
+     "Launch",
+     "Metrics",
+     "Migration",
+     "Needed",
+     "None",
+     "Phases",
+     "Project",
+     "Report",
+     "Status"
+    ],
+    "added_names": [
+     "March",
+     "Started"
+    ],
+    "code_changed": false,
+    "tokens": 40871,
+    "seconds": 10.8
+   }
+  },
+  {
+   "fixture": "a08-email-kickoff-followup",
+   "kind": "ai",
+   "context": "email",
+   "before": 2,
+   "deslop": {
+    "score": 20,
+    "high": 0,
+    "similarity": 0.579,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "I'm"
+    ],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 182344,
+    "seconds": 25.6
+   },
+   "baseline": {
+    "score": 14,
+    "high": 0,
+    "similarity": 0.574,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 40438,
+    "seconds": 11.7
+   }
+  },
+  {
+   "fixture": "a09-email-dashboard-delay",
+   "kind": "ai",
+   "context": "email",
+   "before": 79,
+   "deslop": {
+    "score": 79,
+    "high": 0,
+    "similarity": 0.663,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 174795,
+    "seconds": 13.5
+   },
+   "baseline": {
+    "score": 79,
+    "high": 0,
+    "similarity": 0.449,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Analytics",
+     "Dashboard",
+     "Delayed",
+     "Week"
+    ],
+    "added_names": [
+     "I'll"
+    ],
+    "code_changed": false,
+    "tokens": 40101,
+    "seconds": 6.2
+   }
+  },
+  {
+   "fixture": "a10-docs-tidycsv-readme",
+   "kind": "ai",
+   "context": "docs",
+   "before": 100,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 1.0,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 87765,
+    "seconds": 13.8
+   },
+   "baseline": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.862,
+    "markers": 0,
+    "facts_hard_fail": true,
+    "lost_numbers": [
+     "3.9"
+    ],
+    "added_numbers": [
+     "3.9+"
+    ],
+    "lost_names": [
+     "Clean",
+     "Remove",
+     "Requires"
+    ],
+    "added_names": [
+     "CLI",
+     "Drops",
+     "Excel",
+     "You'll"
+    ],
+    "code_changed": false,
+    "tokens": 41825,
+    "seconds": 11.1
+   }
+  },
+  {
+   "fixture": "a11-web-notewise-landing",
+   "kind": "ai",
+   "context": "web",
+   "before": 53,
+   "deslop": {
+    "score": 73,
+    "high": 0,
+    "similarity": 0.851,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "Zoom"
+    ],
+    "code_changed": false,
+    "tokens": 179446,
+    "seconds": 25.8
+   },
+   "baseline": {
+    "score": 48,
+    "high": 0,
+    "similarity": 0.376,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Decided",
+     "Miss",
+     "Never"
+    ],
+    "added_names": [
+     "Account",
+     "Product",
+     "Slack",
+     "Zoom"
+    ],
+    "code_changed": false,
+    "tokens": 40981,
+    "seconds": 10.8
+   }
+  },
+  {
+   "fixture": "a12-web-bakery-about",
+   "kind": "ai",
+   "context": "web",
+   "before": 94,
+   "deslop": {
+    "score": 94,
+    "high": 0,
+    "similarity": 1.0,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 86682,
+    "seconds": 11.8
+   },
+   "baseline": {
+    "score": 83,
+    "high": 0,
+    "similarity": 0.56,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "We're"
+    ],
+    "code_changed": false,
+    "tokens": 40653,
+    "seconds": 8.8
+   }
+  },
+  {
+   "fixture": "a13-general-security-blog",
+   "kind": "ai",
+   "context": "general",
+   "before": 56,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.459,
+    "markers": 1,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 131345,
+    "seconds": 17.4
+   },
+   "baseline": {
+    "score": 94,
+    "high": 0,
+    "similarity": 0.393,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 40473,
+    "seconds": 8.2
+   }
+  },
+  {
+   "fixture": "a14-resume-marketing-classic",
+   "kind": "ai",
+   "context": "resume",
+   "before": 1,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.455,
+    "markers": 2,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Results-driven"
+    ],
+    "added_names": [
+     "Retail's"
+    ],
+    "code_changed": false,
+    "tokens": 228031,
+    "seconds": 25.3
+   },
+   "baseline": {
+    "score": 45,
+    "high": 0,
+    "similarity": 0.414,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Results-driven"
+    ],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 40593,
+    "seconds": 9.3
+   }
+  },
+  {
+   "fixture": "a15-social-manager-classic",
+   "kind": "ai",
+   "context": "social",
+   "before": 0,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.397,
+    "markers": 1,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "CareerGrowth",
+     "Lesson",
+     "SoftwareEngineering",
+     "TechLeadership"
+    ],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 140185,
+    "seconds": 23.5
+   },
+   "baseline": {
+    "score": 69,
+    "high": 1,
+    "similarity": 0.269,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Lesson"
+    ],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 40595,
+    "seconds": 10.0
+   }
+  },
+  {
+   "fixture": "a16-report-fourday-classic",
+   "kind": "ai",
+   "context": "report",
+   "before": 33,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.343,
+    "markers": 1,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "Output"
+    ],
+    "code_changed": false,
+    "tokens": 270632,
+    "seconds": 26.8
+   },
+   "baseline": {
+    "score": 92,
+    "high": 0,
+    "similarity": 0.332,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "Productivity"
+    ],
+    "code_changed": false,
+    "tokens": 40301,
+    "seconds": 6.4
+   }
+  },
+  {
+   "fixture": "a17-email-coverletter-classic",
+   "kind": "ai",
+   "context": "email",
+   "before": 28,
+   "deslop": {
+    "score": 50,
+    "high": 0,
+    "similarity": 0.404,
+    "markers": 2,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "I'd"
+    ],
+    "code_changed": false,
+    "tokens": 226423,
+    "seconds": 24.9
+   },
+   "baseline": {
+    "score": 43,
+    "high": 0,
+    "similarity": 0.454,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "I'd"
+    ],
+    "code_changed": false,
+    "tokens": 40737,
+    "seconds": 9.1
+   }
+  },
+  {
+   "fixture": "a18-web-ledgerline-classic",
+   "kind": "ai",
+   "context": "web",
+   "before": 24,
+   "deslop": {
+    "score": 46,
+    "high": 0,
+    "similarity": 0.505,
+    "markers": 3,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Accounts",
+     "Books",
+     "Choose",
+     "Confidence",
+     "Connect",
+     "Dedicated",
+     "Everywhere",
+     "Expert",
+     "Handle",
+     "Integrations",
+     "Real-Time",
+     "Reporting",
+     "Restaurant",
+     "Seamless",
+     "Simple",
+     "Simplify",
+     "Stress-Free",
+     "Support",
+     "Tax"
+    ],
+    "added_names": [
+     "Hundreds",
+     "Say",
+     "Try"
+    ],
+    "code_changed": false,
+    "tokens": 227704,
+    "seconds": 35.0
+   },
+   "baseline": {
+    "score": 74,
+    "high": 0,
+    "similarity": 0.397,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Accounts",
+     "Bookkeeping",
+     "Books",
+     "Choose",
+     "Confidence",
+     "Connect",
+     "Dedicated",
+     "Everywhere",
+     "Expert",
+     "Handle",
+     "Integrations",
+     "Owners",
+     "Real-Time",
+     "Reporting",
+     "Restaurant",
+     "Restaurants",
+     "Running",
+     "Seamless",
+     "Simple",
+     "Simplify",
+     "Stress-Free",
+     "Support",
+     "Tax",
+     "Works"
+    ],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 40995,
+    "seconds": 11.5
+   }
+  },
+  {
+   "fixture": "a19-report-freight-facts",
+   "kind": "ai",
+   "context": "report",
+   "before": 76,
+   "deslop": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.399,
+    "markers": 1,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 131428,
+    "seconds": 18.4
+   },
+   "baseline": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.492,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 40549,
+    "seconds": 7.6
+   }
+  },
+  {
+   "fixture": "h01-report-onboarding",
+   "kind": "human",
+   "context": "report",
+   "before": 92,
+   "baseline": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.594,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 41396,
+    "seconds": 9.4
+   }
+  },
+  {
+   "fixture": "h02-docs-site-tests",
+   "kind": "human",
+   "context": "docs",
+   "before": 97,
+   "baseline": {
+    "score": 91,
+    "high": 0,
+    "similarity": 0.578,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "We\u2019ve"
+    ],
+    "added_names": [
+     "Add",
+     "Readers"
+    ],
+    "code_changed": false,
+    "tokens": 41609,
+    "seconds": 11.0
+   }
+  },
+  {
+   "fixture": "h03-web-cloudgov-faq",
+   "kind": "human",
+   "context": "web",
+   "before": 83,
+   "baseline": {
+    "score": 89,
+    "high": 0,
+    "similarity": 0.498,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Masonry\u2019s"
+    ],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 41509,
+    "seconds": 12.5
+   }
+  },
+  {
+   "fixture": "h04-docs-oauth-proxy",
+   "kind": "human",
+   "context": "docs",
+   "before": 94,
+   "baseline": {
+    "score": 97,
+    "high": 0,
+    "similarity": 0.585,
+    "markers": 0,
+    "facts_hard_fail": true,
+    "lost_numbers": [
+     "1",
+     "127.0",
+     "30",
+     "404",
+     "443"
+    ],
+    "added_numbers": [],
+    "lost_names": [
+     "Host",
+     "X-Real-IP",
+     "X-Scheme"
+    ],
+    "added_names": [
+     "Because"
+    ],
+    "code_changed": true,
+    "tokens": 43224,
+    "seconds": 18.3
+   }
+  },
+  {
+   "fixture": "h05-general-new-ten",
+   "kind": "human",
+   "context": "general",
+   "before": 91,
+   "baseline": {
+    "score": 96,
+    "high": 0,
+    "similarity": 0.565,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Since",
+     "Treasury\u2019s"
+    ],
+    "added_names": [
+     "Treasury's"
+    ],
+    "code_changed": false,
+    "tokens": 41365,
+    "seconds": 12.0
+   }
+  },
+  {
+   "fixture": "h06-report-https",
+   "kind": "human",
+   "context": "report",
+   "before": 47,
+   "baseline": {
+    "score": 87,
+    "high": 0,
+    "similarity": 0.503,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "UK's"
+    ],
+    "code_changed": false,
+    "tokens": 41530,
+    "seconds": 13.9
+   }
+  },
+  {
+   "fixture": "h07-email-va-enrollment",
+   "kind": "human",
+   "context": "email",
+   "before": 100,
+   "baseline": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.586,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Records",
+     "Send",
+     "Show"
+    ],
+    "added_names": [
+     "Starting"
+    ],
+    "code_changed": false,
+    "tokens": 40949,
+    "seconds": 9.1
+   }
+  },
+  {
+   "fixture": "h08-email-va-claim",
+   "kind": "human",
+   "context": "email",
+   "before": 100,
+   "baseline": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.497,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 40248,
+    "seconds": 8.0
+   }
+  },
+  {
+   "fixture": "h09-social-parks-day",
+   "kind": "human",
+   "context": "social",
+   "before": 94,
+   "baseline": {
+    "score": 93,
+    "high": 0,
+    "similarity": 0.487,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [],
+    "added_names": [
+     "Twitter"
+    ],
+    "code_changed": false,
+    "tokens": 40615,
+    "seconds": 9.4
+   }
+  },
+  {
+   "fixture": "h10-docs-express-readme",
+   "kind": "human",
+   "context": "docs",
+   "before": 82,
+   "baseline": {
+    "score": 91,
+    "high": 0,
+    "similarity": 0.639,
+    "markers": 0,
+    "facts_hard_fail": true,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Express's",
+     "Middleware",
+     "Modules",
+     "Official",
+     "PROTIP",
+     "View"
+    ],
+    "added_names": [],
+    "code_changed": true,
+    "tokens": 41784,
+    "seconds": 11.4
+   }
+  },
+  {
+   "fixture": "h11-report-gao-review",
+   "kind": "human",
+   "context": "report",
+   "before": 94,
+   "baseline": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.42,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "GAO\u2019s"
+    ],
+    "added_names": [],
+    "code_changed": false,
+    "tokens": 40457,
+    "seconds": 7.9
+   }
+  },
+  {
+   "fixture": "h12-general-emoji-docs",
+   "kind": "human",
+   "context": "general",
+   "before": 100,
+   "baseline": {
+    "score": 100,
+    "high": 0,
+    "similarity": 0.435,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Micah\u2019s"
+    ],
+    "added_names": [
+     "Micah's"
+    ],
+    "code_changed": false,
+    "tokens": 40703,
+    "seconds": 7.9
+   }
+  },
+  {
+   "fixture": "h13-general-estonia",
+   "kind": "human",
+   "context": "general",
+   "before": 66,
+   "baseline": {
+    "score": 93,
+    "high": 0,
+    "similarity": 0.594,
+    "markers": 0,
+    "facts_hard_fail": false,
+    "lost_numbers": [],
+    "added_numbers": [],
+    "lost_names": [
+     "Estonia\u2019s",
+     "European",
+     "Republic"
+    ],
+    "added_names": [
+     "Estonia's"
+    ],
+    "code_changed": false,
+    "tokens": 41902,
+    "seconds": 16.1
+   }
+  },
+  {
+   "fixture": "h14-resume-sample",
+   "kind": "human",
+   "context": "resume",
+   "before": 64,
+   "baseline": {
+    "score": 46,
+    "high": 0,
+    "similarity": 0.564,
+    "markers": 0,
+    "facts_hard_fail": true,
+    "lost_numbers": [
+     "12"
+    ],
+    "added_numbers": [],
+    "lost_names": [
+     "Development",
+     "Extension",
+     "GoogleMaps",
+     "Javascript",
+     "Master",
+     "Month'",
+     "Techcrunch",
+     "Weisman"
+    ],
+    "added_names": [
+     "Built",
+     "Dec",
+     "Google",
+     "I'm",
+     "JavaScript",
+     "MPEG",
+     "Maps",
+     "Month",
+     "Named",
+     "TechCrunch",
+     "Weissman",
+     "Won"
+    ],
+    "code_changed": false,
+    "tokens": 41053,
+    "seconds": 10.1
+   }
+  }
+ ]
+}
