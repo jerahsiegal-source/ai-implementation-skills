@@ -36,6 +36,54 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 
 **The design skills share one kit.** `design`, `explore`, `visualize` and `flow-ux` read from [design-kit](skills/design-kit) (readability floor, copy and anti-slop rules, styles, brand intake, screenshot check), so the rules are written once. Every one of them, and Work Loop, runs the kit's check, critique and fix round before calling visual work done. `chart` (data viz) uses the kit too and adds its own chart and color checks.
 
+## Which skill when
+
+Start with one skill. Add Work Loop when the work ships or someone else will check it.
+
+```mermaid
+flowchart LR
+  Q{What do you need?}
+
+  Q --> O[See an output]
+  O -->|just for me| V1[visualize]
+  O -->|lots of numbers| V2[visualize + chart]
+  O -->|sharing it| V3[visualize + work-loop]
+
+  Q --> S[Change a screen]
+  S -->|I'll check it| D1[design]
+  S -->|must be proven| D2[design + work-loop]
+
+  Q --> B[Build something new]
+  B --> I[intent-brief]
+  I -->|look is set| D3[design + work-loop]
+  I -->|look is open| E[explore] --> D3
+
+  Q --> F[Review a flow] --> FX[flow-ux]
+  Q --> C[Make one chart] --> CX[chart]
+
+  Q --> W[Write something]
+  W -->|clean up AI text| DS[deslop]
+  W -->|sound like me| MV[my-voice]
+
+  Q --> K[Check the skills]
+  K -->|after a result| R[rate]
+  K -->|new model or a miss| SR[skill-review]
+```
+
+What the blind-judged tests showed (scores out of 25):
+
+| Rule of thumb | Evidence |
+|---|---|
+| `visualize` beats plain Claude for everyday pages | 23 vs 21 on a numbers report |
+| `design` + `work-loop` is best for builds | 24 vs 19.5 plain on a client tracker |
+| `work-loop` raised the score every time it was added | +1 to +3 points, for 14 to 26% more tokens |
+| Stacks of 3 or 4 skills didn't beat the best one or two | 21 vs 24 on the tracker |
+| `explore` only helps when the look is still open | 20 vs 21 for `design` alone on a clear spec |
+| `flow-ux` is for reviewing flows that exist | Found 11 of 11 planted problems; no gain on a fresh build |
+| `deslop` in rewrite mode beats plain Claude on AI text | Picked on 13 of 19 samples; no real number, URL or code lost |
+
+One task each, one to three judges, so treat these as a guide. Details: [Using the skills together](workflows/design-skills-workflow.md) and [deslop's results](skills/deslop/README.md).
+
 **Not sure which to use, or whether Work Loop is worth it?** See [Using the skills together](workflows/design-skills-workflow.md), with test results.
 For an interactive version, with a "what do you need?" chooser and how I use them day to day, see [Which skill when](https://www.automaitioninnovations.com/skills).
 
