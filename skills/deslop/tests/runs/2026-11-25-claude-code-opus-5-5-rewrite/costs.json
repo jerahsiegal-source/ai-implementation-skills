@@ -5,7 +5,13 @@
  },
  "a01-resume-pm/deslop": {
   "seconds": 29.3,
-  "tokens": 277663
+  "tokens": 277663,
+  "usd": null
+ },
+ "a01-resume-pm/review": {
+  "seconds": 53.6,
+  "tokens": 304483,
+  "usd": 0.41307099999999997
  },
  "a01-resume-pm/review2": {
   "seconds": 59.6,
@@ -18,7 +24,13 @@
  },
  "a02-resume-data/deslop": {
   "seconds": 26.5,
-  "tokens": 226574
+  "tokens": 226574,
+  "usd": null
+ },
+ "a02-resume-data/review": {
+  "seconds": 29.2,
+  "tokens": 241890,
+  "usd": 0.25152
  },
  "a02-resume-data/review2": {
   "seconds": 55.9,
@@ -31,7 +43,13 @@
  },
  "a03-email-coverletter-ux/deslop": {
   "seconds": 32.4,
-  "tokens": 227321
+  "tokens": 227321,
+  "usd": null
+ },
+ "a03-email-coverletter-ux/review": {
+  "seconds": 51.2,
+  "tokens": 349005,
+  "usd": 0.4256987
  },
  "a03-email-coverletter-ux/review2": {
   "seconds": 88.5,
@@ -49,7 +67,13 @@
  },
  "a04-social-launch/deslop": {
   "seconds": 19.0,
-  "tokens": 176498
+  "tokens": 176498,
+  "usd": null
+ },
+ "a04-social-launch/review": {
+  "seconds": 16.4,
+  "tokens": 136531,
+  "usd": 0.168759
  },
  "a04-social-launch/review2": {
   "seconds": 35.3,
@@ -62,7 +86,13 @@
  },
  "a05-social-lesson/deslop": {
   "seconds": 17.5,
-  "tokens": 131743
+  "tokens": 131743,
+  "usd": null
+ },
+ "a05-social-lesson/review": {
+  "seconds": 40.0,
+  "tokens": 283787,
+  "usd": 0.46065419999999996
  },
  "a05-social-lesson/review2": {
   "seconds": 50.1,
@@ -75,7 +105,13 @@
  },
  "a06-report-support-q3/deslop": {
   "seconds": 14.3,
-  "tokens": 131070
+  "tokens": 131070,
+  "usd": null
+ },
+ "a06-report-support-q3/review": {
+  "seconds": 20.5,
+  "tokens": 182414,
+  "usd": 0.1885044
  },
  "a06-report-support-q3/review2": {
   "seconds": 37.5,
@@ -93,7 +129,13 @@
  },
  "a07-report-billing-status/deslop": {
   "seconds": 21.3,
-  "tokens": 132957
+  "tokens": 132957,
+  "usd": null
+ },
+ "a07-report-billing-status/review": {
+  "seconds": 28.2,
+  "tokens": 234819,
+  "usd": 0.2323836
  },
  "a07-report-billing-status/review2": {
   "seconds": 66.1,
@@ -111,7 +153,13 @@
  },
  "a08-email-kickoff-followup/deslop": {
   "seconds": 25.6,
-  "tokens": 182344
+  "tokens": 182344,
+  "usd": null
+ },
+ "a08-email-kickoff-followup/review": {
+  "seconds": 25.1,
+  "tokens": 190851,
+  "usd": 0.22888040000000004
  },
  "a08-email-kickoff-followup/review2": {
   "seconds": 47.4,
@@ -124,7 +172,13 @@
  },
  "a09-email-dashboard-delay/deslop": {
   "seconds": 13.5,
-  "tokens": 174795
+  "tokens": 174795,
+  "usd": null
+ },
+ "a09-email-dashboard-delay/review": {
+  "seconds": 25.4,
+  "tokens": 373552,
+  "usd": 0.25208600000000003
  },
  "a09-email-dashboard-delay/review2": {
   "seconds": 38.8,
@@ -137,7 +191,13 @@
  },
  "a10-docs-tidycsv-readme/deslop": {
   "seconds": 13.8,
-  "tokens": 87765
+  "tokens": 87765,
+  "usd": null
+ },
+ "a10-docs-tidycsv-readme/review": {
+  "seconds": 19.1,
+  "tokens": 139312,
+  "usd": 0.19025579999999997
  },
  "a10-docs-tidycsv-readme/review2": {
   "seconds": 16.9,
@@ -150,7 +210,13 @@
  },
  "a11-web-notewise-landing/deslop": {
   "seconds": 25.8,
-  "tokens": 179446
+  "tokens": 179446,
+  "usd": null
+ },
+ "a11-web-notewise-landing/review": {
+  "seconds": 30.2,
+  "tokens": 236729,
+  "usd": 0.24865179999999998
  },
  "a11-web-notewise-landing/review2": {
   "seconds": 53.2,
@@ -168,7 +234,13 @@
  },
  "a12-web-bakery-about/deslop": {
   "seconds": 11.8,
-  "tokens": 86682
+  "tokens": 86682,
+  "usd": null
+ },
+ "a12-web-bakery-about/review": {
+  "seconds": 31.6,
+  "tokens": 187710,
+  "usd": 0.23054960000000002
  },
  "a12-web-bakery-about/review2": {
   "seconds": 55.4,
@@ -181,7 +253,13 @@
  },
  "a13-general-security-blog/deslop": {
   "seconds": 17.4,
-  "tokens": 131345
+  "tokens": 131345,
+  "usd": null
+ },
+ "a13-general-security-blog/review": {
+  "seconds": 22.8,
+  "tokens": 138365,
+  "usd": 0.1895426
  },
  "a13-general-security-blog/review2": {
   "seconds": 63.6,
@@ -194,7 +272,13 @@
  },
  "a14-resume-marketing-classic/deslop": {
   "seconds": 25.3,
-  "tokens": 228031
+  "tokens": 228031,
+  "usd": null
+ },
+ "a14-resume-marketing-classic/review": {
+  "seconds": 50.9,
+  "tokens": 398366,
+  "usd": 0.3686298
  },
  "a14-resume-marketing-classic/review2": {
   "seconds": 65.9,
@@ -207,7 +291,13 @@
  },
  "a15-social-manager-classic/deslop": {
   "seconds": 23.5,
-  "tokens": 140185
+  "tokens": 140185,
+  "usd": null
+ },
+ "a15-social-manager-classic/review": {
+  "seconds": 29.9,
+  "tokens": 289571,
+  "usd": 0.2580884
  },
  "a15-social-manager-classic/review2": {
   "seconds": 53.5,
@@ -220,7 +310,13 @@
  },
  "a16-report-fourday-classic/deslop": {
   "seconds": 26.8,
-  "tokens": 270632
+  "tokens": 270632,
+  "usd": null
+ },
+ "a16-report-fourday-classic/review": {
+  "seconds": 22.5,
+  "tokens": 188265,
+  "usd": 0.21293900000000002
  },
  "a16-report-fourday-classic/review2": {
   "seconds": 40.7,
@@ -238,7 +334,13 @@
  },
  "a17-email-coverletter-classic/deslop": {
   "seconds": 24.9,
-  "tokens": 226423
+  "tokens": 226423,
+  "usd": null
+ },
+ "a17-email-coverletter-classic/review": {
+  "seconds": 47.2,
+  "tokens": 298456,
+  "usd": 0.3882558
  },
  "a17-email-coverletter-classic/review2": {
   "seconds": 55.6,
@@ -251,7 +353,13 @@
  },
  "a18-web-ledgerline-classic/deslop": {
   "seconds": 35.0,
-  "tokens": 227704
+  "tokens": 227704,
+  "usd": null
+ },
+ "a18-web-ledgerline-classic/review": {
+  "seconds": 68.2,
+  "tokens": 509549,
+  "usd": 0.49321420000000005
  },
  "a18-web-ledgerline-classic/review2": {
   "seconds": 64.7,
@@ -264,7 +372,13 @@
  },
  "a19-report-freight-facts/deslop": {
   "seconds": 18.4,
-  "tokens": 131428
+  "tokens": 131428,
+  "usd": null
+ },
+ "a19-report-freight-facts/review": {
+  "seconds": 23.8,
+  "tokens": 238499,
+  "usd": 0.24194140000000003
  },
  "a19-report-freight-facts/review2": {
   "seconds": 41.9,
