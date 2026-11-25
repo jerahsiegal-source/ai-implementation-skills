@@ -1,0 +1,87 @@
+{
+ "habits": "1. No titles or headings of any kind (no markdown headings, no bold title lines). A \"Subject:\" line in an email is fine.\n2. Never end with a sentence that promises follow-up or offers help (\"we'll keep you posted\", \"let me know if...\", \"happy to...\", \"we'll come back to you\").\n3. No bullet or numbered lists: write the items as plain sentences in a paragraph. Tables are fine.",
+ "train": [
+  "a07-report-billing-status",
+  "a06-report-support-q3",
+  "a09-email-dashboard-delay",
+  "a03-email-coverletter-ux"
+ ],
+ "held_out": [
+  "a08-email-kickoff-followup",
+  "a17-email-coverletter-classic",
+  "a05-social-lesson",
+  "a04-social-launch",
+  "a15-social-manager-classic"
+ ],
+ "rows": {
+  "a08-email-kickoff-followup": {
+   "without": {
+    "1": 0,
+    "2": 1,
+    "3": 1
+   },
+   "with": {
+    "1": 0,
+    "2": 1,
+    "3": 1
+   },
+   "facts_ok_with": true
+  },
+  "a17-email-coverletter-classic": {
+   "without": {
+    "1": 0,
+    "2": 1,
+    "3": 0
+   },
+   "with": {
+    "1": 0,
+    "2": 1,
+    "3": 0
+   },
+   "facts_ok_with": true
+  },
+  "a05-social-lesson": {
+   "without": {
+    "1": 0,
+    "2": 0,
+    "3": 1
+   },
+   "with": {
+    "1": 0,
+    "2": 0,
+    "3": 0
+   },
+   "facts_ok_with": true
+  },
+  "a04-social-launch": {
+   "without": {
+    "1": 0,
+    "2": 0,
+    "3": 0
+   },
+   "with": {
+    "1": 0,
+    "2": 0,
+    "3": 0
+   },
+   "facts_ok_with": true
+  },
+  "a15-social-manager-classic": {
+   "without": {
+    "1": 0,
+    "2": 0,
+    "3": 0
+   },
+   "with": {
+    "1": 0,
+    "2": 0,
+    "3": 0
+   },
+   "facts_ok_with": true
+  }
+ },
+ "habit_breaks_without": 4,
+ "habit_breaks_with": 3,
+ "facts_ok": true,
+ "costs": {}
+}

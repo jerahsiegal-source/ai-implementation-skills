@@ -33,9 +33,9 @@
    "ai_high_left": 2,
    "human_score_after": null,
    "human_similarity": null,
-   "facts_broken": 2,
+   "facts_broken": 1,
    "numbers_added": 1,
-   "numbers_lost": 5,
+   "numbers_lost": 1,
    "markers_ai": 0,
    "markers_human": 0,
    "tokens_mean": 40660.89,
@@ -230,20 +230,14 @@
     "high": 0,
     "similarity": 0.554,
     "markers": 0,
-    "facts_hard_fail": true,
-    "lost_numbers": [
-     "1",
-     "2",
-     "3",
-     "4"
-    ],
+    "facts_hard_fail": false,
+    "lost_numbers": [],
     "added_numbers": [],
     "lost_names": [
      "I'd"
     ],
     "added_names": [
-     "Ask",
-     "Launch"
+     "Ask"
     ],
     "code_changed": false,
     "tokens": 40850,
@@ -305,8 +299,12 @@
     "facts_hard_fail": false,
     "lost_numbers": [],
     "added_numbers": [],
-    "lost_names": [],
-    "added_names": [],
+    "lost_names": [
+     "Complete"
+    ],
+    "added_names": [
+     "Finish"
+    ],
     "code_changed": false,
     "tokens": 132957,
     "seconds": 21.3
@@ -320,6 +318,7 @@
     "lost_numbers": [],
     "added_numbers": [],
     "lost_names": [
+     "Complete",
      "Decisions",
      "Launch",
      "Metrics",
@@ -332,6 +331,7 @@
      "Status"
     ],
     "added_names": [
+     "Finish",
      "March",
      "Started"
     ],
@@ -772,6 +772,7 @@
     ],
     "added_names": [
      "Hundreds",
+     "Link",
      "Say",
      "Try"
     ],

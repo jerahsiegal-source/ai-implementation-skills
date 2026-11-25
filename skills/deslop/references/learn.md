@@ -21,7 +21,9 @@ Write rules about **how they edit**, not about this text:
 - Good: "Cut reassurance closers ('we'll keep you posted', 'let me know if...') in status reports." "Titles: 2 to 4 words, no 'Status' or 'Update'." "Keep one short summary line before a table."
 - Bad: "Remove the sentence about Chargebee." (only true once) or anything that copies their facts, names or private content.
 
-Each rule is one line in `preferences.md` under **Candidates (seen once)**, with the context and a count: `- [report] [seen 1] Cut reassurance closers.` When a new pair shows the same habit, raise the count and move it to **Rules** at 2. Mark a rule `confirmed` if the user says so. If a pair contradicts a rule, say so and lower or remove it.
+Each rule is one line in `preferences.md` under **Candidates (seen once)**, with a scope and a count: `- [all] [seen 1] Cut reassurance closers.` When a new pair shows the same habit, raise the count and move it to **Rules** at 2.
+
+**Scope:** use `[all]` for habits about how the person writes anything (closers they cut, headings they remove, lists they turn into sentences, title length). Use a context such as `[report]` only when the habit clearly depends on the kind of text, such as a resume's section order. A habit counts as seen again in any context, so one in a report and one in an email make 2. Merge near-duplicates into one line instead of adding a new one. Mark a rule `confirmed` if the user says so. If a pair contradicts a rule, say so and lower or remove it.
 
 Lint rules the user keeps on purpose (they leave em dashes in, or keep a list of three) go in `lint-overrides.json` instead, only after two pairs or the user's OK: `{"all": {"F-01": "off"}, "report": {"S-01": "low"}}`. lint.py reads it on its own.
 

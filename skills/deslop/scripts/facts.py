@@ -39,7 +39,10 @@ PLACEHOLDER = re.compile(r"\[[^\]\n]{0,40}\b[XN]\b[^\]\n]{0,40}\]")
 
 def strip(text):
     """Drop our markers and template slots like [X,000] or [N] before comparing."""
-    return PLACEHOLDER.sub(" ", MARKER.sub(" ", text))
+    t = PLACEHOLDER.sub(" ", MARKER.sub(" ", text))
+    # list numbering ("1.", "2)") and "Lesson 3:" labels are layout, not facts
+    t = re.sub(r"(?m)^(\s*)\d{1,2}[.)](?=\s)", r"\1", t)
+    return re.sub(r"(?i)\b(lesson|step|tip|part|phase)\s+\d{1,2}\s*:", r"\1:", t)
 
 
 def numbers(text):

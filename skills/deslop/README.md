@@ -123,6 +123,10 @@ For text you know is AI-written. Same 19 AI samples, judged blind in both orders
 
 The reader check closed most of the gap on how human the text reads, and the judge picked deslop over plain Claude on 13 of 19. Head to head on 6 samples, the shipped version and the Work Loop split 3 to 2 (one tie), so the Work Loop isn't worth twice the cost for a single document. No rewrite lost or changed a real number, URL or code (`facts.py` flags one social post where "Lesson 1–5" labels and three hashtags were dropped).
 
+### Learning from edits (simulated user)
+
+`tests/run_learning.py` gives a scripted editor three fixed habits (no titles on short pieces, no follow-up closers, short lists as sentences), lets it edit 4 deslop drafts, and runs `/deslop learn` on each. deslop found all three habits after 4 edits and wrote them as cross-context rules. One reached "seen twice" on its own; the other two waited for a second sighting or the user's OK. With all three confirmed, habit breaks on 5 new drafts went from 4 to 3, and no facts were lost. The rules it wrote were narrower than the editor's real habits (it learned "lists of about 3 items", so a 5-item list stayed). Learning follows what your edits show, so it gets sharper as you hand back more finals.
+
 ## Limits
 
 - The linter is English-only.

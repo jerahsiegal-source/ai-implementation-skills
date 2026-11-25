@@ -9,9 +9,9 @@ Runner: claude, model: default.
 | AI samples: high hits left | 0 | 2 |
 | Human samples: score after | None | None |
 | Human samples: similarity to original | None | None |
-| Rewrites that broke a number, URL or code | 0 | 2 |
+| Rewrites that broke a number, URL or code | 0 | 1 |
 | Numbers invented | 0 | 1 |
-| Numbers lost | 0 | 5 |
+| Numbers lost | 0 | 1 |
 | [NEEDS SPECIFIC] markers, AI samples | 18 | 0 |
 | [NEEDS SPECIFIC] markers, human samples | 0 | 0 |
 | Tokens per run (mean) | 177400.32 | 40660.89 |

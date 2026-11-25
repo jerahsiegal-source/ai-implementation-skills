@@ -26,13 +26,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(HERE), "scripts"))
 import run_live  # noqa: E402
 import facts  # noqa: E402
 
-HABITS = """1. Titles are at most 3 words, in sentence case. No title at all is fine.
-2. Never end with a sentence that promises follow-up or offers help ("we'll keep you posted", "let me know if...", "happy to...", "we'll share more soon").
-3. The first sentence of the body states the single most important number from the text."""
+HABITS = """1. No titles or headings of any kind (no markdown headings, no bold title lines). A "Subject:" line in an email is fine.
+2. Never end with a sentence that promises follow-up or offers help ("we'll keep you posted", "let me know if...", "happy to...", "we'll come back to you").
+3. No bullet or numbered lists: write the items as plain sentences in a paragraph. Tables are fine."""
 
 EDITOR = """You are editing a colleague's draft before it goes out. You have exactly these habits:
 {habits}
-Edit the draft so it follows your habits. Change nothing else: same facts, same wording elsewhere, keep any [NEEDS SPECIFIC: ...] markers. Reply with only the edited text.
+Apply every habit everywhere it applies, every time. Change nothing else: same facts, same wording elsewhere, keep any [NEEDS SPECIFIC: ...] markers. Reply with only the edited text.
 
 <draft>
 {draft}
@@ -47,8 +47,9 @@ GRADER = """Count how many times this text breaks each rule. Rules:
 
 Reply with only JSON: {{"1": n, "2": n, "3": n}}"""
 
-TRAIN = ["a06-report-support-q3", "a07-report-billing-status", "a19-report-freight-facts", "a09-email-dashboard-delay"]
-HELD = ["a16-report-fourday-classic", "a08-email-kickoff-followup", "a17-email-coverletter-classic", "a13-general-security-blog"]
+# Training drafts and held-out drafts both break the habits, so there is something to learn and room to improve.
+TRAIN = ["a07-report-billing-status", "a06-report-support-q3", "a09-email-dashboard-delay", "a03-email-coverletter-ux"]
+HELD = ["a08-email-kickoff-followup", "a17-email-coverletter-classic", "a05-social-lesson", "a04-social-launch", "a15-social-manager-classic"]
 
 
 def ask(prompt, model=""):
@@ -71,6 +72,9 @@ def main():
     ap.add_argument("--runs", required=True, help="run folder with a review2 arm (drafts without learning)")
     ap.add_argument("--arm", default="review2")
     ap.add_argument("--model", default="")
+    ap.add_argument("--confirm", action="store_true",
+                    help="skip training: take <runs>/learning/preferences.md, mark every candidate confirmed "
+                         "(as if the user said 'yes, those are right'), and re-test the held-out samples")
     a = ap.parse_args()
     out = os.path.join(a.runs, "learning")
     for d in ("finals", "with_prefs"):
@@ -83,7 +87,16 @@ def main():
     costs = {}
 
     # 1. the simulated user edits deslop's drafts; deslop learns from each pair in turn
-    for fid in TRAIN:
+    if a.confirm:
+        src = open(os.path.join(out, "preferences.md"), encoding="utf-8").read()
+        rules, cands = src.split("## Candidates", 1)
+        lines = [l.replace("[seen 1]", "[seen 1] confirmed") for l in cands.splitlines() if l.startswith("- ")]
+        src = rules.rstrip() + "\n" + "\n".join(lines) + "\n\n## Candidates (seen once)\n"
+        with open(os.path.join(personal, "deslop", "preferences.md"), "w", encoding="utf-8") as f:
+            f.write(src)
+        out = os.path.join(out, "confirmed")
+        os.makedirs(os.path.join(out, "with_prefs"), exist_ok=True)
+    for fid in ([] if a.confirm else TRAIN):
         ctx = fid.split("-")[1]
         orig = open(os.path.join(fix, fid + ".md"), encoding="utf-8").read()
         draft = open(os.path.join(a.runs, a.arm, fid + ".md"), encoding="utf-8").read()
@@ -102,7 +115,7 @@ def main():
             costs[fid + "/learn"] = {"seconds": secs if not isinstance(secs, tuple) else secs[0], "tokens": tokens}
             print("learned from", fid, "\n", reply[-600:], "\n")
     prefs = os.path.join(personal, "deslop", "preferences.md")
-    shutil.copy(prefs, os.path.join(out, "preferences.md"))
+    shutil.copy(prefs, os.path.join(out, "preferences.md"))  # in --confirm mode this lands in learning/confirmed/
 
     # 2. held-out samples: deslop with the learned preferences
     rows = {}
