@@ -36,9 +36,13 @@ Blind tests against real messages show the same giveaways every time: the draft 
    python3 ../deslop/scripts/lint.py draft.txt --context <email|social|report|resume|general> --text
    ```
 
-   Use `general` for texts and chat. Fix **high** hits in their voice. Fix a medium or low hit only if it is clearly not how they write; leave anything the profile or Keep list says they do (their openers, their "basically", their commas). Don't run a full `/deslop` rewrite on a voice draft: it is voice-neutral and sands the voice off.
+   Use `general` for texts and chat. Fix **high** hits in their voice. Fix a medium or low hit only if it is clearly not how they write; leave anything the profile or Keep list says they do (their openers, their "basically", their commas).
 
    No deslop installed? Skip the lint and check by eye for the common tells: "I hope this finds you well", "delve", em-dash chains, triplets of adjectives, a tidy summary line at the end.
+
+3. **Polish (reports and long emails only).** For reports, applications, proposals and emails over about 150 words, run deslop's rewrite on the draft as a last pass: `/deslop context=<report|email> mode=rewrite mode=embedded`. Then re-check the result against `rules.md`, the Avoid list and the audience row, and put back any of their Keep phrases it removed. Skip polish for texts, chat and social posts: in blind tests it made posts sound less human and did nothing for texts. The user can say "polish" to force it or "no polish" to skip it.
+
+   Blind test (20 mixed tasks): polish didn't change how human the writing felt, but the judge picked the polished version as the one to send almost twice as often.
 
 ## Returning the draft
 

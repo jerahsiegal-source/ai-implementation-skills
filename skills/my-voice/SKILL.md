@@ -76,8 +76,9 @@ Follow references/drafting.md. The short version:
 1. Read `profile/base.md`, `profile/lexicon.md`, `rules.md`, and the one `profile/mediums/*.md` that fits.
 2. Match the audience row in the formality table. Use their real phrases where they fit. Nothing from the Avoid list.
 3. **Never invent facts, excuses, events or numbers** the user didn't give. Ask, or leave it general.
-4. **Final check with deslop's linter**, if the deslop skill is installed: lint the draft and fix only real AI tells, in their voice. Don't run a full deslop rewrite on a voice draft; it is voice-neutral and sands the voice off.
-5. Return the draft only, ready to paste. No preamble.
+4. **Final check with deslop's linter**, if the deslop skill is installed: lint the draft and fix only real AI tells, in their voice.
+5. **Polish reports and long emails** with a deslop rewrite pass, then re-check against the profile. Never for texts or posts. "polish" / "no polish" overrides.
+6. Return the draft only, ready to paste. No preamble.
 
 When the user edits a draft or says what's off, save the before/after with `python3 scripts/voice.py log-edit`. After 10 new edits, offer `/my-voice learn`.
 
