@@ -28,6 +28,7 @@ Each skill is tested on my own work first. Many of them come with a LinkedIn pos
 | [rate](skills/rate) | Two-second rating after a skill runs: was it right the first time? Saved privately on your computer | _LinkedIn post coming_ |
 | [skill-review](skills/skill-review) | Monthly check: right-first-try rate from real use plus blind lab tests, then keep, fix or cut each skill | _LinkedIn post coming_ |
 | [deslop](skills/deslop) | Removes the patterns that make writing read as AI-generated, flags vague claims with `[NEEDS SPECIFIC]` instead of inventing details, and keeps every fact. Works alone or as the last pass of another writing skill | _LinkedIn post coming_ |
+| [my-voice](skills/my-voice) | Learns how you write from a short interview and your real messages, then drafts emails, texts and posts that sound like you. Your profile stays private on your computer | _LinkedIn post coming_ |
 
 **The two work as a pair:** Intent Brief defines *what* and *why*, and Work Loop gets it to done. They run in Claude Code and Codex.
 

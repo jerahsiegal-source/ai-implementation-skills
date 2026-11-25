@@ -1,0 +1,5 @@
+interface:
+  display_name: "My Voice"
+  short_description: "Draft emails, texts and posts that sound like you"
+policy:
+  allow_implicit_invocation: true
