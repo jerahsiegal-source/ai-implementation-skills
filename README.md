@@ -43,7 +43,7 @@ How they fit together on a big design job:
 intent-brief  ->  explore (you pick a look)  ->  work-loop builds it with design  ->  visualize the handoff
 ```
 
-All of them are called by name only (`/design` in Claude Code, `$design` in Codex). None run on their own.
+All of them are called by name (`/design` in Claude Code, `$design` in Codex). The one exception is `visualize`: when an answer runs long it offers itself in one line ("Want this as a visual page?") and only builds the page if you say yes.
 
 <!-- Add one row per skill, e.g.
 | [linkedin-post-drafter](skills/linkedin-post-drafter) | Turns rough notes into a LinkedIn post in your voice | [Post](https://www.linkedin.com/posts/...) |
