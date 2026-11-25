@@ -60,11 +60,14 @@ From the repo root, `./install.sh` (Mac/Linux) or `.\install.ps1` (Windows) link
 | Keep em dashes | `/deslop keep em dashes` |
 | Only see the problems | `/deslop mode=check` |
 | Rewrite text you know is AI-written, more freely | `/deslop mode=rewrite` |
+| Teach it from the version you actually sent | `/deslop learn` and paste your final |
 | Clean a file in place | `/deslop docs README.md` |
 | Lint without the model | `python3 scripts/lint.py draft.md --context report --text` |
 | Fail CI on slop | `python3 scripts/lint.py README.md --context docs --max-high 0` (exit 1 on any high hit) |
 
 It also starts on its own when you ask to "humanize", "de-slop" or "make this sound less AI-written".
+
+**Teach it your edits.** After you edit a deslop draft, give it back with `/deslop learn`. deslop compares its draft with your final, writes your habits as one-line rules in `~/.ai-skills/personal/deslop/preferences.md`, and follows them from then on (a rule applies once it shows up twice, or when you confirm it). Lint rules you keep breaking on purpose go in `lint-overrides.json` next to it. All of it stays on your computer and never goes in the repo. Voice and word choice are left to a voice skill: if `~/.ai-skills/personal/my-voice/` exists, each pair is copied to its `edits/` folder too. `python3 scripts/learn.py score` shows how close deslop's drafts are getting to your finals.
 
 **From another skill.** Call `deslop context=<type> mode=embedded` with the text. It returns only `CLEAN TEXT:` and `NEEDS YOUR INPUT (n):`, so a voice skill can write first and hand the draft to deslop as the last step. deslop has no voice of its own and contains nothing personal.
 

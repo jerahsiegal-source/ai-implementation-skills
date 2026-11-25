@@ -674,6 +674,28 @@ def load_rules(path=None):
         return json.load(f)
 
 
+def personal_overrides_path():
+    """The user's private lint overrides, written by /deslop learn. Never in a repo."""
+    if os.environ.get("DESLOP_PERSONAL_RULES"):
+        return os.environ["DESLOP_PERSONAL_RULES"]
+    base = os.environ.get("AI_SKILLS_PERSONAL") or os.path.join(os.path.expanduser("~"), ".ai-skills", "personal")
+    return os.path.join(base, "deslop", "lint-overrides.json")
+
+
+def apply_overrides(rules, path):
+    """Merge {"all": {"F-01": "off"}, "email": {"W-03": "low"}} into the context overrides.
+    Values: off, low, medium, high, or on (turns on a rule that is off by default)."""
+    with open(path, encoding="utf-8") as f:
+        ov = json.load(f)
+    for ctx, conf in rules["contexts"].items():
+        for rid, sev in list(ov.get("all", {}).items()) + list(ov.get(ctx, {}).items()):
+            if sev == "on":
+                conf.setdefault("enable", []).append(rid)
+            else:
+                conf.setdefault("overrides", {})[rid] = sev
+    return rules
+
+
 def lint(text, context="general", allow_em_dash=False, rules=None):
     return Linter(rules or load_rules(), context, allow_em_dash).run(text)
 
@@ -699,9 +721,14 @@ def main(argv=None):
     ap.add_argument("--max-high", type=int, default=0, help="exit 1 if high hits exceed this (default 0)")
     ap.add_argument("--fail-under", type=int, default=0, help="exit 1 if the score is below this")
     ap.add_argument("--rules", help="use another rules.json")
+    ap.add_argument("--no-personal", action="store_true",
+                    help="ignore the private overrides in ~/.ai-skills/personal/deslop/lint-overrides.json")
     ap.add_argument("--list-rules", action="store_true", help="print rule ids and names, then exit")
     a = ap.parse_args(argv)
     rules = load_rules(a.rules)
+    pp = personal_overrides_path()
+    if not a.no_personal and os.path.exists(pp):
+        rules = apply_overrides(rules, pp)
     if a.list_rules:
         for grp in ("word_rules", "phrase_rules", "structure_rules"):
             for r in rules[grp]:

@@ -110,8 +110,8 @@ def unit_tests():
           set(r["hits"][0]) >= {"id", "category", "severity", "line", "col", "match", "suggestion"})
     import contextlib, io
     with contextlib.redirect_stdout(io.StringIO()):
-        code_hi = lint.main(["--max-high", "0"] + [os.path.join(FIX, "ai", "a15-social-manager-classic.md")])
-        code_ok = lint.main(["--max-high", "99", os.path.join(FIX, "human", "h02-docs-site-tests.md")])
+        code_hi = lint.main(["--no-personal", "--max-high", "0"] + [os.path.join(FIX, "ai", "a15-social-manager-classic.md")])
+        code_ok = lint.main(["--no-personal", "--max-high", "99", os.path.join(FIX, "human", "h02-docs-site-tests.md")])
     check("linter: exit code 1 on high hits, 0 otherwise", code_hi == 1 and code_ok == 0)
 
     # facts
@@ -123,6 +123,37 @@ def unit_tests():
     check("facts: lost number, URL and changed code are caught",
           "5.1" in b["numbers"]["lost"] and b["urls"]["lost"] and b["code_blocks"]["changed"] and b["hard_fail"])
     check("facts: lost surname is reported", "Shah" in b["names"]["lost"])
+
+    # learn (private store goes to a throwaway folder)
+    import tempfile, shutil
+    import learn
+    tmp = tempfile.mkdtemp()
+    old_env = os.environ.get("AI_SKILLS_PERSONAL")
+    os.environ["AI_SKILLS_PERSONAL"] = os.path.join(tmp, "none")
+    check("learn: save does nothing without a personal folder", learn.save_history("o", "d", "report") is None)
+    os.environ["AI_SKILLS_PERSONAL"] = tmp
+    os.makedirs(os.path.join(tmp, "my-voice"))
+    draft = "## Q3 Support Report: A Strong Quarter\n\nWe handled 14,320 tickets. Response time fell to 3.4 hours. We'll keep you posted on next steps.\n"
+    final = "## Q3 support\n\nWe handled 14,320 tickets. Response time fell to 3.4 hours.\n"
+    learn.save_history("original", draft, "report")
+    s_, match = learn.find_draft(final)
+    check("learn: finds the saved draft for a final", match is not None and s_ > 0.5)
+    res = learn.add_pair(draft, final, None, "report", "cut the closer")
+    check("learn: reports the cut sentence and the title change",
+          any("keep you posted" in c for c in res["phrases"]["cut"]) and res["shape"]["final"]["headings"] == ["Q3 support"])
+    check("learn: pair, preferences and my-voice edit are written privately",
+          os.path.exists(os.path.join(res["pair"], "final.md")) and os.path.exists(res["preferences"])
+          and res.get("voice_edit", "").startswith(os.path.join(tmp, "my-voice", "edits")))
+    ov = os.path.join(tmp, "ov.json")
+    with open(ov, "w") as f:
+        json.dump({"all": {"F-01": "off"}}, f)
+    rr = lint.apply_overrides(lint.load_rules(), ov)
+    check("learn: lint overrides switch a rule off", "F-01" not in ids(lint.lint("One \u2014 two \u2014 three.", rules=rr)))
+    if old_env is None:
+        del os.environ["AI_SKILLS_PERSONAL"]
+    else:
+        os.environ["AI_SKILLS_PERSONAL"] = old_env
+    shutil.rmtree(tmp, ignore_errors=True)
 
     # every rule id is documented in a reference file
     rules = lint.load_rules()
